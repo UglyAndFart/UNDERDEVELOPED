@@ -1,0 +1,699 @@
+fileFormatVersion: 2
+guid: 25c69e31615ca3f49aa4f98617a5c838
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 55
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1408
+        width: 94
+        height: 171
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75145e67651ad8540b5b807f36f328ae
+      internalID: -694933642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_1
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1408
+        width: 90
+        height: 197
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7fa371f88d2d444db1d0ab879bd329a
+      internalID: -798409843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_2
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 1408
+        width: 138
+        height: 255
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c55d796364a73943921a034eaba3a5e
+      internalID: -1641801648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_3
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 1408
+        width: 158
+        height: 301
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fa9b27de3f1d0d46962e6e7963d5cf4
+      internalID: 1356029972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_4
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 1408
+        width: 264
+        height: 312
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 198092e30e28937478df773e5823975c
+      internalID: -565553917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_5
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 1088
+        width: 142
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca05fa053b467204c88757d502769dac
+      internalID: 1499555107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_6
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 1088
+        width: 142
+        height: 175
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cab8c04f72398b4d93ebec3d4f161c0
+      internalID: 38012830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_7
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 1088
+        width: 146
+        height: 240
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46983c0f307600e4c80551b04896dc54
+      internalID: -2023076865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_8
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 1088
+        width: 188
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d21c471256964444faf3a843cc8a9e12
+      internalID: -555502661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_9
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 1088
+        width: 274
+        height: 304
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a174aa4fa1e4ec744bb450f44ee35015
+      internalID: 1839160456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_10
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 768
+        width: 116
+        height: 110
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 807ceff0872b06f4f819907ccd31289f
+      internalID: 1341421711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_11
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 768
+        width: 122
+        height: 228
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf7e07695b4547e40bac6a941ae7198a
+      internalID: 916459568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_12
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 768
+        width: 138
+        height: 294
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d83820ef407da843aa36551a834eb0a
+      internalID: -461440710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_13
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 768
+        width: 266
+        height: 296
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7720d76fac025444b95a9add5a637784
+      internalID: -1730829573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_14
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 768
+        width: 60
+        height: 242
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46c4dc761f7a9fa46a6f18b094439d75
+      internalID: -475945454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_15
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 768
+        width: 92
+        height: 318
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3e03fb7945d86a4a9263fcb222ef5e2
+      internalID: -477332746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_16
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 384
+        width: 106
+        height: 176
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1145a4bfadca4e5429e80d0638b32f9b
+      internalID: 1029862198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_17
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 384
+        width: 128
+        height: 202
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c43420a9919276d46a3facd35b2a1017
+      internalID: 1786215374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_18
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 384
+        width: 87
+        height: 250
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f23dd9372e80ba6499e22ca2797454d3
+      internalID: -2082922861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_19
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 384
+        width: 140
+        height: 296
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bda38c16c7d8a04c95850099824c26d
+      internalID: -803378615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_20
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 384
+        width: 138
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4036a472ddaeeaa42a8c7693b0020ac9
+      internalID: 1321229056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_21
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 50
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99ade5fe2c5966b469b7a0540ae511bc
+      internalID: 854375241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_22
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 0
+        width: 54
+        height: 202
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 887add6bbeece304cb551b100713cdd7
+      internalID: 1420902063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_23
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 0
+        width: 87
+        height: 252
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6443a64d23d9d0b44bc8a70b98223c6e
+      internalID: 761377873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_24
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 0
+        width: 132
+        height: 314
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a9855212664ef548985cbd8b231717c
+      internalID: -789970596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CWTS01(Recolored)_25
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 0
+        width: 104
+        height: 320
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 058aeab7758e8d9408b90c18abd4deec
+      internalID: 69918949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      CWTS01(Recolored)_0: -694933642
+      CWTS01(Recolored)_1: -798409843
+      CWTS01(Recolored)_10: 1341421711
+      CWTS01(Recolored)_11: 916459568
+      CWTS01(Recolored)_12: -461440710
+      CWTS01(Recolored)_13: -1730829573
+      CWTS01(Recolored)_14: -475945454
+      CWTS01(Recolored)_15: -477332746
+      CWTS01(Recolored)_16: 1029862198
+      CWTS01(Recolored)_17: 1786215374
+      CWTS01(Recolored)_18: -2082922861
+      CWTS01(Recolored)_19: -803378615
+      CWTS01(Recolored)_2: -1641801648
+      CWTS01(Recolored)_20: 1321229056
+      CWTS01(Recolored)_21: 854375241
+      CWTS01(Recolored)_22: 1420902063
+      CWTS01(Recolored)_23: 761377873
+      CWTS01(Recolored)_24: -789970596
+      CWTS01(Recolored)_25: 69918949
+      CWTS01(Recolored)_3: 1356029972
+      CWTS01(Recolored)_4: -565553917
+      CWTS01(Recolored)_5: 1499555107
+      CWTS01(Recolored)_6: 38012830
+      CWTS01(Recolored)_7: -2023076865
+      CWTS01(Recolored)_8: -555502661
+      CWTS01(Recolored)_9: 1839160456
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

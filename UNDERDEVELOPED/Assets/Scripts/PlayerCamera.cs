@@ -7,7 +7,7 @@ public class PlayerCamera : MonoBehaviour
     public Transform target;
     public float lerpSpeed = 1.0f;
 
-    private Vector3 offset;
+    private Vector3 offset = new Vector3(0,1,0);
 
     private Vector3 targetPos;
 
@@ -15,7 +15,7 @@ public class PlayerCamera : MonoBehaviour
     {
         if (target == null) return;
         
-        offset = transform.position - target.position;
+        transform.position = target.position;
     }
 
     private void Update()

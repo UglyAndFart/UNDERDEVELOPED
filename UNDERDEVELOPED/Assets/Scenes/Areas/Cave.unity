@@ -33653,6 +33653,7 @@ GameObject:
   - component: {fileID: 963732170}
   - component: {fileID: 963732173}
   - component: {fileID: 963732174}
+  - component: {fileID: 963732175}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -33788,6 +33789,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13d0e62721e731a47916713e45e4ef50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 158063335}
+  lerpSpeed: 7
+--- !u!114 &963732175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963732169}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6248d61f4bd8340bdc5bbfffcfa190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 158063335}
@@ -136600,6 +136615,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 760058022120086568, guid: 26dabaac89c3f00488988cecbf2868bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6595747515035395108, guid: 26dabaac89c3f00488988cecbf2868bc,
         type: 3}
       propertyPath: m_Name
