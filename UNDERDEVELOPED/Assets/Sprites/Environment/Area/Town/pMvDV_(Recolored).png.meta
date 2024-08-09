@@ -1,0 +1,2613 @@
+fileFormatVersion: 2
+guid: 6bbc73c8f0e8ffe41a0cca7b83daf4c6
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_0
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 798
+        width: 130
+        height: 745
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fccc0ef80260a74aad3f14bc6baaef0
+      internalID: 590561003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_1
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 1504
+        width: 173
+        height: 41
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 662b34e4d8b623146abd05af9b0b0c4a
+      internalID: 830562004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_2
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 1504
+        width: 62
+        height: 39
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a917f56496150524bb756e672594a40d
+      internalID: 1589105702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_3
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 1453
+        width: 101
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 523458f244ed3764d86227af3ea5e3f6
+      internalID: -1437497313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_4
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 1453
+        width: 101
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88906ca9b19f3da4d8a4231f04e5e536
+      internalID: -721874478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_5
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 1453
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8fb65456d20c544a91d6e0a30407807
+      internalID: 1680363697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_6
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 1463
+        width: 11
+        height: 98
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc328f9630811084d9a2b63762f285f8
+      internalID: -1380185505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_7
+      rect:
+        serializedVersion: 2
+        x: 1017
+        y: 1461
+        width: 10
+        height: 104
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7c0fcba6e0207d4598089f37a9718a9
+      internalID: -1827357367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_8
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 1504
+        width: 38
+        height: 17
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31721c9b3374c034ca87dc0da110a47e
+      internalID: 75678690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_9
+      rect:
+        serializedVersion: 2
+        x: 1137
+        y: 1488
+        width: 42
+        height: 68
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8cb81e9c7339ac459b3edefa7f4f178
+      internalID: -1193335541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_10
+      rect:
+        serializedVersion: 2
+        x: 1212
+        y: 1488
+        width: 42
+        height: 68
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 793c73f7f077e4c49887e7a9f31c2d65
+      internalID: -537982970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_11
+      rect:
+        serializedVersion: 2
+        x: 1291
+        y: 1483
+        width: 56
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e8faa26914754d45ba3e61417651027
+      internalID: 1269634299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_12
+      rect:
+        serializedVersion: 2
+        x: 1377
+        y: 1483
+        width: 55
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3bd97dd8c4b74442b9003e524b6f658
+      internalID: 701301762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_13
+      rect:
+        serializedVersion: 2
+        x: 1522
+        y: 1483
+        width: 144
+        height: 43
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d46c51d354f5c1d4695d44d0d5487b4b
+      internalID: -1070224641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_14
+      rect:
+        serializedVersion: 2
+        x: 1697
+        y: 1470
+        width: 145
+        height: 63
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9110507bee26f054c8ec88a53f655763
+      internalID: 1186416052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_15
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 1366
+        width: 590
+        height: 194
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 581564429461f2d45adabe5e9bc66bd7
+      internalID: 1673627984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_16
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 1158
+        width: 95
+        height: 337
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91456d2698d0a9345b7f5fc5255b6c87
+      internalID: -1309243257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_17
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 1348
+        width: 92
+        height: 92
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54ea9055d0e88d3418ddb450e3bec2a0
+      internalID: -1706442809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_18
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 1346
+        width: 20
+        height: 95
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94dc7478e92777d4bb8d11627dbd427a
+      internalID: 650658131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_19
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 1199
+        width: 44
+        height: 212
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69f9c860118b95d41a760937ff210520
+      internalID: 1408486405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_20
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 1200
+        width: 113
+        height: 198
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 194df79c69af4cd41969ce35cc416d9e
+      internalID: 1506541706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_21
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 1198
+        width: 112
+        height: 202
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e7c6c27a68b7014fabfca6e1de9b13b
+      internalID: 1372070372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_22
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 1196
+        width: 143
+        height: 207
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63f6303d7eb65714da1706ebe817a830
+      internalID: 1639792390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_23
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 1199
+        width: 35
+        height: 234
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba00ffb09de4ab04eadb50cf33c43580
+      internalID: -1396052061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_24
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 1199
+        width: 197
+        height: 234
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1f2d16ec5a6c7149b46fa79e4b485c5
+      internalID: 246624609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_25
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 1389
+        width: 142
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe5bcae576d810b4b822fdd2d141d6a0
+      internalID: 594750446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_26
+      rect:
+        serializedVersion: 2
+        x: 1697
+        y: 1386
+        width: 143
+        height: 74
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28c5da7387541764ab050937e99b499c
+      internalID: -1934453154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_27
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 1158
+        width: 125
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cda0d1317a37b324b90974ad328a8e56
+      internalID: 1265677863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_28
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 1158
+        width: 42
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 434eb296990dd7d4baffbe82f5c205c6
+      internalID: -111834411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_29
+      rect:
+        serializedVersion: 2
+        x: 1529
+        y: 1305
+        width: 125
+        height: 44
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7a8d85dbdabc1f4fbeceda92d081b7c
+      internalID: 899203414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_30
+      rect:
+        serializedVersion: 2
+        x: 1709
+        y: 1299
+        width: 125
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bda08cc50717c0048b7923a2b2a9f011
+      internalID: -1621795596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_31
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 1158
+        width: 590
+        height: 198
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eec37e33d0aa9de44a57d71e28fd6253
+      internalID: 1923839037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_32
+      rect:
+        serializedVersion: 2
+        x: 1522
+        y: 1203
+        width: 132
+        height: 68
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5326585d8415c3e4786af94731cba575
+      internalID: 2137236137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_33
+      rect:
+        serializedVersion: 2
+        x: 1702
+        y: 1203
+        width: 132
+        height: 47
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47ae6aa454bc6a045bf5c8f0ca554138
+      internalID: -1908092780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_34
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 1081
+        width: 68
+        height: 83
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62c328f8938ec0c4691e7864b464d0b4
+      internalID: 1944986642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_35
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 1081
+        width: 70
+        height: 77
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f03f152aa7ca92e489320ec8ada12ac6
+      internalID: 468615043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_36
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 1081
+        width: 74
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a09a9433de4d1cf40b899e378336b0ba
+      internalID: 174470351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_37
+      rect:
+        serializedVersion: 2
+        x: 1377
+        y: 1081
+        width: 62
+        height: 98
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b965c501c0887a446831aad3c331436e
+      internalID: -1036134463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_38
+      rect:
+        serializedVersion: 2
+        x: 1487
+        y: 1033
+        width: 53
+        height: 140
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fef1e109503cce48b0f7db6a40f74ba
+      internalID: 506352174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_39
+      rect:
+        serializedVersion: 2
+        x: 1594
+        y: 1058
+        width: 43
+        height: 97
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f877cf26d13901744a600e96d0fe475d
+      internalID: -1726360457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_40
+      rect:
+        serializedVersion: 2
+        x: 1677
+        y: 1075
+        width: 42
+        height: 78
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88cbd82e8053ad1439092465350cd21c
+      internalID: 1091455620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_41
+      rect:
+        serializedVersion: 2
+        x: 1774
+        y: 848
+        width: 36
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce6f518d01e1dbc489062b452628a7d3
+      internalID: -253017226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_42
+      rect:
+        serializedVersion: 2
+        x: 1821
+        y: 848
+        width: 41
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87442195b64dbcd44887e32f7f191ea3
+      internalID: 924852928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_43
+      rect:
+        serializedVersion: 2
+        x: 1871
+        y: 1119
+        width: 4
+        height: 4
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52fe48980237b224ca584ce3c4246ec2
+      internalID: 1607774753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_44
+      rect:
+        serializedVersion: 2
+        x: 1876
+        y: 848
+        width: 31
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c11b603b26586884da9140c1d546b81d
+      internalID: -1330339710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_45
+      rect:
+        serializedVersion: 2
+        x: 1954
+        y: 869
+        width: 251
+        height: 251
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d992235f8a6ebbc469200c88f4bdb0c9
+      internalID: 1616647360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_46
+      rect:
+        serializedVersion: 2
+        x: 2194
+        y: 833
+        width: 290
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5aed88be887d71b499db82affee94fed
+      internalID: 2031316019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_47
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 798
+        width: 98
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed49326288223cc4c880c7722b037765
+      internalID: 1635220480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_48
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 963
+        width: 114
+        height: 155
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18295d1155e5dde48bd06ba9f17d348b
+      internalID: -1524774433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_49
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 963
+        width: 23
+        height: 155
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5e5125e1b26f4b44adbe5e3195b0220
+      internalID: 1046531752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_50
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 976
+        width: 89
+        height: 122
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e51779108ac3bba49bc37faa5512990b
+      internalID: 1077170614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_51
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 976
+        width: 23
+        height: 122
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7484ecdaa3c91ed49ae552ac6cf73324
+      internalID: 907658354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_52
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 981
+        width: 107
+        height: 107
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31b56755ad1ea114a9aba04973affb12
+      internalID: 643022848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_53
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 981
+        width: 20
+        height: 107
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 317e9742b90fba6408b3fe9ac2f6863d
+      internalID: -253077152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_54
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 960
+        width: 444
+        height: 86
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07b50137d362f7c428dfc40eeb9ba580
+      internalID: -715082223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_55
+      rect:
+        serializedVersion: 2
+        x: 1689
+        y: 1008
+        width: 17
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78a9063264c104649bfc14d3a2f08313
+      internalID: -2135311254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_56
+      rect:
+        serializedVersion: 2
+        x: 2194
+        y: 725
+        width: 290
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 240e52b7f92539641b438d8b8f739981
+      internalID: 398221448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_57
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 770
+        width: 125
+        height: 149
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d5857959106c8c4cbddbb9e9755ea83
+      internalID: 1505190628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_58
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 770
+        width: 35
+        height: 149
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00f4b9e3b9e107141bf737f0b224b256
+      internalID: 1937689917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_59
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 768
+        width: 131
+        height: 172
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaf57caf92a49e449a9e0ab35529786e
+      internalID: -128736581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_60
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 768
+        width: 46
+        height: 172
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32a1782c737284c4aa91ae9f5df8e411
+      internalID: 74551943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_61
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 795
+        width: 113
+        height: 113
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e87db6e69967f340889469216c964ae
+      internalID: -2111117543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_62
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 795
+        width: 23
+        height: 113
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dd183dc8cd4de54e9abf1a9a12f3915
+      internalID: 898956698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_63
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 836
+        width: 302
+        height: 87
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27f3b75812d633240b00486db2b69808
+      internalID: 1862170872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_64
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 870
+        width: 155
+        height: 93
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa2e6f7590ddae9488690d9a6b4949e4
+      internalID: -1758903212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_65
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 870
+        width: 68
+        height: 93
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee05fa5bee3bec04da1f54f9d5fe8f3a
+      internalID: 1998421612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_66
+      rect:
+        serializedVersion: 2
+        x: 2194
+        y: 619
+        width: 290
+        height: 290
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c62b4d8237439af4f8b6cc4c82e29ee1
+      internalID: 1610775924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_67
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 756
+        width: 194
+        height: 17
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5bdeb3896d6dfc49a3da6d9e8460a22
+      internalID: -1206404245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_68
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 738
+        width: 290
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d92857b4d4d3c548a933c4f0fb68ad0
+      internalID: 515080668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_69
+      rect:
+        serializedVersion: 2
+        x: 1607
+        y: 656
+        width: 518
+        height: 147
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4958e8322d47b02439972c62e1679cef
+      internalID: -2070843913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_70
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 639
+        width: 77
+        height: 92
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a62ab4d60f8d1f42a0efb8b018d59d4
+      internalID: -1823895623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_71
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 708
+        width: 17
+        height: 23
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a748eb52ca79a1b42a0119cba49d135a
+      internalID: 1886669854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_72
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 656
+        width: 53
+        height: 53
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9027a8f76207db140b62b62c3812511d
+      internalID: -809319208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_73
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 680
+        width: 35
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecf45f0ccb7a7354ea7c84925a9699e5
+      internalID: 118165337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_74
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 653
+        width: 41
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caf8a6b01b8c4e4419a2ea4b178d10a8
+      internalID: -981710807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_75
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 675
+        width: 39
+        height: 38
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63e50a1c63914ad4c8194c8c56e984c6
+      internalID: -1070457743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_76
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 675
+        width: 38
+        height: 38
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17a41b32de81d694e834f8f4bffee950
+      internalID: 1953668477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_77
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 675
+        width: 37
+        height: 38
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd452b8ce7df19e47a76657c38e0ec4b
+      internalID: 805965461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_78
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 678
+        width: 50
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 660010e1e21115347ae672421db43bb8
+      internalID: 1439694890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_79
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 678
+        width: 50
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2bcfb841e889d14eb2b890e4e83c2ba
+      internalID: 231052437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_80
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 678
+        width: 50
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 409736e264ae9cb41b41772323bf6f7f
+      internalID: -1472436083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_81
+      rect:
+        serializedVersion: 2
+        x: 884
+        y: 658
+        width: 95
+        height: 98
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fc10b9c824c4694d9ef8f562c60ebc8
+      internalID: -1034107692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_82
+      rect:
+        serializedVersion: 2
+        x: 1017
+        y: 658
+        width: 95
+        height: 98
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e8215d9a6185a469c115d08817c5b9
+      internalID: 288711446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_83
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 658
+        width: 95
+        height: 98
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b47acdd5dcbbdb4ea8ab937b8121507
+      internalID: -118203153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_84
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 699
+        width: 290
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a20293f802e04f49b9e8a1d91b0d68c
+      internalID: -1952356764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_85
+      rect:
+        serializedVersion: 2
+        x: 2331
+        y: 545
+        width: 181
+        height: 170
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52319091df8500d4a85de1ab77b5e986
+      internalID: -753254055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_86
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 656
+        width: 58
+        height: 52
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa5788aecf34d644c8286f49a8e9cca9
+      internalID: -156286392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_87
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 653
+        width: 48
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc7cabed2218b034194c4c5c0bfab5c9
+      internalID: -1083633733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_88
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 660
+        width: 290
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eae918dc9dcd0924799522a52ac9f9c2
+      internalID: -2027637914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_89
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 573
+        width: 578
+        height: 37
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9dc70fa09099ad4b848f4fe78fc0ffd
+      internalID: -859542847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_90
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 383
+        width: 661
+        height: 227
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee79c135a5fa2504884ef9746e4e7127
+      internalID: -1267519838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_91
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 385
+        width: 389
+        height: 228
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a79d9364f867b14ba4e99e346daf6d7
+      internalID: 1681083624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_92
+      rect:
+        serializedVersion: 2
+        x: 1806
+        y: 393
+        width: 710
+        height: 217
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c88175f4cab93bd459894a4e26943b34
+      internalID: -1288382525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_93
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 518
+        width: 578
+        height: 37
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3c7d45c875b86c4e8ac60b6b5cb3005
+      internalID: -1908414477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_94
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 460
+        width: 578
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c576e1a014592e40adbab2d29a01f1d
+      internalID: -693567350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_95
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 234
+        width: 85
+        height: 191
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 866419903ed0ad94ca45255f73157777
+      internalID: -568154352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_96
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 234
+        width: 86
+        height: 191
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80b1b657b407daa4abe91a7a56e38cbb
+      internalID: 1255844156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_97
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 233
+        width: 86
+        height: 191
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f2f98f0a3dafa946bb9e155d963f718
+      internalID: 1118593070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_98
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 173
+        width: 422
+        height: 233
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ee2586b2e1dbc1428bd51ce06e93fe6
+      internalID: 1128946342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_99
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 221
+        width: 232
+        height: 119
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d63f2ac91046aaa4fad50b669862e65d
+      internalID: -884364526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_100
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 30
+        width: 425
+        height: 299
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8101a8cbcedd0364cae8a2e1efb4f6a4
+      internalID: -825709386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_101
+      rect:
+        serializedVersion: 2
+        x: 1492
+        y: 35
+        width: 200
+        height: 296
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f18f56b67a58a6a4597f8b9f9c707c2f
+      internalID: -1318348108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_102
+      rect:
+        serializedVersion: 2
+        x: 1586
+        y: 35
+        width: 200
+        height: 296
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f056470e89dcfa84fbbdf055ad337333
+      internalID: 1006204794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_103
+      rect:
+        serializedVersion: 2
+        x: 1679
+        y: 35
+        width: 200
+        height: 296
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c20d388400841841a70d2d1dfaf2e1d
+      internalID: 1502128081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_104
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 320
+        width: 290
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9a8d258f0bb7294eb232f8d25e94313
+      internalID: -1224149230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_105
+      rect:
+        serializedVersion: 2
+        x: 2267
+        y: 191
+        width: 220
+        height: 170
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bfcfdd4ba2f8b940a452e1181ccdb6d
+      internalID: -1379032706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_106
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 281
+        width: 290
+        height: 27
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff80f2a59f1ca634caa182e3dc1f84cd
+      internalID: 1399770651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_107
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 243
+        width: 290
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc36fbd5d9b03104788dfa38976e895e
+      internalID: 439077374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_108
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 159
+        width: 200
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c16bc3731f771948b47a3d300136eee
+      internalID: 983514846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_109
+      rect:
+        serializedVersion: 2
+        x: 1844
+        y: 21
+        width: 365
+        height: 197
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05bebeba25c401f42b3b61c2fe677998
+      internalID: 2125227815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_110
+      rect:
+        serializedVersion: 2
+        x: 2267
+        y: 13
+        width: 165
+        height: 155
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e29f710c501cb52478c1dcf9bf7f686a
+      internalID: -681350005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_111
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 28
+        width: 89
+        height: 55
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b13c53628f0eac444a8a05f5f905b32f
+      internalID: -1900307124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pMvDV_(Recolored)_112
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 28
+        width: 839
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6a82468b7feb3347a90318d071fe7c8
+      internalID: -2083093639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      pMvDV_(Recolored)_0: 590561003
+      pMvDV_(Recolored)_1: 830562004
+      pMvDV_(Recolored)_10: -537982970
+      pMvDV_(Recolored)_100: -825709386
+      pMvDV_(Recolored)_101: -1318348108
+      pMvDV_(Recolored)_102: 1006204794
+      pMvDV_(Recolored)_103: 1502128081
+      pMvDV_(Recolored)_104: -1224149230
+      pMvDV_(Recolored)_105: -1379032706
+      pMvDV_(Recolored)_106: 1399770651
+      pMvDV_(Recolored)_107: 439077374
+      pMvDV_(Recolored)_108: 983514846
+      pMvDV_(Recolored)_109: 2125227815
+      pMvDV_(Recolored)_11: 1269634299
+      pMvDV_(Recolored)_110: -681350005
+      pMvDV_(Recolored)_111: -1900307124
+      pMvDV_(Recolored)_112: -2083093639
+      pMvDV_(Recolored)_12: 701301762
+      pMvDV_(Recolored)_13: -1070224641
+      pMvDV_(Recolored)_14: 1186416052
+      pMvDV_(Recolored)_15: 1673627984
+      pMvDV_(Recolored)_16: -1309243257
+      pMvDV_(Recolored)_17: -1706442809
+      pMvDV_(Recolored)_18: 650658131
+      pMvDV_(Recolored)_19: 1408486405
+      pMvDV_(Recolored)_2: 1589105702
+      pMvDV_(Recolored)_20: 1506541706
+      pMvDV_(Recolored)_21: 1372070372
+      pMvDV_(Recolored)_22: 1639792390
+      pMvDV_(Recolored)_23: -1396052061
+      pMvDV_(Recolored)_24: 246624609
+      pMvDV_(Recolored)_25: 594750446
+      pMvDV_(Recolored)_26: -1934453154
+      pMvDV_(Recolored)_27: 1265677863
+      pMvDV_(Recolored)_28: -111834411
+      pMvDV_(Recolored)_29: 899203414
+      pMvDV_(Recolored)_3: -1437497313
+      pMvDV_(Recolored)_30: -1621795596
+      pMvDV_(Recolored)_31: 1923839037
+      pMvDV_(Recolored)_32: 2137236137
+      pMvDV_(Recolored)_33: -1908092780
+      pMvDV_(Recolored)_34: 1944986642
+      pMvDV_(Recolored)_35: 468615043
+      pMvDV_(Recolored)_36: 174470351
+      pMvDV_(Recolored)_37: -1036134463
+      pMvDV_(Recolored)_38: 506352174
+      pMvDV_(Recolored)_39: -1726360457
+      pMvDV_(Recolored)_4: -721874478
+      pMvDV_(Recolored)_40: 1091455620
+      pMvDV_(Recolored)_41: -253017226
+      pMvDV_(Recolored)_42: 924852928
+      pMvDV_(Recolored)_43: 1607774753
+      pMvDV_(Recolored)_44: -1330339710
+      pMvDV_(Recolored)_45: 1616647360
+      pMvDV_(Recolored)_46: 2031316019
+      pMvDV_(Recolored)_47: 1635220480
+      pMvDV_(Recolored)_48: -1524774433
+      pMvDV_(Recolored)_49: 1046531752
+      pMvDV_(Recolored)_5: 1680363697
+      pMvDV_(Recolored)_50: 1077170614
+      pMvDV_(Recolored)_51: 907658354
+      pMvDV_(Recolored)_52: 643022848
+      pMvDV_(Recolored)_53: -253077152
+      pMvDV_(Recolored)_54: -715082223
+      pMvDV_(Recolored)_55: -2135311254
+      pMvDV_(Recolored)_56: 398221448
+      pMvDV_(Recolored)_57: 1505190628
+      pMvDV_(Recolored)_58: 1937689917
+      pMvDV_(Recolored)_59: -128736581
+      pMvDV_(Recolored)_6: -1380185505
+      pMvDV_(Recolored)_60: 74551943
+      pMvDV_(Recolored)_61: -2111117543
+      pMvDV_(Recolored)_62: 898956698
+      pMvDV_(Recolored)_63: 1862170872
+      pMvDV_(Recolored)_64: -1758903212
+      pMvDV_(Recolored)_65: 1998421612
+      pMvDV_(Recolored)_66: 1610775924
+      pMvDV_(Recolored)_67: -1206404245
+      pMvDV_(Recolored)_68: 515080668
+      pMvDV_(Recolored)_69: -2070843913
+      pMvDV_(Recolored)_7: -1827357367
+      pMvDV_(Recolored)_70: -1823895623
+      pMvDV_(Recolored)_71: 1886669854
+      pMvDV_(Recolored)_72: -809319208
+      pMvDV_(Recolored)_73: 118165337
+      pMvDV_(Recolored)_74: -981710807
+      pMvDV_(Recolored)_75: -1070457743
+      pMvDV_(Recolored)_76: 1953668477
+      pMvDV_(Recolored)_77: 805965461
+      pMvDV_(Recolored)_78: 1439694890
+      pMvDV_(Recolored)_79: 231052437
+      pMvDV_(Recolored)_8: 75678690
+      pMvDV_(Recolored)_80: -1472436083
+      pMvDV_(Recolored)_81: -1034107692
+      pMvDV_(Recolored)_82: 288711446
+      pMvDV_(Recolored)_83: -118203153
+      pMvDV_(Recolored)_84: -1952356764
+      pMvDV_(Recolored)_85: -753254055
+      pMvDV_(Recolored)_86: -156286392
+      pMvDV_(Recolored)_87: -1083633733
+      pMvDV_(Recolored)_88: -2027637914
+      pMvDV_(Recolored)_89: -859542847
+      pMvDV_(Recolored)_9: -1193335541
+      pMvDV_(Recolored)_90: -1267519838
+      pMvDV_(Recolored)_91: 1681083624
+      pMvDV_(Recolored)_92: -1288382525
+      pMvDV_(Recolored)_93: -1908414477
+      pMvDV_(Recolored)_94: -693567350
+      pMvDV_(Recolored)_95: -568154352
+      pMvDV_(Recolored)_96: 1255844156
+      pMvDV_(Recolored)_97: 1118593070
+      pMvDV_(Recolored)_98: 1128946342
+      pMvDV_(Recolored)_99: -884364526
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

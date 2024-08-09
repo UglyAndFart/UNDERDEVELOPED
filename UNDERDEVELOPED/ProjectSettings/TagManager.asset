@@ -41,13 +41,13 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Layer 1
+  - name: BG 1
     uniqueID: 2425651459
     locked: 0
-  - name: Layer 2
+  - name: BG 2
     uniqueID: 4250941897
     locked: 0
-  - name: Layer 3
+  - name: BG 3
     uniqueID: 4189426099
     locked: 0
   - name: Map
