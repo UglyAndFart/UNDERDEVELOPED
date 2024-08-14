@@ -25,9 +25,9 @@ TagManager:
   - 
   - 
   - 
-  - Layer 1
-  - Layer 2
-  - Layer 3
+  - Map
+  - Props
+  - Player
   - 
   - 
   - 
@@ -56,11 +56,11 @@ TagManager:
   - name: Props
     uniqueID: 4136858235
     locked: 0
+  - name: Foreground
+    uniqueID: 75479681
+    locked: 0
   - name: Enemy
     uniqueID: 1249074305
-    locked: 0
-  - name: Player
-    uniqueID: 75479681
     locked: 0
   - name: UI
     uniqueID: 510116095
