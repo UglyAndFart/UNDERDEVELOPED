@@ -1,18 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 namespace Cainos.PixelArtTopDown_Basic
 {
     public class TopDownCharacterController : MonoBehaviour
     {
-        public float speed;
-
+        [SerializeField]
+        private float speed;
         private Animator animator;
+        private Rigidbody2D rigidBody2D;
+        private SpriteRenderer spriteRenderer;
 
         private void Start()
         {
             animator = GetComponent<Animator>();
+            rigidBody2D = GetComponent<Rigidbody2D>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
 
@@ -22,29 +27,34 @@ namespace Cainos.PixelArtTopDown_Basic
             if (Input.GetKey(KeyCode.A))
             {
                 dir.x = -1;
-                //animator.SetInteger("Direction", 3);
             }
             else if (Input.GetKey(KeyCode.D))
             {
                 dir.x = 1;
-                //animator.SetInteger("Direction", 2);
             }
 
             if (Input.GetKey(KeyCode.W))
             {
                 dir.y = 1;
-                //animator.SetInteger("Direction", 1);
             }
             else if (Input.GetKey(KeyCode.S))
             {
                 dir.y = -1;
-                //animator.SetInteger("Direction", 0);
+            }
+                
+            if(dir.x != 0 || dir.y != 0)
+            {
+                dir.Normalize();
+                animator.SetFloat("X", dir.x);
+                animator.SetFloat("Y", dir.y);
+                animator.SetBool("PlayerMoving", true);
+            }
+            else
+            {
+                animator.SetBool("PlayerMoving", false);
             }
 
-            //dir.Normalize();
-            //animator.SetBool("IsMoving", dir.magnitude > 0);
-
-            GetComponent<Rigidbody2D>().velocity = speed * dir;
+            rigidBody2D.MovePosition(rigidBody2D.position + dir * speed * Time.deltaTime);
         }
     }
 }
