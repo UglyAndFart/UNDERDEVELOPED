@@ -11,19 +11,18 @@ namespace Cainos.PixelArtTopDown_Basic
         private float speed;
         private Animator animator;
         private Rigidbody2D rigidBody2D;
-        private SpriteRenderer spriteRenderer;
+        private Vector2 dir;
 
         private void Start()
         {
             animator = GetComponent<Animator>();
             rigidBody2D = GetComponent<Rigidbody2D>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
 
         private void Update()
         {
-            Vector2 dir = Vector2.zero;
+            dir = Vector2.zero;
             if (Input.GetKey(KeyCode.A))
             {
                 dir.x = -1;
