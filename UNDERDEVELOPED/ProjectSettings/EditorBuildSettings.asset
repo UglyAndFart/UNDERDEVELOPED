@@ -4,5 +4,26 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Areas/Cave.unity
+    guid: 2d76d46dd2b52f045b03ec54d752aa11
+  - enabled: 1
+    path: Assets/Scenes/Areas/Computer Laboratory.unity
+    guid: f7b1f87c8ecf2504c9f4004044f96a6b
+  - enabled: 1
+    path: Assets/Scenes/Areas/East.unity
+    guid: 1b53b9388d9aa0e4f907ec8b0bdeeac4
+  - enabled: 1
+    path: Assets/Scenes/Areas/North.unity
+    guid: 079c23cc0323df64d8d8137f85b1a3f4
+  - enabled: 1
+    path: Assets/Scenes/Areas/Outside Town.unity
+    guid: 1af8040e8c164904c9d1bdc6e94ec41c
+  - enabled: 1
+    path: Assets/Scenes/Areas/South Forest.unity
+    guid: 7f221fd9205b1ec449c370001f8e9bdf
+  - enabled: 1
+    path: Assets/Scenes/Areas/Town.unity
+    guid: acbea10d92f0dc8499c1711fc1f06f08
   m_configObjects: {}

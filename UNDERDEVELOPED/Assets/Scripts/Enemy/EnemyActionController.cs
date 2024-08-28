@@ -8,7 +8,7 @@ public class EnemyActionController : MonoBehaviour
     [SerializeField]
     private Rigidbody2D player;
     [SerializeField]
-    private float speed, aggroRange;
+    private float speed, aggroRange, attackRange;
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -39,6 +39,10 @@ public class EnemyActionController : MonoBehaviour
         spriteRenderer.flipX = direction.x < 0 ?true :false;
         animator.SetBool("EnemyMoving", true);
         rigidBody2D.MovePosition(currentPosition + direction * speed * Time.deltaTime);
-        
+
+        if (distance <= attackRange)
+        {
+            animator.SetTrigger("Attack");
+        }
     }
 }
