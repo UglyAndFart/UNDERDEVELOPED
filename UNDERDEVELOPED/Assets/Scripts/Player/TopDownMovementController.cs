@@ -5,18 +5,22 @@ using UnityEngine;
 public class TopDownMovementController : MonoBehaviour
 {
     [SerializeField]
-    private int speed;
+    private float speed, dashDistance, dashDuration, dashCooldown;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidBody2D;
     private Animator animator;
     private Vector2 direction;
-    private bool flipSprite;
+    private bool flipSprite, canDash, dashing;
+    private Vector2 facingDirection;
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidBody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         flipSprite = false;
+        canDash = true;
+        facingDirection = Vector2.right;
     }
 
     private void Update()
@@ -45,8 +49,8 @@ public class TopDownMovementController : MonoBehaviour
 
         if (direction.x != 0 || direction.y != 0)
         {
+            facingDirection = direction.normalized;
             spriteRenderer.flipX = flipSprite;
-            direction.Normalize();
             animator.SetBool("PlayerMoving", true);
         }
         else
@@ -54,6 +58,34 @@ public class TopDownMovementController : MonoBehaviour
             animator.SetBool("PlayerMoving", false);
         }
 
-        rigidBody2D.MovePosition(rigidBody2D.position + direction * speed * Time.deltaTime);
+        if (!dashing)
+        {
+            rigidBody2D.MovePosition(rigidBody2D.position + direction * speed * Time.deltaTime);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
+    }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        dashing = true;
+
+        Vector2 dashVector = facingDirection * dashDistance;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < dashDuration)
+        {
+            rigidBody2D.MovePosition(rigidBody2D.position + dashVector * Time.deltaTime / dashDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        dashing = false;
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
     }
 }
