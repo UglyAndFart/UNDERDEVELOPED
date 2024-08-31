@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
-    public int health;
+    public float health, stamina, moveSpeed, dashDistance, dashCooldown, dashDuration, physicalDamage, magicDamage;
     public float[] position;
 
     public PlayerData(Player player)
@@ -17,5 +17,13 @@ public class PlayerData
         position[0] = player.transform.position.x;
         position[1] = player.transform.position.y;
         position[2] = player.transform.position.z;
+        
+        stamina = player.stamina;
+        moveSpeed = player.moveSpeed;
+        dashDistance = player.dashDistance;
+        dashCooldown = player.dashCooldown;
+        dashDuration = player.dashDuration;
+        physicalDamage = player.physicalDamage;
+        magicDamage = player.magicDamage;
     }
 }

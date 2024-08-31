@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(10);
             SaveSystemManager.SavePlayer(player);
+            yield return new WaitForSeconds(10);
         }
     }
 }

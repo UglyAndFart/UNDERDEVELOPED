@@ -23,7 +23,7 @@ public class SaveSystem
     {
         string playerName = "Test";
         string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"My Games/Underdeveloped/Saves/{playerName}.plyr");
-
+        
         if(!File.Exists(path))
         {
             return null;
@@ -32,7 +32,6 @@ public class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         using (FileStream fileStream = new FileStream(path, FileMode.Open))
         {
-            //return (PlayerData) formatter.Deserialize(fileStream);
             PlayerData playerData = (PlayerData) formatter.Deserialize(fileStream);
             return playerData;
         }

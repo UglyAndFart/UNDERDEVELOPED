@@ -12,7 +12,6 @@ public class SaveSystemManager : MonoBehaviour
     public static PlayerData LoadPlayer()
     {
         PlayerData playerData = SaveSystem.LoadPlayer();
-
         return playerData;
     }
 }

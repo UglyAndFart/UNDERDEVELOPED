@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public TextMeshProUGUI hp;
-    public int health;
+    private TextMeshProUGUI hp;
+
+    [SerializeField]
+    public float health, moveSpeed, stamina, physicalDamage, magicDamage, dashDistance, dashCooldown, dashDuration;
 
     void Start()
     {
@@ -15,7 +17,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        UpdateHPBar();
+        //UpdateHPBar();
     }
     public void SetPlayerData()
     {
@@ -27,6 +29,13 @@ public class Player : MonoBehaviour
         position.y = playerData.position[1];
         position.z = playerData.position[2];
         transform.position = position;
+        moveSpeed = playerData.moveSpeed;
+        stamina = playerData.stamina;
+        physicalDamage = playerData.physicalDamage;
+        magicDamage = playerData.magicDamage;
+        dashDistance = playerData.dashDistance;
+        dashCooldown = playerData.dashCooldown;
+        dashDuration = playerData.dashDuration;
     }
 
     public void UpdateHPBar()

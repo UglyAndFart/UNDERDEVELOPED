@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class TopDownMovementController : MonoBehaviour
 {
-    [SerializeField]
-    private float speed, dashDistance, dashDuration, dashCooldown;
+    private Player playerStats;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidBody2D;
     private Animator animator;
     private Vector2 direction;
-    private bool flipSprite, canDash, dashing;
     private Vector2 facingDirection;
+    private bool flipSprite, canDash, dashing;
+    private float moveSpeed, dashDistance, dashDuration, dashCooldown;
 
     private void Start()
     {
+        playerStats = GetComponent<Player>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidBody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        
+        moveSpeed = playerStats.moveSpeed;
+        dashDistance = playerStats.dashDistance;
+        dashDuration = playerStats.dashDuration;
+        dashCooldown = playerStats.dashCooldown;
+        
         flipSprite = false;
         canDash = true;
         facingDirection = Vector2.right;
@@ -60,7 +67,7 @@ public class TopDownMovementController : MonoBehaviour
 
         if (!dashing)
         {
-            rigidBody2D.MovePosition(rigidBody2D.position + direction * speed * Time.deltaTime);
+            rigidBody2D.MovePosition(rigidBody2D.position + direction * moveSpeed * Time.deltaTime);
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && canDash)

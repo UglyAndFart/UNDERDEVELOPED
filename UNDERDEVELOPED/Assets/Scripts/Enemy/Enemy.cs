@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private float health, physicalDamage, magicDamage;
+    private float health, physicalDamage, magicDamage, aggroRange, moveSpeed, attackRange, attackSpeed;
     private Animator animator;
 
     private void Start()
@@ -27,5 +27,25 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         animator.SetBool("EnemyAlive", false);
+    }
+
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
+    }
+
+    public float GetAggroRange()
+    {
+        return aggroRange;
+    }
+
+    public float GetAttackRange()
+    {
+        return attackRange;
+    }
+
+    public float GetAttackSpeed()
+    {
+        return attackSpeed;
     }
 }

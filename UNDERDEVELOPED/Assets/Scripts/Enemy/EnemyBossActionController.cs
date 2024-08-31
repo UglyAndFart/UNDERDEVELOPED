@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class EnemyActionController : MonoBehaviour
+public class EnemyBossActionController : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody2D player;
@@ -14,6 +13,7 @@ public class EnemyActionController : MonoBehaviour
     private Rigidbody2D rigidBody2D;
     private Vector2 currentPosition;
     private float distance, moveSpeed, aggroRange, attackRange, attackSpeed;
+    private bool awoken, attacking;
 
     private void Start()
     {
@@ -25,28 +25,60 @@ public class EnemyActionController : MonoBehaviour
         aggroRange = enemy.GetAggroRange();
         attackRange = enemy.GetAttackRange();
         attackSpeed = enemy.GetAttackSpeed();
+        awoken = false;
+        attacking = false;
     }
 
     private void Update()
     {
+        if (attacking)
+        {
+            return;
+        }
+
+        Move();
+        
+        if (distance <= attackRange)
+        {
+            Attack();        
+        }       
+    }
+
+    private void Move()
+    {
         currentPosition = transform.position;
         distance = Vector2.Distance(currentPosition, player.position);
 
-        if (distance > aggroRange)
+        if (distance <= aggroRange)
         {
-            animator.SetBool("EnemyMoving", false);
+            awoken = true;
+        }
+
+        if(!awoken)
+        {
             return;
         }
         
         Vector2 direction = player.position - currentPosition;
         direction.Normalize();
         spriteRenderer.flipX = direction.x < 0 ?true :false;
-        animator.SetBool("EnemyMoving", true);
+        animator.SetBool("Moving", true);
         rigidBody2D.MovePosition(currentPosition + direction * moveSpeed * Time.deltaTime);
+    }
 
-        if (distance <= attackRange)
-        {
-            //animator.SetTrigger("Attack");
-        }
+    private void Attack()
+    {
+        int attackNumber = UnityEngine.Random.Range(1,4);
+        animator.SetTrigger($"Attack{attackNumber}");
+    }
+
+    public void EnemyAttackStart()
+    {
+        attacking = true;
+    }
+
+    public void EnemyAttackEnd()
+    {
+        attacking = false;
     }
 }
