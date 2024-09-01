@@ -15,6 +15,15 @@ public class EnemyBossActionController : MonoBehaviour
     private float distance, moveSpeed, aggroRange, attackRange, attackSpeed;
     private bool awoken, attacking;
 
+
+
+    //MoveInCircle req
+    [SerializeField]
+    private float circleRadius = 3f;
+    [SerializeField]
+    private float circleSpeed = 1f;
+    private float angle = 0f;
+
     private void Start()
     {
         enemy = GetComponent<Enemy>();
@@ -34,14 +43,14 @@ public class EnemyBossActionController : MonoBehaviour
         if (attacking)
         {
             return;
-        }
+        }   
 
         Move();
         
         if (distance <= attackRange)
         {
-            Attack();        
-        }       
+            Attack();     
+        }
     }
 
     private void Move()
@@ -64,6 +73,25 @@ public class EnemyBossActionController : MonoBehaviour
         spriteRenderer.flipX = direction.x < 0 ?true :false;
         animator.SetBool("Moving", true);
         rigidBody2D.MovePosition(currentPosition + direction * moveSpeed * Time.deltaTime);
+    }
+
+    //Currently testing...
+    private void MoveInCircle()
+    {
+        angle += circleSpeed * Time.deltaTime;
+        float x = Mathf.Cos(angle) * circleRadius;
+        float y = Mathf.Sin(angle) * circleRadius;
+        Vector2 offset = new Vector2(x, y);
+        
+        Vector2 targetPosition = (Vector2)player.position + offset;
+        currentPosition = transform.position;
+
+        Vector2 direction = targetPosition - currentPosition;
+        direction.Normalize();
+        spriteRenderer.flipX = direction.x < 0 ? true : false;
+
+        animator.SetBool("Moving", true);
+        rigidBody2D.MovePosition(Vector2.Lerp(currentPosition, targetPosition, moveSpeed * Time.deltaTime));
     }
 
     private void Attack()

@@ -11,19 +11,19 @@ public class PlayerData
 
     public PlayerData(Player player)
     {
-        health = player.health;
+        health = player.GetHealth();
 
         position = new float[3];
         position[0] = player.transform.position.x;
         position[1] = player.transform.position.y;
         position[2] = player.transform.position.z;
         
-        stamina = player.stamina;
-        moveSpeed = player.moveSpeed;
-        dashDistance = player.dashDistance;
-        dashCooldown = player.dashCooldown;
-        dashDuration = player.dashDuration;
-        physicalDamage = player.physicalDamage;
-        magicDamage = player.magicDamage;
+        stamina = player.GetStamina();
+        moveSpeed = player.GetMoveSpeed();
+        dashDistance = player.GetDashDistance();
+        dashCooldown = player.GetDashCooldown();
+        dashDuration = player.GetDashDuration();
+        physicalDamage = player.GetPhysicalDamage();
+        magicDamage = player.GetMagicDamage();
     }
 }

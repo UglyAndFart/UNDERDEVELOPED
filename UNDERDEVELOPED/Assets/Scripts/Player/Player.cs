@@ -5,41 +5,99 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private TextMeshProUGUI hp;
-
     [SerializeField]
-    public float health, moveSpeed, stamina, physicalDamage, magicDamage, dashDistance, dashCooldown, dashDuration;
+    private float _health, _stamina, _moveSpeed, _physicalDamage, _magicDamage, _dashDistance, _dashDuration, _dashCooldown;
 
     void Start()
     {
-        SetPlayerData();
+
     }
 
     void Update()
     {
-        //UpdateHPBar();
+        
     }
+
     public void SetPlayerData()
     {
         PlayerData playerData = SaveSystemManager.LoadPlayer();
         Vector3 position;
         
-        health = playerData.health;
+        _health = playerData.health;
         position.x = playerData.position[0];
         position.y = playerData.position[1];
         position.z = playerData.position[2];
         transform.position = position;
-        moveSpeed = playerData.moveSpeed;
-        stamina = playerData.stamina;
-        physicalDamage = playerData.physicalDamage;
-        magicDamage = playerData.magicDamage;
-        dashDistance = playerData.dashDistance;
-        dashCooldown = playerData.dashCooldown;
-        dashDuration = playerData.dashDuration;
+        _moveSpeed = playerData.moveSpeed;
+        _stamina = playerData.stamina;
+        _physicalDamage = playerData.physicalDamage;
+        _magicDamage = playerData.magicDamage;
+        _dashDistance = playerData.dashDistance;
+        _dashCooldown = playerData.dashCooldown;
+        _dashDuration = playerData.dashDuration;
+    }
+    public void AddHealth(float health)
+    {
+        _health += health;
     }
 
-    public void UpdateHPBar()
+    public void DeductHealth(float health)
     {
-        hp.text = $"{health}";
+        _health -= health;
+    }
+
+    public void AddStamina(float stamina)
+    {
+        _stamina += stamina;
+    }
+
+    public void DeductStamina(float stamina)
+    {
+        _stamina -= stamina;
+    }
+
+    public void Die()
+    {
+
+    }
+
+    public float GetHealth()
+    {
+        return _health;
+    }
+
+    public float GetMoveSpeed()
+    {
+        return _moveSpeed;
+    }
+
+    public float GetStamina()
+    {
+        return _stamina;
+    }
+
+    public float GetPhysicalDamage()
+    {
+        return _physicalDamage;
+    }
+
+    public float GetMagicDamage()
+    {
+        return _magicDamage;
+    }
+
+    public float GetDashDistance()
+    {
+        return _dashDistance;
+    }
+
+    public float GetDashDuration()
+    {
+        return _dashDuration;
+    }
+
+    public float GetDashCooldown()
+    {
+        return _dashCooldown;
     }
 }

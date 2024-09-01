@@ -4,95 +4,87 @@ using UnityEngine;
 
 public class TopDownMovementController : MonoBehaviour
 {
-    private Player playerStats;
-    private SpriteRenderer spriteRenderer;
-    private Rigidbody2D rigidBody2D;
-    private Animator animator;
-    private Vector2 direction;
+    private PlayerManager _playerManager;
+    private Vector2 _direction;
     private Vector2 facingDirection;
-    private bool flipSprite, canDash, dashing;
-    private float moveSpeed, dashDistance, dashDuration, dashCooldown;
+    private bool flipSprite, canDash = true, dashing = false;
 
     private void Start()
     {
-        playerStats = GetComponent<Player>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        rigidBody2D = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        
-        moveSpeed = playerStats.moveSpeed;
-        dashDistance = playerStats.dashDistance;
-        dashDuration = playerStats.dashDuration;
-        dashCooldown = playerStats.dashCooldown;
-        
+        _playerManager = GetComponent<PlayerManager>();
         flipSprite = false;
-        canDash = true;
         facingDirection = Vector2.right;
     }
 
     private void Update()
     {
-        direction = Vector2.zero;
+        CheckMovement();
+        CheckDash();
+    }
+
+    private void CheckMovement()
+    {
+        _direction = Vector2.zero;
 
         if (Input.GetKey(KeyCode.A))
         {
-            direction.x = -1;
+            _direction.x = -1;
             flipSprite = true;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            direction.x = 1;
+            _direction.x = 1;
             flipSprite = false;
         }
 
         if (Input.GetKey(KeyCode.W))
         {
-            direction.y = 1;
+            _direction.y = 1;
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            direction.y = -1;
+            _direction.y = -1;
         }
 
-        if (direction.x != 0 || direction.y != 0)
+        if ((_direction.x != 0 || _direction.y != 0) && !dashing)
         {
-            facingDirection = direction.normalized;
-            spriteRenderer.flipX = flipSprite;
-            animator.SetBool("PlayerMoving", true);
+            facingDirection = _direction.normalized;
+            _playerManager.FlipSpriteX(flipSprite);
+            _playerManager.PlayerAnimationMoving(true);
+            _playerManager.PlayerMovePosition(_direction);
         }
         else
         {
-            animator.SetBool("PlayerMoving", false);
+            _playerManager.PlayerAnimationMoving(false);
         }
+    }
 
-        if (!dashing)
-        {
-            rigidBody2D.MovePosition(rigidBody2D.position + direction * moveSpeed * Time.deltaTime);
-        }
-
+    private void CheckDash()
+    {
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             StartCoroutine(Dash());
         }
     }
 
+
     private IEnumerator Dash()
     {
         canDash = false;
         dashing = true;
 
-        Vector2 dashVector = facingDirection * dashDistance;
+        Vector2 dashVector = facingDirection * _playerManager.GetDashDistance();
         float elapsedTime = 0f;
 
-        while (elapsedTime < dashDuration)
+        while (elapsedTime < _playerManager.GetDashDuration())
         {
-            rigidBody2D.MovePosition(rigidBody2D.position + dashVector * Time.deltaTime / dashDuration);
+            _playerManager.PlayerDash(dashVector);   
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         dashing = false;
-        yield return new WaitForSeconds(dashCooldown);
+        yield return new WaitForSeconds(_playerManager.GetDashCooldown());
         canDash = true;
     }
 }

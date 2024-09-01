@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 7281753348864744527}
   - component: {fileID: 6633054779592392271}
   - component: {fileID: 3686196526229985403}
+  - component: {fileID: 7440594785918119266}
+  - component: {fileID: 4728898764597000367}
   - component: {fileID: 6939341829262543136}
   - component: {fileID: 6300144709141541613}
   - component: {fileID: 3910219099207795052}
   - component: {fileID: 1231273064739464129}
-  - component: {fileID: 7440594785918119266}
   m_Layer: 0
   m_Name: Rogue
   m_TagString: Player
@@ -111,6 +112,38 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7440594785918119266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562884454460559929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629683aa75a75724681f115efba08a44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  moveSpeed: 0
+  stamina: 0
+  physicalDamage: 0
+  magicDamage: 0
+  dashDistance: 0
+  dashCooldown: 0
+  dashDuration: 0
+--- !u!114 &4728898764597000367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562884454460559929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58a55aae60037f2479fe3f60754c9a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6939341829262543136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,10 +170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 002b309cb72cb104e89e4323f03912a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  dashDistance: 0
-  dashDuration: 0
-  dashCooldown: 0
 --- !u!50 &3910219099207795052
 Rigidbody2D:
   serializedVersion: 4
@@ -203,21 +232,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.02}
   serializedVersion: 2
   m_Radius: 0.22
---- !u!114 &7440594785918119266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562884454460559929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 629683aa75a75724681f115efba08a44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: {fileID: 0}
-  health: 0
-  moveSpeed: 0
-  stamina: 0
-  physicalDamage: 0
-  magicDamage: 0

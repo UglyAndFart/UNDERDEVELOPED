@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
 
     private void TakeDamage(float damage)
     {
-        animator.SetTrigger("TakeDamage");
+        animator.SetTrigger("Hurt");
         health -= damage;
 
         if (health <= 0)
@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        animator.SetBool("EnemyAlive", false);
+        animator.SetBool("Alive", false);
     }
 
     public float GetMoveSpeed()
