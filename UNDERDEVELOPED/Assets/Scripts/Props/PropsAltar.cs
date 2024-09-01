@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-//when something get into the alta, make the runes glow
+//when player is on top on altar, make the runes glow
 namespace Cainos.PixelArtTopDown_Basic
 {
 

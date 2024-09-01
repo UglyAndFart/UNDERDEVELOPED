@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6300144709141541613}
   - component: {fileID: 3910219099207795052}
   - component: {fileID: 1231273064739464129}
+  - component: {fileID: 5816595240030971212}
   m_Layer: 0
   m_Name: Rogue
   m_TagString: Player
@@ -124,14 +125,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629683aa75a75724681f115efba08a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  moveSpeed: 0
-  stamina: 0
-  physicalDamage: 0
-  magicDamage: 0
-  dashDistance: 0
-  dashCooldown: 0
-  dashDuration: 0
+  _health: 0
+  _stamina: 0
+  _moveSpeed: 0
+  _physicalDamage: 0
+  _magicDamage: 0
+  _dashDistance: 0
+  _dashDuration: 0
+  _dashCooldown: 0
 --- !u!114 &4728898764597000367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,11 +183,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 10
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a2c8147503dcd5147982b685ea1a4405, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -232,3 +233,38 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.02}
   serializedVersion: 2
   m_Radius: 0.22
+--- !u!70 &5816595240030971212
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562884454460559929}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.39999998}
+  m_Size: {x: 1, y: 1}
+  m_Direction: 0

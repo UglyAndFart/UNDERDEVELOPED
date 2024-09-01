@@ -1,51 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private float health, physicalDamage, magicDamage, aggroRange, moveSpeed, attackRange, attackSpeed;
-    private Animator animator;
+    private float _health, _physicalDamage, _magicDamage, _aggroRange, _moveSpeed, _attackRange, _attackSpeed;
+
+    [SerializeField]
+    private LayerMask _playerLayer;
+    
 
     private void Start()
     {
-        animator = GetComponent<Animator>();    
+        
     }
 
-    private void TakeDamage(float damage)
+    public float GetHealth()
     {
-        animator.SetTrigger("Hurt");
-        health -= damage;
-
-        if (health <= 0)
-        {
-            Die();
-        }
+        return _health;
     }
 
-    private void Die()
+    public float GetPhysicalDamage()
     {
-        animator.SetBool("Alive", false);
+        return _physicalDamage;
+    }
+
+    public float GetMagicDamage()
+    {
+        return _magicDamage;
+    }
+    public float GetAggroRange()
+    {
+        return _aggroRange;
     }
 
     public float GetMoveSpeed()
     {
-        return moveSpeed;
-    }
-
-    public float GetAggroRange()
-    {
-        return aggroRange;
+        return _moveSpeed;
     }
 
     public float GetAttackRange()
     {
-        return attackRange;
+        return _attackRange;
     }
 
     public float GetAttackSpeed()
     {
-        return attackSpeed;
+        return _attackSpeed;
+    }
+
+    public LayerMask GetPlayerLayer()
+    {
+        return _playerLayer;
     }
 }

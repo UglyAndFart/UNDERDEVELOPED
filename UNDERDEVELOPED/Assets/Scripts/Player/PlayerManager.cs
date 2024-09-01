@@ -42,6 +42,17 @@ public class PlayerManager : MonoBehaviour
         _animator.SetBool("Moving", moving);
     }
 
+    public void TakeDamage(float damage)
+    {
+        _animator.SetTrigger("Hurt");
+        _player.DeductHealth(damage);
+    }
+
+    public void PlayerAnimationDeath()
+    {
+        _animator.SetBool("Alive", false);
+    } 
+
     public float GetDashDistance()
     {
         return _dashDistance;
