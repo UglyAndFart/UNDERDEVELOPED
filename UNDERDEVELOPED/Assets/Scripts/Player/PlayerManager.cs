@@ -8,7 +8,9 @@ public class PlayerManager : MonoBehaviour
     private Rigidbody2D _rigidBody2D;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
-    private float _moveSpeed, _dashDistance, _dashDuration, _dashCooldown;
+    private float _moveSpeed, _dashDistance, _dashDuration, _dashCooldown,
+    _dashCost, _staminaRegenRate, _staminaRecoveryBufferTime = 0;
+    private bool _canDash = true, _dashing = false;
     
     private void Start()
     {
@@ -20,16 +22,16 @@ public class PlayerManager : MonoBehaviour
         _dashDistance = _player.GetDashDistance();
         _dashDuration = _player.GetDashDuration();
         _dashCooldown = _player.GetDashCooldown();
+        _dashCost = _player.GetDashCost();
+        _staminaRegenRate = _player.GetStaminaRegenRate();
     }
 
     public void PlayerMovePosition(Vector2 direction)
     {
-        _rigidBody2D.MovePosition(_rigidBody2D.position + direction * _moveSpeed * Time.deltaTime);
-    }
-
-    public void PlayerDash(Vector2 dashVector)
-    {
-       _rigidBody2D.MovePosition(_rigidBody2D.position + dashVector * Time.deltaTime / _dashDuration);
+        if (!_dashing)
+        {
+            _rigidBody2D.MovePosition(_rigidBody2D.position + direction * _moveSpeed * Time.deltaTime);
+        }
     }
 
     public void FlipSpriteX(bool flipSprite)
@@ -44,6 +46,11 @@ public class PlayerManager : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if ((_player.GetHealth() - damage) <= 0)
+        {
+            _animator.SetBool("Alive", false);
+        }
+
         _animator.SetTrigger("Hurt");
         _player.DeductHealth(damage);
     }
@@ -53,18 +60,67 @@ public class PlayerManager : MonoBehaviour
         _animator.SetBool("Alive", false);
     } 
 
-    public float GetDashDistance()
+    public void RegenStamina()
     {
-        return _dashDistance;
+        if (_staminaRecoveryBufferTime <= 0 && _player.GetStamina() < _player.GetMaxStamina())
+        {
+            Debug.Log("Stamina Regenerating");
+            _player.AddStamina(_staminaRegenRate);
+        }
     }
 
-    public float GetDashDuration()
+    public void PlayerDash(Vector2 facingDirection)
     {
-        return _dashDuration;
+        if(_player.GetStamina() >= _dashCost && _canDash)
+        {
+            StartCoroutine(PerformDash(facingDirection));
+            StartCoroutine(StopStaminaRegen());
+        }
     }
 
-    public float GetDashCooldown()
+    public IEnumerator PerformDash(Vector2 facingDirection)
     {
-        return _dashCooldown;
+        _canDash = false;
+        _dashing = true;
+
+        _player.DeductStamina(_dashCost);
+
+        Vector2 dashVector = facingDirection * _dashDistance;
+        float elapsedTime = 0f;
+        
+        //Debug.Log("Dashing");
+        
+        while (elapsedTime < _dashDuration)
+        {
+            _rigidBody2D.MovePosition(_rigidBody2D.position + dashVector * Time.deltaTime / _dashDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        _dashing = false;
+
+        yield return new WaitForSeconds(_dashCooldown);
+        _canDash = true;
+    }
+
+    public IEnumerator StopStaminaRegen()
+    {
+        _staminaRecoveryBufferTime = _player.GetStaminaRecoveryBufferTime();
+        
+        while (_staminaRecoveryBufferTime > 0)
+        {
+            _staminaRecoveryBufferTime -= Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    public bool GetDashing()
+    {
+        return _dashing;
+    }
+
+    public bool GetCanDash()
+    {
+        return _canDash;
     }
 }

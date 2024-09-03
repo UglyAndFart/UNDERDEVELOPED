@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4116181970992768227}
   - component: {fileID: 849854650723100461}
   - component: {fileID: 1344195208123152352}
-  - component: {fileID: 5854359081053315220}
+  - component: {fileID: 7401428498341305189}
   - component: {fileID: 852272287178469212}
   - component: {fileID: 4821098119788065964}
   - component: {fileID: 3135053049644416631}
@@ -126,7 +126,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.0001
-  m_LinearDrag: 0
+  m_LinearDrag: 50
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -139,7 +139,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1344195208123152352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,13 +156,10 @@ MonoBehaviour:
   _physicalDamage: 10
   _magicDamage: 10
   _aggroRange: 6
-  _moveSpeed: 2
+  _moveSpeed: 3
   _attackRange: 1
-  _attackSpeed: 1
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
---- !u!114 &5854359081053315220
+  _attackSpeed: 0.6
+--- !u!114 &7401428498341305189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,8 +185,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8634b9fd695a6146a22308f66513be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteFacingRight: 1
-  _attackPoint: {fileID: 0}
+  _spriteFacingRight: 0
+  _attackPoint: {fileID: 1924576940168183370}
+  _playerManager: {fileID: 0}
+  _attackPointOffset: {x: 0.5, y: 0.1}
 --- !u!58 &4821098119788065964
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -219,7 +218,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.14709449}
@@ -269,6 +268,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1924576940168183370}
+  - component: {fileID: 7800388941950798653}
+  - component: {fileID: 5319312885826398215}
   m_Layer: 23
   m_Name: 'Attack Point '
   m_TagString: Untagged
@@ -285,9 +286,58 @@ Transform:
   m_GameObject: {fileID: 4578559779752470393}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5759983, y: -0.6889992, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2432707333563363118}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &7800388941950798653
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4578559779752470393}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &5319312885826398215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4578559779752470393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671ffa66139ffdd4f971c88c5e5b1e9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackDimension: {fileID: 7800388941950798653}
+  _enemyManager: {fileID: 852272287178469212}

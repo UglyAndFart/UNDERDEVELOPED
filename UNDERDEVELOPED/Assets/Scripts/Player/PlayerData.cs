@@ -6,24 +6,26 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
-    public float health, stamina, moveSpeed, dashDistance, dashCooldown, dashDuration, physicalDamage, magicDamage;
+    public float _health, _stamina, _moveSpeed, _dashDistance, _dashCooldown,
+    _dashDuration, _physicalDamage, _magicDamage, _staminaRecoveryBufferTime;
     public float[] position;
 
     public PlayerData(Player player)
     {
-        health = player.GetHealth();
+        _health = player.GetHealth();
 
         position = new float[3];
         position[0] = player.transform.position.x;
         position[1] = player.transform.position.y;
         position[2] = player.transform.position.z;
         
-        stamina = player.GetStamina();
-        moveSpeed = player.GetMoveSpeed();
-        dashDistance = player.GetDashDistance();
-        dashCooldown = player.GetDashCooldown();
-        dashDuration = player.GetDashDuration();
-        physicalDamage = player.GetPhysicalDamage();
-        magicDamage = player.GetMagicDamage();
+        _stamina = player.GetStamina();
+        _moveSpeed = player.GetMoveSpeed();
+        _dashDistance = player.GetDashDistance();
+        _dashCooldown = player.GetDashCooldown();
+        _dashDuration = player.GetDashDuration();
+        _physicalDamage = player.GetPhysicalDamage();
+        _magicDamage = player.GetMagicDamage();
+        _staminaRecoveryBufferTime = player.GetStaminaRecoveryBufferTime();
     }
 }

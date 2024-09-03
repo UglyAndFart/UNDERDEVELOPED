@@ -6,11 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private float _health, _physicalDamage, _magicDamage, _aggroRange, _moveSpeed, _attackRange, _attackSpeed;
-
-    [SerializeField]
-    private LayerMask _playerLayer;
-    
+    private float _health, _physicalDamage, _magicDamage, _aggroRange, _moveSpeed, _attackRange, _attackSpeed;    
 
     private void Start()
     {
@@ -49,10 +45,5 @@ public class Enemy : MonoBehaviour
     public float GetAttackSpeed()
     {
         return _attackSpeed;
-    }
-
-    public LayerMask GetPlayerLayer()
-    {
-        return _playerLayer;
     }
 }
