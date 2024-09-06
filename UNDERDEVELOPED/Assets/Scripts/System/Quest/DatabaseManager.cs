@@ -5,7 +5,7 @@ using System.IO;
 
 public class DatabaseManager : MonoBehaviour
 {
-    private string dbPath;
+    private string _dbPath;
 
     void Start()
     {
@@ -19,7 +19,7 @@ public class DatabaseManager : MonoBehaviour
             File.Copy(streamingAssetsPath, persistentDataPath);
         }
 
-        dbPath = "URI=file:" + persistentDataPath;
+        _dbPath = "URI=file:" + persistentDataPath;
         Debug.Log("We in");
 
         // using (var connection = new SqliteConnection(dbPath))
@@ -46,7 +46,7 @@ public class DatabaseManager : MonoBehaviour
     {
         string[] selectedData = new string[3];
 
-        using (SqliteConnection connection = new SqliteConnection(dbPath))
+        using (SqliteConnection connection = new SqliteConnection(_dbPath))
         {
             connection.Open();
             using (var command = connection.CreateCommand())
@@ -77,12 +77,12 @@ public class DatabaseManager : MonoBehaviour
 
         return selectedData;
     }
-
+    
     public string[][] LoadAllChallengesViaAreaAndStatus(string area, string status)
     {
         string[][] data = null;
 
-        using (var connection = new SqliteConnection(dbPath))
+        using (var connection = new SqliteConnection(_dbPath))
         {
             connection.Open();
 
@@ -114,12 +114,94 @@ public class DatabaseManager : MonoBehaviour
         return data;
     }
 
+    public string[] GetChallengeViaName(string challengeName)
+    {
+        string[] selectedData = new string[7];
+
+        using (SqliteConnection connection = new SqliteConnection(_dbPath))
+        {
+            connection.Open();
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "SELECT * FROM Challenges WHERE Name = @challengeName;";
+                command.Parameters.AddWithValue("@challengeName", challengeName);
+
+                using (IDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string name = reader["Name"].ToString();
+                        string description = reader["Description"].ToString();
+                        string status = reader["Status"].ToString();                
+                        string directory = reader["Directory"].ToString();
+                        string area = reader["Area"].ToString();
+                        string level= reader["Level"].ToString();
+                        string testDir = reader["TestDir"].ToString();
+
+                        selectedData[0] = name;
+                        selectedData[1] = description;
+                        selectedData[2] = status;
+                        selectedData[3] = directory;
+                        selectedData[4] = area;
+                        selectedData[5] = level;
+                        selectedData[6] = testDir;
+                    }
+                }
+            }
+            connection.Close();
+        }
+
+        return selectedData;
+    }
+
+    public string[] GetChallengeViaAreaAndLevel(string challengeArea, string challengeLevel)
+    {
+        string[] selectedData = new string[7];
+
+        using (SqliteConnection connection = new SqliteConnection(_dbPath))
+        {
+            connection.Open();
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "SELECT * FROM Challenges WHERE Area = @area AND Level = @level;";
+                command.Parameters.AddWithValue("@area", challengeArea);
+                command.Parameters.AddWithValue("@level", challengeLevel);
+
+                using (IDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string name = reader["Name"].ToString();
+                        string description = reader["Description"].ToString();
+                        string status = reader["Status"].ToString();                
+                        string directory = reader["Directory"].ToString();
+                        string area = reader["Area"].ToString();
+                        string level= reader["Level"].ToString();
+                        string testDir = reader["TestDir"].ToString();
+
+                        selectedData[0] = name;
+                        selectedData[1] = description;
+                        selectedData[2] = status;
+                        selectedData[3] = directory;
+                        selectedData[4] = area;
+                        selectedData[5] = level;
+                        selectedData[6] = testDir;
+                    }
+                }
+            }
+            connection.Close();
+        }
+
+        return selectedData;
+    }
+
+    //To be tested, might return only one
     //Will fecth all the challenges that have "Done" status value
     public string[] LoadAllCompletedChallenges(string challengeStatus)
     {
         string[] selectedData = new string[7];
 
-        using (SqliteConnection connection = new SqliteConnection(dbPath))
+        using (SqliteConnection connection = new SqliteConnection(_dbPath))
         {
             connection.Open();
             using (var command = connection.CreateCommand())
@@ -160,7 +242,7 @@ public class DatabaseManager : MonoBehaviour
     {
         string[][] data = null;
 
-        using (var connection = new SqliteConnection(dbPath))
+        using (var connection = new SqliteConnection(_dbPath))
         {
             connection.Open();
 
@@ -190,7 +272,7 @@ public class DatabaseManager : MonoBehaviour
 
     public void UpdateChallengeStatus(string name, string status)
     {
-        using (SqliteConnection connection = new SqliteConnection(dbPath))
+        using (SqliteConnection connection = new SqliteConnection(_dbPath))
         {
             connection.Open();
             using (var command = connection.CreateCommand())

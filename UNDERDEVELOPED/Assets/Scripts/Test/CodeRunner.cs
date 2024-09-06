@@ -7,19 +7,19 @@ using UnityEditor.ShaderGraph.Internal;
 
 public class CodeRunner : MonoBehaviour
 {
-    public GameObject editor, console, status;
-    public QuestManager questManager;
+    public GameObject _editor, _console, _status;
+    public ChallengeManagerReyal _challengeManager;
     //add reference to another gameObject for test status 
 
-    private string storagePath, codeRunnerPath;
-    private string txt;
+    private string _storagePath, _codeRunnerPath;
+    private string _txt;
     void Start()
     {
-        storagePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games/Underdeveloped/ExeFile");
-        MonoCommands.createDir(storagePath);
+        _storagePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games/Underdeveloped/ExeFile");
+        MonoCommands.createDir(_storagePath);
         btnEditor_Click();
 
-        codeRunnerPath = Path.Combine(Application.streamingAssetsPath, "Scripts/PlayerCodeRunner.txt");
+        _codeRunnerPath = Path.Combine(Application.streamingAssetsPath, "Scripts/PlayerCodeRunner.txt");
     }
 
     // public void runCode()
@@ -85,8 +85,8 @@ public class CodeRunner : MonoBehaviour
         //     txt = editor.GetComponent<TMP_InputField>().text;
         // }
 
-        MonoCommands.createCS(storagePath, fileName, code);
-        MonoCommands.compileCS($"mcs {fileName}.cs", storagePath);
+        MonoCommands.createCS(_storagePath, fileName, code);
+        MonoCommands.compileCS($"mcs {fileName}.cs", _storagePath);
 
         if(MonoCommands.haveCompilationError())
         {
@@ -98,7 +98,7 @@ public class CodeRunner : MonoBehaviour
             return errorMsg;
         }
 
-        string output = MonoCommands.runExeFile($"mono {fileName}.exe", storagePath);
+        string output = MonoCommands.runExeFile($"mono {fileName}.exe", _storagePath);
 
         if (MonoCommands.haveRuntimeError())
         {
@@ -115,33 +115,33 @@ public class CodeRunner : MonoBehaviour
 
     public void btnEditor_Click()
     {
-        editor.SetActive(true);
-        console.SetActive(false);
+        _editor.SetActive(true);
+        _console.SetActive(false);
     }
 
     public void btnConsole_Click()
     {
-        editor.SetActive(false);
-        console.SetActive(true);
+        _editor.SetActive(false);
+        _console.SetActive(true);
     }
 
     public void addEntryPoint()
     {
-        txt = "using System;\n\n" + 
+        _txt = "using System;\n\n" + 
         "public class ClassA\n" +
         "{\n" +
         "public static void Main(string[] args)\n" +
         "{\n" +
-        $"{editor.GetComponent<TMP_InputField>().text}\n" +
+        $"{_editor.GetComponent<TMP_InputField>().text}\n" +
         "}\n}";
     }
 
     public bool checkEntryPoint()
     {
-        if (editor.GetComponent<TMP_InputField>().text.Contains("public static void Main(string[] args)") ||
-        editor.GetComponent<TMP_InputField>().text.Contains("public static void Main(string[] args){") ||
-        editor.GetComponent<TMP_InputField>().text.Contains("static void Main(string[] args){") ||
-        editor.GetComponent<TMP_InputField>().text.Contains("static void Main(string[] args)"))
+        if (_editor.GetComponent<TMP_InputField>().text.Contains("public static void Main(string[] args)") ||
+        _editor.GetComponent<TMP_InputField>().text.Contains("public static void Main(string[] args){") ||
+        _editor.GetComponent<TMP_InputField>().text.Contains("static void Main(string[] args){") ||
+        _editor.GetComponent<TMP_InputField>().text.Contains("static void Main(string[] args)"))
         {
             return true;
         }
@@ -150,7 +150,7 @@ public class CodeRunner : MonoBehaviour
 
     public void setEditorCode(string code)
     {
-        editor.GetComponent<TMP_InputField>().text = code; 
+        _editor.GetComponent<TMP_InputField>().text = code; 
     }
 
     public void RunPlayerCode()
@@ -160,7 +160,7 @@ public class CodeRunner : MonoBehaviour
         //add function call inside Main()
         //add PlayerFunction
         
-        string functionName = questManager.GetCurrentQuest()[0];
+        string functionName = _challengeManager.GetCurrentChallenge()[0];
         string fileName = "PlayerCode";
         string code = "using System;\n\n" +
         "public class PlayerCode\n" +
@@ -170,10 +170,9 @@ public class CodeRunner : MonoBehaviour
         "\t\tPlayerCode playerCode = new PlayerCode();\n" +
         $"\t\tplayerCode.{functionName}();\n" +
         "\t}\n\n" +
-        $"\t{editor.GetComponent<TMP_InputField>().text}" +
+        $"\t{_editor.GetComponent<TMP_InputField>().text}" +
         "}\n";
         string output = "";
-
         // using (StreamReader reader = new StreamReader(codeRunnerPath))
         // {
         //     string line;
@@ -186,14 +185,14 @@ public class CodeRunner : MonoBehaviour
         // }
           
         output = RunCode(code, fileName);
-        console.GetComponent<TextMeshProUGUI>().text = output;
+        _console.GetComponent<TextMeshProUGUI>().text = output;
     }
 
     public void RunPlayerCodeTest()
     {
         string fileName = "PlayerCodeTest";
-        string testTxtPath = Path.Combine(Application.streamingAssetsPath, questManager.GetCurrentQuest()[6]);
-        string functionName = questManager.GetCurrentQuest()[0];
+        string testTxtPath = Path.Combine(Application.streamingAssetsPath, _challengeManager.GetCurrentChallenge()[6]);
+        string functionName = _challengeManager.GetCurrentChallenge()[0];
         string code = "";
         string output = "";
 
@@ -205,13 +204,13 @@ public class CodeRunner : MonoBehaviour
             {
                 if (line.Contains("//function call"))
                 {
-                    code += line.Replace("//function call", $"playerCodeTest.{questManager.GetCurrentQuest()[0]}();");
+                    code += line.Replace("//function call", $"playerCodeTest.{_challengeManager.GetCurrentChallenge()[0]}();");
                     continue;
                 }
 
                 if (line.Contains("//player function"))
                 {
-                    code += editor.GetComponent<TMP_InputField>().text;
+                    code += _editor.GetComponent<TMP_InputField>().text;
                     continue;
                 }
                 code += line + "\n";
@@ -219,7 +218,7 @@ public class CodeRunner : MonoBehaviour
         }
         
         output = RunCode(code, fileName);
-        status.GetComponent<TextMeshProUGUI>().text = output;
+        _status.GetComponent<TextMeshProUGUI>().text = output;
 
         //questManager.PlayerSolveChallenge();
     }
