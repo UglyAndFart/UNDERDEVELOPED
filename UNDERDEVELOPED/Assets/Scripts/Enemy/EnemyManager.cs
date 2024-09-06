@@ -21,6 +21,7 @@ public class EnemyManager : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private float _moveSpeed, _aggroRange, _attackRange;
     private Vector2 _totalAttackOffset;
+    private bool _alive = true;
 
     void Start()
     {
@@ -73,9 +74,32 @@ public class EnemyManager : MonoBehaviour
         _playerManager.TakeDamage(_enemy.GetPhysicalDamage());
     }
 
+    public void TakeDamage(float damage)
+    {
+        if ((_enemy.GetHealth() - damage) <= 0)
+        {   
+            _alive = false;
+            _animator.SetBool("Alive", _alive);
+        }
+
+        _animator.SetTrigger("Hurt");
+        _enemy.DeductHealth(damage);
+    }
+
     public void DealDamage(Rigidbody2D player)
     {
         player.GetComponent<PlayerManager>().TakeDamage(_enemy.GetPhysicalDamage());
+    }
+
+    public void OnDeathStart()
+    {
+        _enemy.GetComponents<Collider2D>()[0].enabled = false;
+        _enemy.GetComponents<Collider2D>()[1].enabled = false;
+    }
+
+    public void Die()
+    {
+        _enemy.gameObject.SetActive(false);
     }
 
     public float GetAggroRange()
@@ -87,5 +111,10 @@ public class EnemyManager : MonoBehaviour
     public float GetAttackRange()
     {
         return _attackRange;
+    }
+
+    public bool GetLifeState()
+    {
+        return _alive;
     }
 }

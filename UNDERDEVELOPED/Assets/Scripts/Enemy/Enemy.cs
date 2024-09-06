@@ -13,6 +13,11 @@ public class Enemy : MonoBehaviour
         
     }
 
+    public void DeductHealth(float damage)
+    {
+        _health -= damage;
+    }
+
     public float GetHealth()
     {
         return _health;

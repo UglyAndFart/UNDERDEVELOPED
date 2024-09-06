@@ -8,6 +8,8 @@ public class HUDManager : MonoBehaviour
     private GameObject _codeEditor;
     [SerializeField]
     private GameObject _playerStatus;
+    [SerializeField]
+    private GameObject _deathScreen;
     
     public bool _codeEditorOnScreen = false;
 
@@ -31,5 +33,10 @@ public class HUDManager : MonoBehaviour
     public void ClosePlayerStatus()
     {
         _playerStatus.SetActive(false);
+    }
+
+    public void OpenDeathScreen()
+    {
+        _deathScreen.SetActive(true);
     }
 }
