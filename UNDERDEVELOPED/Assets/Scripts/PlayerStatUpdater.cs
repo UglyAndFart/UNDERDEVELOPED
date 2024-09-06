@@ -12,6 +12,8 @@ public class PlayerStatUpdater : MonoBehaviour
     private Slider _healthFill;
     [SerializeField]
     private Slider _staminaFill;
+    [SerializeField]
+    private HUDManager _hudmanager;
 
     private void Start()
     {
@@ -21,6 +23,12 @@ public class PlayerStatUpdater : MonoBehaviour
     private void Update()
     {
         UpdatePlayerStat();
+
+        if (_player.GetHealth() <= 0)
+        {
+            _hudmanager.OpenDeathScreen();
+        }
+        
         Debug.Log($"HP: {_player.GetHealth()}");
     }
 

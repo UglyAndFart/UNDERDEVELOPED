@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -53,6 +54,15 @@ public class PlayerManager : MonoBehaviour
 
         _animator.SetTrigger("Hurt");
         _player.DeductHealth(damage);
+    }
+
+    public void DealDamage(List<Collider2D> enemyHits)
+    {
+        // HashSet<Collider2D> enemyHitsSet = new HashSet<Collider2D>(enemyHits);
+        foreach (Collider2D enemyHit in enemyHits)
+        {
+            enemyHit.GetComponent<EnemyManager>().TakeDamage(_player.GetPhysicalDamage());
+        }
     }
 
     public void PlayerAnimationDeath()
@@ -112,6 +122,11 @@ public class PlayerManager : MonoBehaviour
             _staminaRecoveryBufferTime -= Time.deltaTime;
             yield return null;
         }
+    }
+
+    private void OnDeath()
+    {
+        _player.GetComponent<TopDownMovementController>().enabled = false;
     }
 
     public bool GetDashing()

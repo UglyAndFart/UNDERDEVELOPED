@@ -14,7 +14,7 @@ public class EnemyActionController : MonoBehaviour
     private EnemyManager _enemyManager;
     private Vector2 _currentPosition;
     private float _distance, _aggroRange, _attackRange;
-    private bool _attacking = false;
+    private bool _attacking = false, _hurt = false;
 
     private void Start()
     {
@@ -26,6 +26,15 @@ public class EnemyActionController : MonoBehaviour
 
     private void Update()
     {
+        if(!_enemyManager.GetLifeState())
+        {
+            return;
+        }
+
+        if(_hurt)
+        {
+            return;
+        }
         if(_attacking)
         {
             //Debug.Log($"{transform.name} is Attacking");
@@ -77,15 +86,27 @@ public class EnemyActionController : MonoBehaviour
         _enemyManager.AttackAnimation($"Attack{attackNumber}");
     }
 
-    public void EnemyAttackStart()
+    private void EnemyAttackStart()
     {
         _attacking = true;
     }
 
-    public void EnemyAttackEnd()
+    private void EnemyAttackEnd()
     {
         _attacking = false;
     }
+
+    private void EnemyHurtStart()
+    {
+        _hurt = true;
+    }
+
+    private void EnemyHurtEnd()
+    {
+        _hurt = false;
+    }
+
+
 
     // private void OnTriggerEnter(Collider other)
     // {
