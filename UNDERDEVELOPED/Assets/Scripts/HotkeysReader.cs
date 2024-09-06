@@ -5,7 +5,7 @@ using UnityEngine;
 public class HotkeysReader : MonoBehaviour
 {
     [SerializeField]
-    private HUDManager hudManager;
+    private HUDManager _hudManager;
     [SerializeField]
     private KeyCode _codeEditorKey;
     [SerializeField]
@@ -13,15 +13,15 @@ public class HotkeysReader : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(_codeEditorKey) && !hudManager._codeEditorOnScreen)
+        if (Input.GetKeyDown(_codeEditorKey) && !_hudManager._codeEditorOnScreen)
         {
-            hudManager.OpenCodeEditor();
+            _hudManager.OpenCodeEditor();
             return;
         }
         
         if (Input.GetKeyDown(_codeEditorKey))
         {
-            hudManager.CloseCodeEditor();
+            _hudManager.CloseCodeEditor();
             return;
         }
     }
