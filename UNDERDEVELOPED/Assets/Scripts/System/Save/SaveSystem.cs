@@ -7,7 +7,7 @@ public class SaveSystem
 {
     public static void SavePlayer (Player player)
     {
-        string playerName = "Test";
+        string playerName = player.GetName();
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"My Games/Underdeveloped/Saves/{playerName}.plyr");
         
@@ -19,10 +19,9 @@ public class SaveSystem
     }
 
     //will return null when theres no file inside the saves folder
-    public static PlayerData LoadPlayer()
+    public static PlayerData LoadPlayer(string saveFilePath)
     {
-        string playerName = "Test";
-        string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"My Games/Underdeveloped/Saves/{playerName}.plyr");
+        string path = saveFilePath;
         
         if(!File.Exists(path))
         {
