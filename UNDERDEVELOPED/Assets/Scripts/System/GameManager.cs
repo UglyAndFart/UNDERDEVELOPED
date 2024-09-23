@@ -5,14 +5,17 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    Player player;
-    void Start()
+    private Player _player;
+    [SerializeField]
+    private int _saveInterval = 10;
+
+    private void Start()
     {
         SaveSystemManager.LoadPlayer();
         StartCoroutine(PlayerDataAutoSave());
     }
 
-    void Update()
+    private void Update()
     {
         
     }
@@ -21,8 +24,8 @@ public class GameManager : MonoBehaviour
     {
         while(true)
         {
-            SaveSystemManager.SavePlayer(player);
-            yield return new WaitForSeconds(10);
+            SaveSystemManager.SavePlayer(_player);
+            yield return new WaitForSeconds(_saveInterval);
         }
     }
 }

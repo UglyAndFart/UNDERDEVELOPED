@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     {
         
     }
-
+    
     public void DeductHealth(float damage)
     {
         _health -= damage;
