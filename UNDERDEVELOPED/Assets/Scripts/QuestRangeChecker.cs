@@ -8,7 +8,7 @@ public class QuestRangeChecker : MonoBehaviour
     private InitialQuestTrigger _initialQuestTrigger;
     public void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("Player"))
+        if (collider.CompareTag("Default Player"))
         {
             _initialQuestTrigger.SetPlayerInQuestRange(true);
             Debug.Log("Inrange");
@@ -17,7 +17,7 @@ public class QuestRangeChecker : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.CompareTag("Player"))
+        if (collider.CompareTag("Default Player"))
         {
             _initialQuestTrigger.SetPlayerInQuestRange(false);
         }

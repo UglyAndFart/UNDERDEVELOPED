@@ -11,10 +11,9 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     private Transform _attackPoint;
     [SerializeField]
-    private PlayerManager _playerManager;
-    [SerializeField]
     private Vector2 _attackPointOffset;
 
+    private PlayerManager _playerManager;
     private Enemy _enemy;
     private Animator _animator;
     private Rigidbody2D _rigidBody2D;
@@ -24,7 +23,8 @@ public class EnemyManager : MonoBehaviour
     private bool _alive = true;
 
     void Start()
-    {
+    {   
+        _playerManager = PlayerGameObjectFinder.FindPlayerManagerScript();
         _enemy = GetComponent<Enemy>();
         _animator = GetComponent<Animator>();
         _rigidBody2D = GetComponent<Rigidbody2D>();

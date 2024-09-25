@@ -14,23 +14,24 @@ public class SavedGameFileLoader : MonoBehaviour
     private GameObject[] _saveSlots;
     private string[] _savedFiles;
     private PlayerData[] _savedGameInfos;
+    private string _savesFolderPath;
 
     private void Awake()
     {
         DisableContinue();
         DisableAllSlots();
+        _savesFolderPath = DirectoryManager.GetSavesFolderPath();
     }
 
     private void Start()
     {
-        LoadPlayerGame();
+        DisplaySavedGameFile();
     }
 
-    private void LoadPlayerGame()
+    private void DisplaySavedGameFile()
     {
-        string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"My Games/Underdeveloped/Saves");
         string currentSaveFilePath = "";
-        _savedFiles = Directory.GetFiles(path, "*.plyr");
+        _savedFiles = Directory.GetFiles(_savesFolderPath, "*.plyr");
         //string[][] savedFileInfos;
 
         if (_savedFiles.Length <= 0)
@@ -44,7 +45,7 @@ public class SavedGameFileLoader : MonoBehaviour
         {
             Debug.Log("path: " + _savedFiles[i]);
             currentSaveFilePath = _savedFiles[i];
-            SaveSystemManager.SetFilePath(currentSaveFilePath);
+            DirectoryManager.SetCurrentSaveFolder(currentSaveFilePath);
             Debug.Log("Warp to: " + currentSaveFilePath);
             _savedGameInfos[i] = SaveSystemManager.LoadPlayer();
          
@@ -70,10 +71,10 @@ public class SavedGameFileLoader : MonoBehaviour
             slot.SetActive(false);
         }
     }
-
+    //Set the slot path as currentsavefolder Then load the next scene
     public void LoadSelectedGameFile(int slotIndex)
     {
-        SaveSystemManager.SetFilePath(_savedFiles[slotIndex]);
+        DirectoryManager.SetCurrentSaveFolder(_savedFiles[slotIndex]);
         SceneLoader.LoadNextScene(_savedGameInfos[slotIndex]._map);
     }
 

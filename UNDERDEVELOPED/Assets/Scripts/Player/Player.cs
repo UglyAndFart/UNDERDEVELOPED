@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static Player Instance;
+    //public static Player Instance;
 
     [SerializeField]
-    private string _name, _map;
+    private string _name, _map, _characterType;
     
     [Header("Player Stats")]
     [SerializeField]
@@ -17,19 +18,19 @@ public class Player : MonoBehaviour
     private float _health, _maxStamina, _stamina, _moveSpeed,
     _physicalDamage, _magicDamage, _dashDistance, _dashDuration, _dashCooldown,
     _dashCost, _staminaRegenRate, _staminaRecoveryBufferTime;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    
+    // private void Awake()
+    // {
+    //     if (Instance == null)
+    //     {
+    //         Instance = this;
+    //         DontDestroyOnLoad(gameObject);
+    //     }
+    //     else
+    //     {
+    //         Destroy(gameObject);
+    //     }
+    // }
 
     public void SetPlayerData()
     {
@@ -148,8 +149,28 @@ public class Player : MonoBehaviour
         return _map;
     }
 
+    public void SetPlayerName(string name)
+    {
+        _name = name;
+    }
+    
     public string GetName()
     {
         return _name;
+    }
+
+    public void SetChacterType(string characterType)
+    {
+        _characterType = characterType;
+    }
+
+    public string GetCharacterType()
+    {
+        return _characterType;
+    }
+    
+    public void SetPlayerPosition(Vector3 position)
+    {
+        transform.position = position;
     }
 }

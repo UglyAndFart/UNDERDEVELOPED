@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -16,9 +17,13 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         _player = GetComponent<Player>();
-        _rigidBody2D = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        GameObject characterObject = GameObject.Find(_player.GetCharacterType());
+        SceneManager.sceneLoaded += OnSceneLoad;
+
+        _rigidBody2D = characterObject.GetComponent<Rigidbody2D>();
+        _animator = characterObject.GetComponent<Animator>();
+        _spriteRenderer = characterObject.GetComponent<SpriteRenderer>();;
         _moveSpeed = _player.GetMoveSpeed();
         _dashDistance = _player.GetDashDistance();
         _dashDuration = _player.GetDashDuration();
@@ -137,5 +142,15 @@ public class PlayerManager : MonoBehaviour
     public bool GetCanDash()
     {
         return _canDash;
+    }
+
+    public void OnSceneLoad(Scene scene, LoadSceneMode mode)
+    {
+        _player.transform.position = new Vector3(0, 0, 0);
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoad;    
     }
 }

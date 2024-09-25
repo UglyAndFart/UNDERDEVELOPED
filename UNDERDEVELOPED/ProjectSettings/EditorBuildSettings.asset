@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Areas/Computer Lab/Computer Laboratory.unity
     guid: f7b1f87c8ecf2504c9f4004044f96a6b
   - enabled: 1
-    path: Assets/Scenes/Areas/East.unity
+    path: Assets/Scenes/Areas/Realm/Realm.unity
     guid: 1b53b9388d9aa0e4f907ec8b0bdeeac4
   - enabled: 1
     path: Assets/Scenes/Areas/North.unity
@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Areas/Town.unity
     guid: acbea10d92f0dc8499c1711fc1f06f08
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 4ef963e7a0c8d78438d46618f48f9f08
   m_configObjects: {}

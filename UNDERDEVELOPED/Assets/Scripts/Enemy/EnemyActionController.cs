@@ -6,8 +6,7 @@ using UnityEngine;
 
 public class EnemyActionController : MonoBehaviour
 {
-    [SerializeField]
-    private Rigidbody2D player;
+    private Rigidbody2D _player;
     [SerializeField]
     private int attackCount = 1;
 
@@ -18,6 +17,7 @@ public class EnemyActionController : MonoBehaviour
 
     private void Start()
     {
+        _player = PlayerGameObjectFinder.FindPlayerPrefab().GetComponent<Rigidbody2D>();
         _enemyManager = GetComponent<EnemyManager>();
         _attackRange = _enemyManager.GetAttackRange();
         _aggroRange = _enemyManager.GetAggroRange();
@@ -54,7 +54,7 @@ public class EnemyActionController : MonoBehaviour
     private void CheckMove()
     {
         _currentPosition = transform.position;
-        _distance = Vector2.Distance(_currentPosition, player.position);
+        _distance = Vector2.Distance(_currentPosition, _player.position);
         
         //Debug.Log($"{transform.name} Currentpos: {_currentPosition} playerPos: {player.position}");
 
@@ -67,7 +67,7 @@ public class EnemyActionController : MonoBehaviour
         }
 
 
-        Vector2 direction = player.position - _currentPosition;
+        Vector2 direction = _player.position - _currentPosition;
         direction.Normalize();
         _enemyManager.FlipSpriteX(direction);
         _enemyManager.EnemyAnimationMoving(true);

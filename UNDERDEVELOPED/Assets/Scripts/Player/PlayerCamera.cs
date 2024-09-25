@@ -1,25 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject mainCamera;
-    [SerializeField]
-    private float lerpSpeed = 1.0f;
+    private GameObject _player;
+    private CinemachineVirtualCamera _virtualCamera;
+
+    private void Awake()
+    {
+        _player = PlayerGameObjectFinder.FindPlayerPrefab();
+        _virtualCamera = GetComponent<CinemachineVirtualCamera>();
+    }
 
     private void Start()
     {
-        if (mainCamera == null) return;
-        
-        mainCamera.transform.position = new Vector3 (transform.position.x, transform.position.y, mainCamera.transform.position.z);
+        SetPlayerToVirtualCam();
     }
 
-    private void Update()
+    private void SetPlayerToVirtualCam()
     {
-        if (mainCamera == null) return;
-
-        mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, new Vector3 (transform.position.x, transform.position.y, mainCamera.transform.position.z), lerpSpeed * Time.deltaTime);
+        _virtualCamera.Follow = _player.transform;
     }
+    // [SerializeField]
+    // private GameObject mainCamera;
+    // [SerializeField]
+    // private float lerpSpeed = 1.0f;
+
+    // private void Start()
+    // {
+    //     if (mainCamera == null) return;
+        
+    //     mainCamera.transform.position = new Vector3 (transform.position.x, transform.position.y, mainCamera.transform.position.z);
+    // }
+
+    // private void Update()
+    // {
+    //     if (mainCamera == null) return;
+
+    //     mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, new Vector3 (transform.position.x, transform.position.y, mainCamera.transform.position.z), lerpSpeed * Time.deltaTime);
+    // }
 }

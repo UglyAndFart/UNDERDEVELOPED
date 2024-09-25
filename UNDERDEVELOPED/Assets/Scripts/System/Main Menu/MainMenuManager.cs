@@ -49,6 +49,11 @@ public class MainMenuManager : MonoBehaviour
         mainWindow.SetActive(true);
     }
 
+    public void NewGame()
+    {
+        SceneLoader.LoadNextScene("Computer Laboratory");
+    }
+
     public void OptionWindowOpen()
     {
         currentWindow = optionWindow;

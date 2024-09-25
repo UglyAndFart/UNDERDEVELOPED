@@ -8,7 +8,7 @@ public class PlayerData
 {
     public float _health, _stamina, _moveSpeed, _dashDistance, _dashCooldown,
     _dashDuration, _physicalDamage, _magicDamage, _staminaRecoveryBufferTime;
-    public string _name, _map;
+    public string _name, _map, _characterType;
     public float[] position;
 
     public PlayerData(Player player)

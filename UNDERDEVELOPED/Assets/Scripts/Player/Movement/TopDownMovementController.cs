@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class TopDownMovementController : MonoBehaviour
@@ -14,11 +14,13 @@ public class TopDownMovementController : MonoBehaviour
 
     private void Start()
     {
-        _playerManager = GetComponent<PlayerManager>();
+        _playerManager = PlayerGameObjectFinder.FindPlayerManagerScript();
         _attackPoint = transform.Find("Attack Pivot").gameObject;
         _flipSprite = false;
         _facingDirection = Vector2.right;
         _enemyHits = new List<Collider2D>();
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Update()
@@ -128,4 +130,19 @@ public class TopDownMovementController : MonoBehaviour
     //     _staminaRegenation = false;
         
     // }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "South Forest")
+        {
+            Debug.Log("OnSceneLoaded from TopDownMovement");
+            //transform.position = new Vector3(658.77f, 289.22f, 0);
+            gameObject.transform.position = new Vector3(-658.77f, -289.22f, 0);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 }

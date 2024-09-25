@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class SaveSystemManager : MonoBehaviour
 {   
-    public static SaveSystemManager Instance;
-    private static string _savedFilePath;
+    // public static SaveSystemManager Instance;
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    // private void Awake()
+    // {
+    //     if (Instance == null)
+    //     {
+    //         Instance = this;
+    //         DontDestroyOnLoad(gameObject);
+    //     }
+    //     else
+    //     {
+    //         Destroy(gameObject);
+    //     }
+    // }
 
     public static void SavePlayer(Player player)
     {
@@ -27,13 +26,10 @@ public class SaveSystemManager : MonoBehaviour
 
     public static PlayerData LoadPlayer()
     {
-        Debug.Log("From SaveSystemMnager: " + _savedFilePath);
-        PlayerData playerData = SaveSystem.LoadPlayer(_savedFilePath);
+        string saveFilePath = DirectoryManager.GetCurrentSaveFolder();
+        Debug.Log("From SaveSystemMnager: " + saveFilePath);
+        PlayerData playerData = SaveSystem.LoadPlayer(saveFilePath);
         return playerData;
     }
-
-    public static void SetFilePath(string path)
-    {
-        _savedFilePath = path;
-    }
+    
 }
