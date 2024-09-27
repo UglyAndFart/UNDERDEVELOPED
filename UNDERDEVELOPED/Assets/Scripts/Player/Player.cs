@@ -47,7 +47,9 @@ public class Player : MonoBehaviour
         _dashDuration = playerData._dashDuration;
         _staminaRecoveryBufferTime = playerData._staminaRecoveryBufferTime;
 
+        _name = playerData._name;
         _map = playerData._map;
+        _characterType = playerData._characterType;
 
         position.x = playerData.position[0];
         position.y = playerData.position[1];

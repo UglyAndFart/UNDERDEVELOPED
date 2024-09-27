@@ -25,6 +25,7 @@ public class PlayerData
 
         _map = player.GetCurrentMap();
         _name = player.GetName();
+        _characterType = player.GetCharacterType();
 
         position = new float[3];
         position[0] = player.transform.position.x;

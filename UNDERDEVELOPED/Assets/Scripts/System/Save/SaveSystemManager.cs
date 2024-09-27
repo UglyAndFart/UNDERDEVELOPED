@@ -31,5 +31,4 @@ public class SaveSystemManager : MonoBehaviour
         PlayerData playerData = SaveSystem.LoadPlayer(saveFilePath);
         return playerData;
     }
-    
 }

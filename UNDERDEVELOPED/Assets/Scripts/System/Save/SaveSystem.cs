@@ -25,6 +25,7 @@ public class SaveSystem
         
         if(!File.Exists(path))
         {
+            Debug.Log("Save path doesnt exists");
             return null;
         }
 

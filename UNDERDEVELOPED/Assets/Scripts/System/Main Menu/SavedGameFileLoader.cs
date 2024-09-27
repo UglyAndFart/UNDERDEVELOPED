@@ -25,27 +25,33 @@ public class SavedGameFileLoader : MonoBehaviour
 
     private void Start()
     {
-        DisplaySavedGameFile();
+        RetrieveSavedGameFile();
     }
 
-    private void DisplaySavedGameFile()
+    //Retrieve the .plyr file inside currentSavesFilepath
+    private void RetrieveSavedGameFile()
     {
-        string currentSaveFilePath = "";
-
         if (!Directory.Exists(_savesFolderPath))
         {
             Directory.CreateDirectory(_savesFolderPath);
             return;
         }
 
-        _savedFiles = Directory.GetFiles(_savesFolderPath, "*.plyr");
-        //string[][] savedFileInfos;
+        _savedFiles = new string[5];
 
-        if (_savedFiles.Length <= 0)
+        for (int i = 0; i < 5; i++)
         {
-            return;
+            if (Directory.Exists(Path.Combine(_savesFolderPath, $"Slot {++i}")))
+            {
+                _savedFiles[i] = Directory.GetFiles(Path.Combine(_savesFolderPath, $"Slot {++i}"), "*.plyr")[0];
+            }
         }
+    }
 
+    //Iterate each file in string[] to display retrieved data
+    public void DisplaySavedGameFile()
+    {
+        string currentSaveFilePath = "";
         _savedGameInfos = new PlayerData[_savedFiles.Length];
 
         for (int i = 0; i < _savedFiles.Length; i++)
@@ -57,7 +63,7 @@ public class SavedGameFileLoader : MonoBehaviour
             _savedGameInfos[i] = SaveSystemManager.LoadPlayer();
          
             _saveSlots[i].SetActive(true);
-            _saveSlots[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _savedGameInfos[i]._name;
+            _saveSlots[i].transform.Find("Name").GetComponent<TextMeshProUGUI>().text = _savedGameInfos[i]._name;
         }
         
         // foreach (string file in savedFiles)

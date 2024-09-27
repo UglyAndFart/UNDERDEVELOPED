@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SaveSystemManager.LoadPlayer();
         StartCoroutine(PlayerDataAutoSave());
     }
 
@@ -20,11 +19,12 @@ public class GameManager : MonoBehaviour
         
     }
 
-    IEnumerator PlayerDataAutoSave()
+    private IEnumerator PlayerDataAutoSave()
     {
         while(true)
         {
             SaveSystemManager.SavePlayer(_player);
+            Debug.Log("PlayerData saved");
             yield return new WaitForSeconds(_saveInterval);
         }
     }

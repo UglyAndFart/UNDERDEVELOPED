@@ -70,10 +70,19 @@ public class DirectoryManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    //Get the gameFolderPath in playerPrefs, if its null or empty set the default
     private void LoadGameFolderPath()
     {
         string defaultGameFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games\\Underdeveloped");
-        _gameFolderPath = PlayerPrefs.GetString("LocalDirManager", defaultGameFolder);
+        string gameFolderPath = PlayerPrefs.GetString("LocalDirManager", defaultGameFolder);
+
+        if (string.IsNullOrWhiteSpace(gameFolderPath) || string.IsNullOrWhiteSpace(gameFolderPath))
+        {
+            _gameFolderPath = defaultGameFolder;
+            return;
+        }
+
+        _gameFolderPath = gameFolderPath;
     }
 
     //saves the current gameFolderPath to playerprefs before exiting
