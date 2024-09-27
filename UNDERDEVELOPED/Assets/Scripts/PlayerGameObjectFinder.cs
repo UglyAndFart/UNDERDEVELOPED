@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerGameObjectFinder : MonoBehaviour
@@ -57,6 +58,21 @@ public class PlayerGameObjectFinder : MonoBehaviour
         }
 
         Debug.LogError("No Player Prefab");
+        return null;
+    }
+
+    public static GameObject FindSpawnPoint(string spawnPointName)
+    {
+        GameObject[] gameObjects = FindObjectsOfType<GameObject>(false);
+           
+        foreach (GameObject gameObject in gameObjects)
+        {
+            if (gameObject.name == spawnPointName)
+            {
+                return gameObject;
+            }
+        }
+
         return null;
     }
 }

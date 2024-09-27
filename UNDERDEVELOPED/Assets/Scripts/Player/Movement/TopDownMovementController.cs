@@ -137,7 +137,8 @@ public class TopDownMovementController : MonoBehaviour
         {
             Debug.Log("OnSceneLoaded from TopDownMovement");
             //transform.position = new Vector3(658.77f, 289.22f, 0);
-            gameObject.transform.position = new Vector3(-658.77f, -289.22f, 0);
+            GameObject spawnpoint = PlayerGameObjectFinder.FindSpawnPoint("Player Deault Spawnpoint");
+            transform.position = spawnpoint.transform.position;
         }
     }
 

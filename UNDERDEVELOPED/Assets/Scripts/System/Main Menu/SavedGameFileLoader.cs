@@ -31,6 +31,13 @@ public class SavedGameFileLoader : MonoBehaviour
     private void DisplaySavedGameFile()
     {
         string currentSaveFilePath = "";
+
+        if (!Directory.Exists(_savesFolderPath))
+        {
+            Directory.CreateDirectory(_savesFolderPath);
+            return;
+        }
+
         _savedFiles = Directory.GetFiles(_savesFolderPath, "*.plyr");
         //string[][] savedFileInfos;
 
