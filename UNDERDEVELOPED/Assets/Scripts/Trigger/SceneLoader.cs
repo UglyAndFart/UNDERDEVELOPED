@@ -33,4 +33,9 @@ public class SceneLoader : MonoBehaviour
         StopCoroutine(StartTimer());
         Debug.Log("Stop Timer");
     }
+
+    public void SetSceneToLoad(string sceneToLoad)
+    {
+        _sceneToLoad = sceneToLoad;
+    }
 }

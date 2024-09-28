@@ -17,7 +17,7 @@ public class EnemyActionController : MonoBehaviour
 
     private void Start()
     {
-        _player = PlayerGameObjectFinder.FindPlayerPrefab().GetComponent<Rigidbody2D>();
+        _player = CharacterPrefabLoader._instance.GetCurrentCharacter().GetComponent<Rigidbody2D>();
         _enemyManager = GetComponent<EnemyManager>();
         _attackRange = _enemyManager.GetAttackRange();
         _aggroRange = _enemyManager.GetAggroRange();

@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class SaveSystemManager : MonoBehaviour
 {   
-    // public static SaveSystemManager Instance;
+    public static SaveSystemManager _instance;
 
-    // private void Awake()
-    // {
-    //     if (Instance == null)
-    //     {
-    //         Instance = this;
-    //         DontDestroyOnLoad(gameObject);
-    //     }
-    //     else
-    //     {
-    //         Destroy(gameObject);
-    //     }
-    // }
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+        }
+
+        _instance = this;
+    }
 
     public static void SavePlayer(Player player)
     {

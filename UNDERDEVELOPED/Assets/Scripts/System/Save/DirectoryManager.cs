@@ -6,23 +6,17 @@ using UnityEngine;
 
 public class DirectoryManager : MonoBehaviour
 {
-    //public static DirectoryManager Instance;
+    public static DirectoryManager _instance;
     private static string _gameFolderPath; 
     private static string _savesFolderPath;
     private static string _currentSaveFolder;
 
     private void Awake()
     {
-        // if (Instance == null)
-        // {
-        //     Instance = this;
-        //     DontDestroyOnLoad(gameObject);
-        // }
-        // else
-        // {
-        //     Destroy(gameObject);
-        //     return;
-        // }
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+        }
 
         LoadGameFolderPath();
         // _gameFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games\\Underdevelop");

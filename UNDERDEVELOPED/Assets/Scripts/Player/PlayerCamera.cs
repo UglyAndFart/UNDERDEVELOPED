@@ -10,7 +10,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void Awake()
     {
-        _player = PlayerGameObjectFinder.FindPlayerPrefab();
+        _player = CharacterPrefabLoader._instance.GetCurrentCharacter();
         _virtualCamera = GetComponent<CinemachineVirtualCamera>();
     }
 

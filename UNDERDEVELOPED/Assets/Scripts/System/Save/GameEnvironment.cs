@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class GameEnvironment : MonoBehaviour
 {
-    //public static GameEnvironment Instance;
+    public static GameEnvironment _instance;
     
     [SerializeField]
     private bool[] _bossesState, _chestsState, _potsState;
 
-    // private void Awake()
-    // {
-    //     if (Instance == null)
-    //     {
-    //         Instance = this;
-    //         DontDestroyOnLoad(gameObject);
-    //     }
-    //     else
-    //     {
-    //         Destroy(gameObject);
-    //     }
-    // }
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+        }
+
+        _instance = this;
+    }
 
     public void SetEnvironmentData()
     {

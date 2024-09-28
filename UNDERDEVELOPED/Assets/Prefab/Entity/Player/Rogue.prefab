@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 7281753348864744527}
   - component: {fileID: 6633054779592392271}
   - component: {fileID: 3686196526229985403}
-  - component: {fileID: 7440594785918119266}
-  - component: {fileID: 4728898764597000367}
   - component: {fileID: 6300144709141541613}
   - component: {fileID: 3910219099207795052}
   - component: {fileID: 1231273064739464129}
@@ -113,46 +111,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7440594785918119266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562884454460559929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 629683aa75a75724681f115efba08a44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _name: 
-  _map: 
-  _characterType: 
-  _maxHealth: 100
-  _health: 20
-  _maxStamina: 100
-  _stamina: 100
-  _moveSpeed: 6
-  _physicalDamage: 20
-  _magicDamage: 20
-  _dashDistance: 4
-  _dashDuration: 0.1
-  _dashCooldown: 0.4
-  _dashCost: 20
-  _staminaRegenRate: 1
-  _staminaRecoveryBufferTime: 2
---- !u!114 &4728898764597000367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562884454460559929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58a55aae60037f2479fe3f60754c9a65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6300144709141541613
 MonoBehaviour:
   m_ObjectHideFlags: 0

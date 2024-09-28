@@ -5,12 +5,10 @@ using UnityEngine;
 public class CharacterSelector : MonoBehaviour
 {
     private Player _player;
-    private CharacterPrefabLoader _characterPrefabLoader; 
 
     private void Awake()
     {
-        _player = PlayerGameObjectFinder.FindPlayerScript();
-        _characterPrefabLoader = GameObject.Find("Prefab Handler").GetComponent<CharacterPrefabLoader>();
+        _player = Player._instance;
     }
 
     public void SelectCharacter(int index)
@@ -30,7 +28,7 @@ public class CharacterSelector : MonoBehaviour
 
         Debug.Log("Selected Character Type:" + _player.GetCharacterType());
         _player.SetPlayerName("HelpME");
-        _characterPrefabLoader.EnableCharacter();
+        //_characterPrefabLoader.EnableCharacter();
         SceneLoader.LoadNextScene("Realm"); // temp
     }
 }

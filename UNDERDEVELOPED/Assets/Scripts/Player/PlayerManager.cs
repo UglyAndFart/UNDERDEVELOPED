@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager _instance;
+
     private Player _player;
     private Rigidbody2D _rigidBody2D;
     private Animator _animator;
@@ -13,11 +15,33 @@ public class PlayerManager : MonoBehaviour
     private float _moveSpeed, _dashDistance, _dashDuration, _dashCooldown,
     _dashCost, _staminaRegenRate, _staminaRecoveryBufferTime = 0;
     private bool _canDash = true, _dashing = false;
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+        }
+
+        _instance = this;
+    }
+
     private void Start()
     {
-        _player = GetComponent<Player>();
+        Debug.Log("PlayerManager Started");
 
-        GameObject characterObject = GameObject.Find(_player.GetCharacterType());
+        _player = Player._instance;
+        GameObject characterObject = CharacterPrefabLoader._instance.GetCurrentCharacter();
+
+        if (characterObject != null)
+        {
+            Debug.Log("Found characterObject");
+        }
+        else
+        {
+            Debug.LogWarning("characterObject Not Found");
+        }
+
         SceneManager.sceneLoaded += OnSceneLoad;
 
         _rigidBody2D = characterObject.GetComponent<Rigidbody2D>();

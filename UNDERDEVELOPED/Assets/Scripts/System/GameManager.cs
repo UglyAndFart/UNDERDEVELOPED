@@ -1,14 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager _instance;
+
     [SerializeField]
     private Player _player;
     [SerializeField]
     private int _saveInterval = 10;
+
+    private void Awake()
+    {
+        if (_instance != null & _instance != this)
+        {
+            Destroy(this);
+        }
+
+        _instance = this;
+    }
 
     private void Start()
     {
@@ -29,11 +42,14 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
         //Check if boss is alive
-        SaveSystemManager.SavePlayer(_player);
+        if (scene.name == "South Forest" )
+        {
+            SaveSystemManager.SavePlayer(_player);
+        }
     }
 
-    private void OnDestroy()
-    {
-        SaveSystemManager.SavePlayer(_player);
-    }
+    // private void OnDestroy()
+    // {
+    //     SaveSystemManager.SavePlayer(_player);
+    // }
 }

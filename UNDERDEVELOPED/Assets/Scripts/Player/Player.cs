@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //public static Player Instance;
+    public static Player _instance;
 
     [SerializeField]
     private string _name, _map, _characterType;
@@ -19,18 +19,15 @@ public class Player : MonoBehaviour
     _physicalDamage, _magicDamage, _dashDistance, _dashDuration, _dashCooldown,
     _dashCost, _staminaRegenRate, _staminaRecoveryBufferTime;
     
-    // private void Awake()
-    // {
-    //     if (Instance == null)
-    //     {
-    //         Instance = this;
-    //         DontDestroyOnLoad(gameObject);
-    //     }
-    //     else
-    //     {
-    //         Destroy(gameObject);
-    //     }
-    // }
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+        }
+
+        _instance = this;
+    }
 
     public void SetPlayerData()
     {

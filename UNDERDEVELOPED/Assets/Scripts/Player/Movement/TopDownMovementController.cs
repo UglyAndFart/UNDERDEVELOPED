@@ -14,7 +14,8 @@ public class TopDownMovementController : MonoBehaviour
 
     private void Start()
     {
-        _playerManager = PlayerGameObjectFinder.FindPlayerManagerScript();
+        _playerManager = PlayerManager._instance;
+
         _attackPoint = transform.Find("Attack Pivot").gameObject;
         _flipSprite = false;
         _facingDirection = Vector2.right;
@@ -138,6 +139,11 @@ public class TopDownMovementController : MonoBehaviour
             Debug.Log("OnSceneLoaded from TopDownMovement");
             //transform.position = new Vector3(658.77f, 289.22f, 0);
             GameObject spawnpoint = PlayerGameObjectFinder.FindSpawnPoint("Player Deault Spawnpoint");
+            transform.position = spawnpoint.transform.position;
+        }
+        else if (scene.name == "Realm")
+        {
+            GameObject spawnpoint = PlayerGameObjectFinder.FindSpawnPoint("SpawnPoint");
             transform.position = spawnpoint.transform.position;
         }
     }

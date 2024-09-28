@@ -10,6 +10,7 @@ public class NewGameFileManager : MonoBehaviour
 
     private void Awake()
     {
+        CharacterPrefabLoader._instance.EnableCharacter();
         _savesFolderPath = DirectoryManager.GetSavesFolderPath();
     }
     
@@ -74,6 +75,8 @@ public class NewGameFileManager : MonoBehaviour
         string path = Path.Combine(DirectoryManager.GetCurrentSaveFolder(), $"{playerName}.plyr");
         DirectoryManager.SetCurrentSaveFolder(path);
         SaveSystemManager.SavePlayer(PlayerGameObjectFinder.FindPlayerScript());
+
+        GameManager._instance.enabled = true;
     }
 
     // private void OnDestroy()

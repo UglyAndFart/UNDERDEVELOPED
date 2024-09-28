@@ -4,19 +4,29 @@ using UnityEngine;
 
 public class CharacterPrefabLoader : MonoBehaviour
 {
+    public static CharacterPrefabLoader _instance;
+    private GameObject _currentCharacter;
+
     [SerializeField]
     private GameObject[] _characters;
     private Player _player;
 
     private void Awake()
     {
-        _player = PlayerGameObjectFinder.FindPlayerScript();
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+        }
+
+        _instance = this;
+
+        _player = Player._instance;
     }
 
-    public void LoadPlayerPrefab()
-    {
-        Resources.Load(_player.GetCharacterType());
-    }
+    // public void LoadPlayerPrefab()
+    // {
+    //     Resources.Load(_player.GetCharacterType());
+    // }
 
     public void EnableCharacter()
     {
@@ -36,12 +46,36 @@ public class CharacterPrefabLoader : MonoBehaviour
         }
         else
         {
+            Debug.LogWarning("CharacterType Not Found");
             return;
         }
 
-        _player.GetComponent<PlayerManager>().enabled = true;
-        _player.transform.parent.Find("Environment").GetComponent<GameEnvironmentManager>().enabled = true;
-        _characters[index].SetActive(true);
+        SetPrefabComponents(index);
+    }
+
+    public void EnableCharacterViaIndex(int index)
+    {
+        SetPrefabComponents(index);
+    }
+
+    private void SetPrefabComponents(int index)
+    {
+        //Debug.Log("Enable Player Manager and GameEnvironment");
+        //PlayerManager._instance.enabled = true;
+        //_player.transform.parent.Find("Environment").GetComponent<GameEnvironmentManager>().enabled = true;
+        //GameEnvironment._instance.enabled = true;
+        _currentCharacter = _characters[index];
+        _currentCharacter.SetActive(true);
+    }
+
+    public void EnableCurrentCharacter()
+    {
+        _currentCharacter.SetActive(true);
+    }
+
+    public GameObject GetCurrentCharacter()
+    {
+        return _currentCharacter;
     }
 
     // public void FindLoadPlayerPrefab(string prefabName)

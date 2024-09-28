@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 4ef963e7a0c8d78438d46618f48f9f08
+  - enabled: 1
+    path: Assets/Scenes/Loading Screen/Retrieving Game File Data.unity
+    guid: 6672feab09b2cf44c8ec40299891432d
   m_configObjects: {}

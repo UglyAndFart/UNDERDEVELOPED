@@ -31,6 +31,7 @@ public class SavedGameFileLoader : MonoBehaviour
     //Retrieve the .plyr file inside currentSavesFilepath
     private void RetrieveSavedGameFile()
     {
+
         if (!Directory.Exists(_savesFolderPath))
         {
             Directory.CreateDirectory(_savesFolderPath);
@@ -39,7 +40,9 @@ public class SavedGameFileLoader : MonoBehaviour
 
         _savedFiles = new List<string>();
 
-        for (int i = 0; i < 5; i++)
+        int numOfSlotFolder = Directory.GetDirectories(_savesFolderPath).Length;
+
+        for (int i = 0; i < numOfSlotFolder; i++)
         {
             if (Directory.Exists(Path.Combine(_savesFolderPath, $"Slot {i + 1}")))
             {
@@ -51,15 +54,13 @@ public class SavedGameFileLoader : MonoBehaviour
     //Iterate each file in string[] to display retrieved data
     public void DisplaySavedGameFile()
     {
-        string currentSaveFilePath = "";
         _savedGameInfos = new PlayerData[_savedFiles.Count];
 
         for (int i = 0; i < _savedFiles.Count; i++)
         {
             Debug.Log("path: " + _savedFiles[i]);
-            currentSaveFilePath = _savedFiles[i];
-            DirectoryManager.SetCurrentSaveFolder(currentSaveFilePath);
-            Debug.Log("Warp to: " + currentSaveFilePath);
+            DirectoryManager.SetCurrentSaveFolder(_savedFiles[i]);
+            Debug.Log("Warp to: " + _savedFiles[i]);
             _savedGameInfos[i] = SaveSystemManager.LoadPlayer();
          
             _saveSlots[i].SetActive(true);
@@ -90,12 +91,14 @@ public class SavedGameFileLoader : MonoBehaviour
             slot.SetActive(false);
         }
     }
+    
     //Set the slot path as currentsavefolder Then load the next scene
-    public void LoadSelectedGameFile(int slotIndex)
+    public void PrepareLoadFile(int slotIndex)
     {
         DirectoryManager.SetCurrentSaveFolder(_savedFiles[slotIndex]);
-        SceneLoader.LoadNextScene(_savedGameInfos[slotIndex]._map);
+        SceneLoader.LoadNextScene("Retrieving Game File Data");
     }
+
 
     // private void LoadGame()
     // {
