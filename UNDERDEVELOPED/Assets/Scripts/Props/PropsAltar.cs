@@ -20,6 +20,12 @@ namespace Cainos.PixelArtTopDown_Basic
             //targetGlow = new Color(108, 199, 217, 1);
         }
 
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            targetColor = new Color(1, 1, 1, 1);
+            targetGlow = new Color(.42f, .78f, .85f, 1); 
+        }
+
         private void OnTriggerExit2D(Collider2D other)
         {
             targetColor = new Color(1, 1, 1, 0);

@@ -5,10 +5,29 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+<<<<<<< Updated upstream
+=======
+    public static Player _instance;
+
+>>>>>>> Stashed changes
     [SerializeField]
     private float _maxHealth, _health, _maxStamina, _stamina, _moveSpeed,
     _physicalDamage, _magicDamage, _dashDistance, _dashDuration, _dashCooldown,
     _dashCost, _staminaRegenRate, _staminaRecoveryBufferTime;
+<<<<<<< Updated upstream
+=======
+    
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+
+        _instance = this;
+    }
+>>>>>>> Stashed changes
 
     public void SetPlayerData()
     {
