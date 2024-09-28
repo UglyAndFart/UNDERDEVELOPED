@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 75479681
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1004208445, guid: b777259fcfa47b24094b2e2d6ee3c797, type: 3}
+  m_Sprite: {fileID: 1596586631, guid: 72d89ae239ca46d42a5b009305a95bda, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -157,7 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 002b309cb72cb104e89e4323f03912a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
 --- !u!114 &2893033006161953269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,8 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6248d61f4bd8340bdc5bbfffcfa190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  lerpSpeed: 1
 --- !u!50 &2823288294807681476
 Rigidbody2D:
   serializedVersion: 4
