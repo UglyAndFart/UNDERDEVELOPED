@@ -146,6 +146,11 @@ public class Player : MonoBehaviour
         return _staminaRegenRate;
     }
 
+    public void SetCurrentMap(string map)
+    {
+        _map = map;
+    }
+
     public string GetCurrentMap()
     {
         return _map;

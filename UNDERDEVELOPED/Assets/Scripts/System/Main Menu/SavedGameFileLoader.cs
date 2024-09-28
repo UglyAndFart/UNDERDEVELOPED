@@ -12,7 +12,7 @@ public class SavedGameFileLoader : MonoBehaviour
     private Button _continue;
     [SerializeField]
     private GameObject[] _saveSlots;
-    private string[] _savedFiles;
+    private List<string> _savedFiles;
     private PlayerData[] _savedGameInfos;
     private string _savesFolderPath;
 
@@ -37,13 +37,13 @@ public class SavedGameFileLoader : MonoBehaviour
             return;
         }
 
-        _savedFiles = new string[5];
+        _savedFiles = new List<string>();
 
         for (int i = 0; i < 5; i++)
         {
-            if (Directory.Exists(Path.Combine(_savesFolderPath, $"Slot {++i}")))
+            if (Directory.Exists(Path.Combine(_savesFolderPath, $"Slot {i + 1}")))
             {
-                _savedFiles[i] = Directory.GetFiles(Path.Combine(_savesFolderPath, $"Slot {++i}"), "*.plyr")[0];
+                _savedFiles.Add(Directory.GetFiles(Path.Combine(_savesFolderPath, $"Slot {i + 1}"), "*.plyr")[0]);
             }
         }
     }
@@ -52,9 +52,9 @@ public class SavedGameFileLoader : MonoBehaviour
     public void DisplaySavedGameFile()
     {
         string currentSaveFilePath = "";
-        _savedGameInfos = new PlayerData[_savedFiles.Length];
+        _savedGameInfos = new PlayerData[_savedFiles.Count];
 
-        for (int i = 0; i < _savedFiles.Length; i++)
+        for (int i = 0; i < _savedFiles.Count; i++)
         {
             Debug.Log("path: " + _savedFiles[i]);
             currentSaveFilePath = _savedFiles[i];
@@ -63,6 +63,12 @@ public class SavedGameFileLoader : MonoBehaviour
             _savedGameInfos[i] = SaveSystemManager.LoadPlayer();
          
             _saveSlots[i].SetActive(true);
+            
+            if (_saveSlots[i].transform.Find("Name") == null)
+            {
+                Debug.LogWarning("Can't find slot gameobject");
+            }
+            
             _saveSlots[i].transform.Find("Name").GetComponent<TextMeshProUGUI>().text = _savedGameInfos[i]._name;
         }
         

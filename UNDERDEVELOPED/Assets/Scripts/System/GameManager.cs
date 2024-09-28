@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,12 +12,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        SceneManager.sceneLoaded += OnSceneLoad;
         StartCoroutine(PlayerDataAutoSave());
-    }
-
-    private void Update()
-    {
-        
     }
 
     private IEnumerator PlayerDataAutoSave()
@@ -27,5 +24,16 @@ public class GameManager : MonoBehaviour
             Debug.Log("PlayerData saved");
             yield return new WaitForSeconds(_saveInterval);
         }
+    }
+
+    private void OnSceneLoad(Scene scene, LoadSceneMode mode)
+    {
+        //Check if boss is alive
+        SaveSystemManager.SavePlayer(_player);
+    }
+
+    private void OnDestroy()
+    {
+        SaveSystemManager.SavePlayer(_player);
     }
 }

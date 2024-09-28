@@ -13,7 +13,6 @@ public class PlayerManager : MonoBehaviour
     private float _moveSpeed, _dashDistance, _dashDuration, _dashCooldown,
     _dashCost, _staminaRegenRate, _staminaRecoveryBufferTime = 0;
     private bool _canDash = true, _dashing = false;
-    
     private void Start()
     {
         _player = GetComponent<Player>();
@@ -146,7 +145,7 @@ public class PlayerManager : MonoBehaviour
 
     public void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
-        _player.transform.position = new Vector3(0, 0, 0);
+        _player.SetCurrentMap(scene.name);
     }
 
     private void OnDestroy()
