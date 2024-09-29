@@ -6,16 +6,20 @@ using UnityEngine;
 public class InitialQuestTrigger : MonoBehaviour
 {
     [SerializeField]
-    private HUDManager _hudManager;
-    [SerializeField]
-    private GameObject _computer1, _computer2, _computer3, _tutorialOverlay, _codeEditor, _characterSelection;
+    private GameObject _computer1, _computer2, _computer3, _tutorialOverlay, _characterSelection;
     [SerializeField]
     private TextMeshProUGUI _content1, _content2;
     [SerializeField]
     private ChallengeGiver _challengeGiver;
+    private HUDManager _hudManager;
     private bool _playerInRange;
     private int _computerNumber = 1;
     private bool _windowOpen = false;
+
+    private void Awake()
+    {
+        _hudManager = HUDManager._instance;;
+    }
 
     private void Start()
     {
@@ -83,7 +87,7 @@ public class InitialQuestTrigger : MonoBehaviour
 
     public void QuestComplete()
     {
-        _codeEditor.SetActive(false);
+        _hudManager.CloseCodeEditor();
         _characterSelection.SetActive(true);
     }
 

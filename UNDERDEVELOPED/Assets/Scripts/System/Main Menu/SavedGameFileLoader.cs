@@ -99,7 +99,6 @@ public class SavedGameFileLoader : MonoBehaviour
         SceneLoader.LoadNextScene("Retrieving Game File Data");
     }
 
-
     // private void LoadGame()
     // {
     //     foreach (PlayerData playerData in _savedGameInfos)

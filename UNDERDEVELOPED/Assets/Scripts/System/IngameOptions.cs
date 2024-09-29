@@ -4,6 +4,24 @@ using UnityEngine;
 
 public class IngameOptions : MonoBehaviour
 {
+    public static IngameOptions _instance;
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+
+        _instance = this;
+    }
+
+    private void Start()
+    {
+        HUDManager._instance.OpenOptions();
+    }
+
     public void BackToMain()
     {
         if (SaveSystemManager._instance.transform.parent.gameObject.name != "Persistent GameObject")
@@ -20,5 +38,13 @@ public class IngameOptions : MonoBehaviour
         // PlayerManager._instance.enabled = false;
         // GameManager._instance.enabled = false;
         // SceneLoader.LoadNextScene("Main Menu");
+    }
+
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
     }
 }

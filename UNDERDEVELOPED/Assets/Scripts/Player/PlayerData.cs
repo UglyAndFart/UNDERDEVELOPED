@@ -28,6 +28,7 @@ public class PlayerData
         _characterType = player.GetCharacterType();
 
         position = new float[3];
+
         position[0] = player.GetPlayerPosition().x;
         position[1] = player.GetPlayerPosition().y;
         position[2] = player.GetPlayerPosition().z;

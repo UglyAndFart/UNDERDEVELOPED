@@ -54,4 +54,12 @@ public class Inventory : MonoBehaviour
             onItemChangedCallBack.Invoke();
         }
     }
+
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
+    }
 }

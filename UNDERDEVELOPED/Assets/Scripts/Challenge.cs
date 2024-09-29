@@ -4,7 +4,19 @@ using UnityEngine;
 
 public class Challenge : MonoBehaviour
 {
+    public static Challenge _instance;
     private string _challengeName, _challengeArea, _challengeLevel;
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+
+        _instance = this;
+    }
 
     public void SetChallengeName(string name)
     {
@@ -34,5 +46,13 @@ public class Challenge : MonoBehaviour
     public string GetChallengeLevel()
     {
         return _challengeLevel;
+    }
+
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
     }
 }

@@ -3,12 +3,24 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
+    public static InventoryUI _instance;
+    
     [SerializeField]
     private Transform _slotsHolder;
     
     private Inventory _inventory;
     private InventorySlotController[] _inventorySlots;
-    
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+        }
+        
+        _instance = this;
+    }
+        
     private void Start()
     {
         _inventory = Inventory._instance;
@@ -34,6 +46,14 @@ public class InventoryUI : MonoBehaviour
             {
                 _inventorySlots[i].ClearItemSlot();
             }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
         }
     }
 }

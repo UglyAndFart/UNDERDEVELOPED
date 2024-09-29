@@ -8,7 +8,7 @@ using UnityEditor.ShaderGraph.Internal;
 public class CodeRunner : MonoBehaviour
 {
     public GameObject _editor, _console, _status;
-    public ChallengeManagerReyal _challengeManager;
+    private ChallengeManagerReyal _challengeManager;
     //add reference to another gameObject for test status 
 
     private string _storagePath, _codeRunnerPath;
@@ -20,6 +20,7 @@ public class CodeRunner : MonoBehaviour
         btnEditor_Click();
 
         _codeRunnerPath = Path.Combine(Application.streamingAssetsPath, "Scripts/PlayerCodeRunner.txt");
+        _challengeManager = ChallengeManagerReyal._instance;
     }
 
     // public void runCode()

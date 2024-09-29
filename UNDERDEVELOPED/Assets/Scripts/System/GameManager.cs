@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager _instance;
-
-    [SerializeField]
     private Player _player;
     [SerializeField]
     private int _saveInterval = 10;
@@ -26,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        _player = Player._instance;
         if (_player == null)
         {
             Debug.Log("GameManager: Player Not Found");
@@ -48,8 +47,20 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
         //Check if boss is alive
+        //if ()
+
+
         if (scene.name == "South Forest" )
         {
+            // PlayerStatUpdater._instance.enabled = true;
+            // ChallengeManager._instance.enabled = true;
+            // DatabaseManager._instance.enabled = true;
+            // HotkeysReader._instance.enabled = true;
+            // IngameOptions._instance.enabled = true;
+            // Debug.Log("GameManager: Loading " + HUDManager._instance.transform.parent.gameObject.name);
+            // HUDManager._instance.transform.parent.gameObject.SetActive(true);
+            // Inventory._instance.transform.parent.gameObject.SetActive(true);
+
             SaveSystemManager.SavePlayer(_player);
         }
     }

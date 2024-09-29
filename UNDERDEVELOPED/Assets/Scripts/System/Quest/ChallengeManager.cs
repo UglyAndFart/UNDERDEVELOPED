@@ -6,15 +6,21 @@ using UnityEngine;
 
 public class ChallengeManager : MonoBehaviour
 {
-    public DatabaseManager _databaseManager;
-    
+    public static ChallengeManager _instance;
+    private DatabaseManager _databaseManager;
     private string[] _currentQuest;
     private string _playerArea, _challenge;
-    private int _playerAttempts;
     
-    void Start()
+    private void Awake()
     {
-        _playerAttempts = 0;
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+
+        _instance = this;
+        _databaseManager = DatabaseManager._instance;
     }
 
     //fetch all valid challenges from the database and returns only one randomly 
@@ -85,5 +91,13 @@ public class ChallengeManager : MonoBehaviour
 
         _databaseManager.UpdateChallengeStatus(_currentQuest[0], "Done");
         return "Passed";
+    }
+
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
     }
 }

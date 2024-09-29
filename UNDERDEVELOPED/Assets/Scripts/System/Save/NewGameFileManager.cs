@@ -85,6 +85,13 @@ public class NewGameFileManager : MonoBehaviour
 
         TopDownMovementController._instance.enabled = true;
         GameManager._instance.enabled = true;
+
+        PlayerStatUpdater._instance.enabled = true;
+        // ChallengeManager._instance.enabled = true;
+        DatabaseManager._instance.enabled = true;
+        HotkeysReader._instance.enabled = true;
+        IngameOptions._instance.enabled = true;
+        ChallengeManagerReyal._instance.enabled = true;
     }
 
     // private void OnDestroy()
