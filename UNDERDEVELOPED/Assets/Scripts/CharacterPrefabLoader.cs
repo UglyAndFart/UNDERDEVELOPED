@@ -16,13 +16,16 @@ public class CharacterPrefabLoader : MonoBehaviour
         if (_instance != null && _instance != this)
         {
             Destroy(this);
+            return;
         }
 
         _instance = this;
-
-        _player = Player._instance;
     }
 
+    private void Start()
+    {
+        _player = Player._instance;
+    }
     // public void LoadPlayerPrefab()
     // {
     //     Resources.Load(_player.GetCharacterType());
@@ -30,6 +33,11 @@ public class CharacterPrefabLoader : MonoBehaviour
 
     public void EnableCharacter()
     {
+        if (_player == null)
+        {
+            Debug.Log("Bigga");
+        }
+
         int index;
 
         if (_player.GetCharacterType() == "Knight")
@@ -83,4 +91,12 @@ public class CharacterPrefabLoader : MonoBehaviour
     //     GameObject prefab = Resources.Load<GameObject>(prefabName);
     //     Instantiate(prefab, new Vector3 (0, 0, 0), Quaternion.identity);
     // }
+
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
+    }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Transactions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Player : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
     private float _health, _maxStamina, _stamina, _moveSpeed,
     _physicalDamage, _magicDamage, _dashDistance, _dashDuration, _dashCooldown,
     _dashCost, _staminaRegenRate, _staminaRecoveryBufferTime;
+    private Vector3 _playerPosition;
     
     private void Awake()
     {
@@ -29,7 +31,7 @@ public class Player : MonoBehaviour
         _instance = this;
     }
 
-    public void SetPlayerData()
+    public void SetPlayer()
     {
         PlayerData playerData = SaveSystemManager.LoadPlayer();
         Vector3 position;
@@ -51,7 +53,10 @@ public class Player : MonoBehaviour
         position.x = playerData.position[0];
         position.y = playerData.position[1];
         position.z = playerData.position[2];
-        transform.position = position;
+
+        _playerPosition = position;
+
+        //TopDownMovementController._instance.SetPosition(_playerPosition);
     }
     public void AddHealth(float health)
     {
@@ -173,8 +178,21 @@ public class Player : MonoBehaviour
         return _characterType;
     }
     
+    public Vector3 GetPlayerPosition()
+    {
+        return _playerPosition;
+    }
+
     public void SetPlayerPosition(Vector3 position)
     {
-        transform.position = position;
+        _playerPosition = position;
+    }
+
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
     }
 }

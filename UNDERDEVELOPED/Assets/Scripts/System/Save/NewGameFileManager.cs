@@ -10,8 +10,15 @@ public class NewGameFileManager : MonoBehaviour
 
     private void Awake()
     {
-        CharacterPrefabLoader._instance.EnableCharacter();
         _savesFolderPath = DirectoryManager.GetSavesFolderPath();
+    }
+
+    private void Start()
+    {
+        CharacterPrefabLoader._instance.EnableCharacter();
+        PlayerManager._instance.enabled = true;
+        // TopDownMovementController._instance.enabled = true;
+        // GameManager._instance.enabled = true;
     }
     
     //Checks if theres available spot for new game file 
@@ -74,8 +81,9 @@ public class NewGameFileManager : MonoBehaviour
         string playerName = GameObject.Find("Player").GetComponent<Player>().GetName();
         string path = Path.Combine(DirectoryManager.GetCurrentSaveFolder(), $"{playerName}.plyr");
         DirectoryManager.SetCurrentSaveFolder(path);
-        SaveSystemManager.SavePlayer(PlayerGameObjectFinder.FindPlayerScript());
+        SaveSystemManager.SavePlayer(Player._instance);
 
+        TopDownMovementController._instance.enabled = true;
         GameManager._instance.enabled = true;
     }
 

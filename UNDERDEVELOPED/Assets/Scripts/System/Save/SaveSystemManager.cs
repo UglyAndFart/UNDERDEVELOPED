@@ -28,4 +28,12 @@ public class SaveSystemManager : MonoBehaviour
         PlayerData playerData = SaveSystem.LoadPlayer(saveFilePath);
         return playerData;
     }
+
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
+    }
 }

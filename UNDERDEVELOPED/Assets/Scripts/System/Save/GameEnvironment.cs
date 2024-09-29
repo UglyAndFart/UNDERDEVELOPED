@@ -53,4 +53,12 @@ public class GameEnvironment : MonoBehaviour
     {
         _potsState = newPotsState;
     }
+
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
+    }
 }

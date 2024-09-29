@@ -21,6 +21,7 @@ public class PlayerManager : MonoBehaviour
         if (_instance != null && _instance != this)
         {
             Destroy(this);
+            return;
         }
 
         _instance = this;
@@ -31,19 +32,33 @@ public class PlayerManager : MonoBehaviour
         Debug.Log("PlayerManager Started");
 
         _player = Player._instance;
+
+        if (_player == null)
+        {
+            Debug.LogWarning("PlayerManager: Player Not Found");
+        }
+        else
+        {
+            Debug.Log("PlayerManager: Player Found");
+        }
+
+        SetupComponents();
+    }
+
+    public void SetupComponents()
+    {
         GameObject characterObject = CharacterPrefabLoader._instance.GetCurrentCharacter();
 
         if (characterObject != null)
         {
-            Debug.Log("Found characterObject");
+            Debug.Log("PlayerManager: Found characterObject");
         }
         else
         {
-            Debug.LogWarning("characterObject Not Found");
+            Debug.LogWarning("PlayerManager: characterObject Not Found");
         }
 
         SceneManager.sceneLoaded += OnSceneLoad;
-
         _rigidBody2D = characterObject.GetComponent<Rigidbody2D>();
         _animator = characterObject.GetComponent<Animator>();
         _spriteRenderer = characterObject.GetComponent<SpriteRenderer>();;
@@ -55,11 +70,13 @@ public class PlayerManager : MonoBehaviour
         _staminaRegenRate = _player.GetStaminaRegenRate();
     }
 
+    //updates the PlayerPostion in player every time the player is moving
     public void PlayerMovePosition(Vector2 direction)
     {
         if (!_dashing)
         {
             _rigidBody2D.MovePosition(_rigidBody2D.position + direction * _moveSpeed * Time.deltaTime);
+            _player.SetPlayerPosition(_rigidBody2D.position);
         }
     }
 
@@ -169,7 +186,10 @@ public class PlayerManager : MonoBehaviour
 
     public void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
-        _player.SetCurrentMap(scene.name);
+        if (scene.name == "South Forest")
+        {
+            _player.SetCurrentMap(scene.name);
+        }
     }
 
     private void OnDestroy()

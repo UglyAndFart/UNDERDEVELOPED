@@ -40,9 +40,9 @@ public class SavedGameFileLoader : MonoBehaviour
 
         _savedFiles = new List<string>();
 
-        int numOfSlotFolder = Directory.GetDirectories(_savesFolderPath).Length;
+        // int numOfSlotFolder = Directory.GetDirectories(_savesFolderPath).Length;
 
-        for (int i = 0; i < numOfSlotFolder; i++)
+        for (int i = 0; i < 5; i++)
         {
             if (Directory.Exists(Path.Combine(_savesFolderPath, $"Slot {i + 1}")))
             {

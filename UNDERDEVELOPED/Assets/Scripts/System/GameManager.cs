@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
         if (_instance != null & _instance != this)
         {
             Destroy(this);
+            return;
         }
 
         _instance = this;
@@ -25,6 +26,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if (_player == null)
+        {
+            Debug.Log("GameManager: Player Not Found");
+        }
+
         SceneManager.sceneLoaded += OnSceneLoad;
         StartCoroutine(PlayerDataAutoSave());
     }
@@ -48,8 +54,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // private void OnDestroy()
-    // {
-    //     SaveSystemManager.SavePlayer(_player);
-    // }
+    private void OnDestroy()
+    {
+        Debug.Log("GameManager: saved onDestroy");
+
+        SaveSystemManager.SavePlayer(_player);
+
+        if (_instance == this)
+        {
+            _instance = null;
+        }
+    }
 }

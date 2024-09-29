@@ -11,4 +11,5 @@ public class GameEnvironmentManager : MonoBehaviour
     {
         _gameEnvironment = GetComponent<GameEnvironment>();
     }
+    
 }
