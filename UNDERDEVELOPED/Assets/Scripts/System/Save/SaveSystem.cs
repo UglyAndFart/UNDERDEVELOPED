@@ -9,7 +9,7 @@ public class SaveSystem
     {
         string playerName = player.GetName();
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"My Games/Underdeveloped/Saves/{playerName}.plyr");
+        string path = DirectoryManager.GetCurrentSaveFolder();
         
         using (FileStream fileStream = new FileStream(path, FileMode.Create))
         {            
@@ -25,6 +25,7 @@ public class SaveSystem
         
         if(!File.Exists(path))
         {
+            Debug.Log("Save path doesnt exists");
             return null;
         }
 

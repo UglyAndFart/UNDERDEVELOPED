@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class PlayerStatUpdater : MonoBehaviour
 {
-    [SerializeField]
     private Player _player;
     [SerializeField]
     private Slider _healthFill;
@@ -14,6 +13,11 @@ public class PlayerStatUpdater : MonoBehaviour
     private Slider _staminaFill;
     [SerializeField]
     private HUDManager _hudmanager;
+
+    private void Awake()
+    {
+        _player = PlayerGameObjectFinder.FindPlayerScript();
+    }
 
     private void Start()
     {

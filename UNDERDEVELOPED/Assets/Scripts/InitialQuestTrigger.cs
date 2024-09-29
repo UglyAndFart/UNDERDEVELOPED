@@ -8,7 +8,7 @@ public class InitialQuestTrigger : MonoBehaviour
     [SerializeField]
     private HUDManager _hudManager;
     [SerializeField]
-    private GameObject _computer1, _computer2, _computer3, _tutorialOverlay, _codeEditor;
+    private GameObject _computer1, _computer2, _computer3, _tutorialOverlay, _codeEditor, _characterSelection;
     [SerializeField]
     private TextMeshProUGUI _content1, _content2;
     [SerializeField]
@@ -31,6 +31,7 @@ public class InitialQuestTrigger : MonoBehaviour
             if (_computerNumber == 1 && !_windowOpen)
             {
                 _tutorialOverlay.SetActive(true);
+                _content2.enabled = false;
                 _content1.enabled = true;
                 _windowOpen = true;
             }
@@ -78,6 +79,12 @@ public class InitialQuestTrigger : MonoBehaviour
         _computer2.SetActive(false);
         _computer3.SetActive(true);
         _tutorialOverlay.SetActive(false);
+    }
+
+    public void QuestComplete()
+    {
+        _codeEditor.SetActive(false);
+        _characterSelection.SetActive(true);
     }
 
     public void SetPlayerInQuestRange(bool value)

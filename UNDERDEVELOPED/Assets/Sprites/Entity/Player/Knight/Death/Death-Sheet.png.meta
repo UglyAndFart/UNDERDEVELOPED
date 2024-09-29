@@ -113,12 +113,12 @@ TextureImporter:
       name: Death-Sheet_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 0
         y: 0
-        width: 19
-        height: 29
+        width: 48
+        height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.335, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: Death-Sheet_1
       rect:
         serializedVersion: 2
-        x: 54
+        x: 48
         y: 0
-        width: 19
-        height: 24
+        width: 48
+        height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.335, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: Death-Sheet_2
       rect:
         serializedVersion: 2
-        x: 101
+        x: 96
         y: 0
-        width: 26
-        height: 21
+        width: 48
+        height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.335, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: Death-Sheet_3
       rect:
         serializedVersion: 2
-        x: 148
+        x: 144
         y: 0
-        width: 34
-        height: 11
+        width: 48
+        height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.335, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,12 +197,12 @@ TextureImporter:
       name: Death-Sheet_4
       rect:
         serializedVersion: 2
-        x: 197
+        x: 192
         y: 0
-        width: 33
-        height: 13
+        width: 48
+        height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.335, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: Death-Sheet_5
       rect:
         serializedVersion: 2
-        x: 245
+        x: 240
         y: 0
-        width: 33
-        height: 13
+        width: 48
+        height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.335, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

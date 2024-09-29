@@ -12,9 +12,10 @@ public class Inventory : MonoBehaviour
 
     private void Awake()
     {
-        if (_instance != null)
+        if (_instance != null && _instance != this)
         {
             Debug.LogWarning("Oh no, you fck up at Inventory _instance");
+            Destroy(this);
             return;
         }
 

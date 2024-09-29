@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager _instance;
+
     private Player _player;
     private Rigidbody2D _rigidBody2D;
     private Animator _animator;
@@ -12,13 +15,53 @@ public class PlayerManager : MonoBehaviour
     private float _moveSpeed, _dashDistance, _dashDuration, _dashCooldown,
     _dashCost, _staminaRegenRate, _staminaRecoveryBufferTime = 0;
     private bool _canDash = true, _dashing = false;
-    
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+
+        _instance = this;
+    }
+
     private void Start()
     {
-        _player = GetComponent<Player>();
-        _rigidBody2D = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        Debug.Log("PlayerManager Started");
+
+        _player = Player._instance;
+
+        if (_player == null)
+        {
+            Debug.LogWarning("PlayerManager: Player Not Found");
+        }
+        else
+        {
+            Debug.Log("PlayerManager: Player Found");
+        }
+
+        SetupComponents();
+    }
+
+    public void SetupComponents()
+    {
+        GameObject characterObject = CharacterPrefabLoader._instance.GetCurrentCharacter();
+
+        if (characterObject != null)
+        {
+            Debug.Log("PlayerManager: Found characterObject");
+        }
+        else
+        {
+            Debug.LogWarning("PlayerManager: characterObject Not Found");
+        }
+
+        SceneManager.sceneLoaded += OnSceneLoad;
+        _rigidBody2D = characterObject.GetComponent<Rigidbody2D>();
+        _animator = characterObject.GetComponent<Animator>();
+        _spriteRenderer = characterObject.GetComponent<SpriteRenderer>();;
         _moveSpeed = _player.GetMoveSpeed();
         _dashDistance = _player.GetDashDistance();
         _dashDuration = _player.GetDashDuration();
@@ -27,11 +70,13 @@ public class PlayerManager : MonoBehaviour
         _staminaRegenRate = _player.GetStaminaRegenRate();
     }
 
+    //updates the PlayerPostion in player every time the player is moving
     public void PlayerMovePosition(Vector2 direction)
     {
         if (!_dashing)
         {
             _rigidBody2D.MovePosition(_rigidBody2D.position + direction * _moveSpeed * Time.deltaTime);
+            _player.SetPlayerPosition(_rigidBody2D.position);
         }
     }
 
@@ -137,5 +182,18 @@ public class PlayerManager : MonoBehaviour
     public bool GetCanDash()
     {
         return _canDash;
+    }
+
+    public void OnSceneLoad(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "South Forest")
+        {
+            _player.SetCurrentMap(scene.name);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoad;    
     }
 }

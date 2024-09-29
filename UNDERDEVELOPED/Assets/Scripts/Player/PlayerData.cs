@@ -8,7 +8,7 @@ public class PlayerData
 {
     public float _health, _stamina, _moveSpeed, _dashDistance, _dashCooldown,
     _dashDuration, _physicalDamage, _magicDamage, _staminaRecoveryBufferTime;
-    public string _name, _map;
+    public string _name, _map, _characterType;
     public float[] position;
 
     public PlayerData(Player player)
@@ -25,10 +25,11 @@ public class PlayerData
 
         _map = player.GetCurrentMap();
         _name = player.GetName();
+        _characterType = player.GetCharacterType();
 
         position = new float[3];
-        position[0] = player.transform.position.x;
-        position[1] = player.transform.position.y;
-        position[2] = player.transform.position.z;
+        position[0] = player.GetPlayerPosition().x;
+        position[1] = player.GetPlayerPosition().y;
+        position[2] = player.GetPlayerPosition().z;
     }
 }

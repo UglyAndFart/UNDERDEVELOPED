@@ -12,44 +12,65 @@ public class SavedGameFileLoader : MonoBehaviour
     private Button _continue;
     [SerializeField]
     private GameObject[] _saveSlots;
-    private string[] _savedFiles;
+    private List<string> _savedFiles;
     private PlayerData[] _savedGameInfos;
+    private string _savesFolderPath;
 
     private void Awake()
     {
         DisableContinue();
         DisableAllSlots();
+        _savesFolderPath = DirectoryManager.GetSavesFolderPath();
     }
 
     private void Start()
     {
-        LoadPlayerGame();
+        RetrieveSavedGameFile();
     }
 
-    private void LoadPlayerGame()
+    //Retrieve the .plyr file inside currentSavesFilepath
+    private void RetrieveSavedGameFile()
     {
-        string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"My Games/Underdeveloped/Saves");
-        string currentSaveFilePath = "";
-        _savedFiles = Directory.GetFiles(path, "*.plyr");
-        //string[][] savedFileInfos;
 
-        if (_savedFiles.Length <= 0)
+        if (!Directory.Exists(_savesFolderPath))
         {
+            Directory.CreateDirectory(_savesFolderPath);
             return;
         }
 
-        _savedGameInfos = new PlayerData[_savedFiles.Length];
+        _savedFiles = new List<string>();
 
-        for (int i = 0; i < _savedFiles.Length; i++)
+        // int numOfSlotFolder = Directory.GetDirectories(_savesFolderPath).Length;
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (Directory.Exists(Path.Combine(_savesFolderPath, $"Slot {i + 1}")))
+            {
+                _savedFiles.Add(Directory.GetFiles(Path.Combine(_savesFolderPath, $"Slot {i + 1}"), "*.plyr")[0]);
+            }
+        }
+    }
+
+    //Iterate each file in string[] to display retrieved data
+    public void DisplaySavedGameFile()
+    {
+        _savedGameInfos = new PlayerData[_savedFiles.Count];
+
+        for (int i = 0; i < _savedFiles.Count; i++)
         {
             Debug.Log("path: " + _savedFiles[i]);
-            currentSaveFilePath = _savedFiles[i];
-            SaveSystemManager.SetFilePath(currentSaveFilePath);
-            Debug.Log("Warp to: " + currentSaveFilePath);
+            DirectoryManager.SetCurrentSaveFolder(_savedFiles[i]);
+            Debug.Log("Warp to: " + _savedFiles[i]);
             _savedGameInfos[i] = SaveSystemManager.LoadPlayer();
          
             _saveSlots[i].SetActive(true);
-            _saveSlots[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _savedGameInfos[i]._name;
+            
+            if (_saveSlots[i].transform.Find("Name") == null)
+            {
+                Debug.LogWarning("Can't find slot gameobject");
+            }
+            
+            _saveSlots[i].transform.Find("Name").GetComponent<TextMeshProUGUI>().text = _savedGameInfos[i]._name;
         }
         
         // foreach (string file in savedFiles)
@@ -70,12 +91,14 @@ public class SavedGameFileLoader : MonoBehaviour
             slot.SetActive(false);
         }
     }
-
-    public void LoadSelectedGameFile(int slotIndex)
+    
+    //Set the slot path as currentsavefolder Then load the next scene
+    public void PrepareLoadFile(int slotIndex)
     {
-        SaveSystemManager.SetFilePath(_savedFiles[slotIndex]);
-        SceneLoader.LoadNextScene(_savedGameInfos[slotIndex]._map);
+        DirectoryManager.SetCurrentSaveFolder(_savedFiles[slotIndex]);
+        SceneLoader.LoadNextScene("Retrieving Game File Data");
     }
+
 
     // private void LoadGame()
     // {

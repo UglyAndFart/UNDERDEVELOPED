@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class TopDownMovementController : MonoBehaviour
 {
+    public static TopDownMovementController _instance;
     private PlayerManager _playerManager;
     private GameObject _attackPoint;
     private Vector2 _direction;
@@ -12,13 +14,27 @@ public class TopDownMovementController : MonoBehaviour
     private bool _flipSprite;
     private List<Collider2D> _enemyHits;
 
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+        
+        _instance = this;
+    }
+
     private void Start()
     {
-        _playerManager = GetComponent<PlayerManager>();
+        _playerManager = PlayerManager._instance;
+
         _attackPoint = transform.Find("Attack Pivot").gameObject;
         _flipSprite = false;
         _facingDirection = Vector2.right;
         _enemyHits = new List<Collider2D>();
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Update()
@@ -128,4 +144,36 @@ public class TopDownMovementController : MonoBehaviour
     //     _staminaRegenation = false;
         
     // }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "South Forest")
+        {
+            if (SpawnPointManager._instance._newGame)
+            {
+                SetPosition(SpawnPointManager._instance.GetSpawnPoint("Main").gameObject.transform.position);
+            }
+
+            // Debug.Log("OnSceneLoaded from TopDownMovement");
+            // //transform.position = new Vector3(658.77f, 289.22f, 0);
+            // GameObject spawnpoint = PlayerGameObjectFinder.FindSpawnPoint("Player Deault Spawnpoint");
+            // transform.position = spawnpoint.transform.position;
+        }
+        // else if (scene.name == "Realm")
+        // {
+        //     GameObject spawnpoint = PlayerGameObjectFinder.FindSpawnPoint("SpawnPoint");
+        //     transform.position = spawnpoint.transform.position;
+        // }
+        
+    }
+
+    public void SetPosition(Vector3 newPosition)
+    {
+        transform.position = newPosition; 
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 }

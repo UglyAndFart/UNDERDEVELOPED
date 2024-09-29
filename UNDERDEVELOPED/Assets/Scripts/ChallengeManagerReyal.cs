@@ -20,6 +20,7 @@ public class ChallengeManagerReyal : MonoBehaviour
     private string[] _currentChallengeData;
     private string _challengeName, _challengeArea, _challengeLevel, _challengeText;
     private int _playerAttemptCount;
+    private bool _loadedChallenge = false;
 
     private void Start()
     {
@@ -27,12 +28,22 @@ public class ChallengeManagerReyal : MonoBehaviour
         _playerAttemptCount = 0;
     }
 
+    //might be the promblem
     private void Update()
     {
-        if (_hudManager._codeEditorOnScreen)
+        if (!_hudManager._codeEditorOnScreen)
         {
-            LoadChallenge();
+            _loadedChallenge = false;
+            return;
         }
+        
+        if (_loadedChallenge)
+        {
+            return;
+        }
+
+        LoadChallenge();
+        _loadedChallenge = true;
     }
 
     private void LoadChallenge()

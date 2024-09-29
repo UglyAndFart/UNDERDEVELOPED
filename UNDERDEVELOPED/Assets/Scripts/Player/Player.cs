@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Player : MonoBehaviour
 {
-    public static Player Instance;
+    public static Player _instance;
 
     [SerializeField]
-    private string _name, _map;
+    private string _name, _map, _characterType;
     
     [Header("Player Stats")]
     [SerializeField]
@@ -17,21 +19,19 @@ public class Player : MonoBehaviour
     private float _health, _maxStamina, _stamina, _moveSpeed,
     _physicalDamage, _magicDamage, _dashDistance, _dashDuration, _dashCooldown,
     _dashCost, _staminaRegenRate, _staminaRecoveryBufferTime;
-
+    private Vector3 _playerPosition;
+    
     private void Awake()
     {
-        if (Instance == null)
+        if (_instance != null && _instance != this)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(this);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+
+        _instance = this;
     }
 
-    public void SetPlayerData()
+    public void SetPlayer()
     {
         PlayerData playerData = SaveSystemManager.LoadPlayer();
         Vector3 position;
@@ -46,12 +46,17 @@ public class Player : MonoBehaviour
         _dashDuration = playerData._dashDuration;
         _staminaRecoveryBufferTime = playerData._staminaRecoveryBufferTime;
 
+        _name = playerData._name;
         _map = playerData._map;
+        _characterType = playerData._characterType;
 
         position.x = playerData.position[0];
         position.y = playerData.position[1];
         position.z = playerData.position[2];
-        transform.position = position;
+
+        _playerPosition = position;
+
+        //TopDownMovementController._instance.SetPosition(_playerPosition);
     }
     public void AddHealth(float health)
     {
@@ -143,13 +148,51 @@ public class Player : MonoBehaviour
         return _staminaRegenRate;
     }
 
+    public void SetCurrentMap(string map)
+    {
+        _map = map;
+    }
+
     public string GetCurrentMap()
     {
         return _map;
     }
 
+    public void SetPlayerName(string name)
+    {
+        _name = name;
+    }
+    
     public string GetName()
     {
         return _name;
+    }
+
+    public void SetChacterType(string characterType)
+    {
+        _characterType = characterType;
+    }
+
+    public string GetCharacterType()
+    {
+        return _characterType;
+    }
+    
+    public Vector3 GetPlayerPosition()
+    {
+        return _playerPosition;
+    }
+
+    public void SetPlayerPosition(Vector3 position)
+    {
+        _playerPosition = position;
+    }
+
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
     }
 }
