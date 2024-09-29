@@ -29,14 +29,16 @@ public class ChallengeManagerReyal : MonoBehaviour
         }
 
         _instance = this;
-        _hudManager = HUDManager._instance;
-        _challenge = Challenge._instance;
     }
 
     private void Start()
     {
+        _hudManager = HUDManager._instance;
+        _challenge = Challenge._instance;
         _databaseManager = DatabaseManager._instance;
         _currentChallengeData = new string[7];
+
+        CodeRunner.OnPlayerSuccess += ChallengeSolved;
         // _playerAttemptCount = 0;
     }
 
@@ -69,11 +71,6 @@ public class ChallengeManagerReyal : MonoBehaviour
             Debug.Log("Console Shit");
             LoadChallengeToConsole();
         }
-    }
-
-    private void OnDisable()
-    {
-        ResetLocalVariables();
     }
 
     private void FetchCurrentChallenge()
@@ -150,5 +147,27 @@ public class ChallengeManagerReyal : MonoBehaviour
     public string[] GetCurrentChallenge()
     {
         return _currentChallengeData;
+    }
+
+    public void ChallengeSolved()
+    {
+        _hudManager.CloseCodeEditor();
+        _databaseManager.UpdateChallengeStatus(_challengeName, "Done");
+        _challenge.ResetChallengeValues();
+    }
+
+    private void OnDisable()
+    {
+        ResetLocalVariables();
+    }
+
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = this;
+        }
+
+        CodeRunner.OnPlayerSuccess -= ChallengeSolved;
     }
 }

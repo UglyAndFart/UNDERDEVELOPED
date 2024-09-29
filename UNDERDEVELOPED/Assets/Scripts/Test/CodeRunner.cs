@@ -7,12 +7,17 @@ using UnityEditor.ShaderGraph.Internal;
 
 public class CodeRunner : MonoBehaviour
 {
+    public delegate void CodeRunnerHandler();
+    public static event CodeRunnerHandler OnPlayerSuccess;
+
     public GameObject _editor, _console, _status;
     private ChallengeManagerReyal _challengeManager;
     //add reference to another gameObject for test status 
 
     private string _storagePath, _codeRunnerPath;
     private string _txt;
+    private bool _noError;
+
     void Start()
     {
         _storagePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games/Underdeveloped/ExeFile");
@@ -72,8 +77,11 @@ public class CodeRunner : MonoBehaviour
 
     private string RunCode(string code, string fileName)
     {
+        _noError = true;
+
         if (string.IsNullOrEmpty(code) || string.IsNullOrEmpty(code))
         {
+            _noError = false;
             return "";
         }
 
@@ -91,7 +99,9 @@ public class CodeRunner : MonoBehaviour
 
         if(MonoCommands.haveCompilationError())
         {
+            _noError = false;
             string errorMsg = "";
+
             foreach (string str in MonoCommands.consoleCompileError)
             {
                 errorMsg += str;
@@ -103,13 +113,16 @@ public class CodeRunner : MonoBehaviour
 
         if (MonoCommands.haveRuntimeError())
         {
+            _noError = false;
             string errorMsg = "";
+
             foreach (string str in MonoCommands.consoleRuntimeError)
             {
                 errorMsg += str;
             }
             return errorMsg;
         }
+
         Debug.Log("Reached the ass");
         return output;
     }
@@ -154,6 +167,11 @@ public class CodeRunner : MonoBehaviour
         _editor.GetComponent<TMP_InputField>().text = code; 
     }
 
+    /// <summary>
+    /// Run the player code.
+    /// Insert PlayerCode inside a Runner class.
+    /// output is Set to Console UI text.
+    /// </summary>
     public void RunPlayerCode()
     {
         //getPlayerCode from editor
@@ -189,6 +207,10 @@ public class CodeRunner : MonoBehaviour
         _console.GetComponent<TextMeshProUGUI>().text = output;
     }
 
+    /// <summary> 
+    ///Run the Testcase retrieved from localdb.
+    ///Invoke OnPlayerSuccess when PlayerCode passes all the Testcase.
+    /// </summary>
     public void RunPlayerCodeTest()
     {
         string fileName = "PlayerCodeTest";
@@ -221,6 +243,14 @@ public class CodeRunner : MonoBehaviour
         output = RunCode(code, fileName);
         _status.GetComponent<TextMeshProUGUI>().text = output;
 
+        if (!_noError)
+        {
+            Debug.Log("CodeRunner: Player code is wrong");
+            return;
+        }
+
+        Debug.Log("CodeRunner: Player Answered correctly");
+        OnPlayerSuccess?.Invoke();
         //questManager.PlayerSolveChallenge();
     }
 }

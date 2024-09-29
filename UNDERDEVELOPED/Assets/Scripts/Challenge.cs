@@ -48,6 +48,13 @@ public class Challenge : MonoBehaviour
         return _challengeLevel;
     }
 
+    public void ResetChallengeValues()
+    {
+        _challengeName = null;
+        _challengeArea = null;
+        _challengeLevel = null;
+    }
+
     private void OnDestroy()
     {
         if (_instance == this)

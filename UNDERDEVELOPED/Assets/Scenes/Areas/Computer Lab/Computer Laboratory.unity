@@ -9174,7 +9174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &736290099
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12630,6 +12630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc297dc0569fb7e4983c3e189f533489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterSelectionUI: {fileID: 1772579586}
 --- !u!1 &945492544
 GameObject:
   m_ObjectHideFlags: 0
@@ -36049,12 +36050,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b5ce73f2c01b843b9ce5fc4e2d660c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hudManager: {fileID: 0}
   _computer1: {fileID: 1358379223}
   _computer2: {fileID: 161239148}
   _computer3: {fileID: 1986299349}
   _tutorialOverlay: {fileID: 1466192844}
-  _codeEditor: {fileID: 0}
   _characterSelection: {fileID: 1772579586}
   _content1: {fileID: 1311957788}
   _content2: {fileID: 945492546}
@@ -36071,7 +36070,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b227ef9ffde964f9716dde97755ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _challenge: {fileID: 876890447}
   _challengeName: Example
   _challengeArea: 
   _challengeLevel: 
