@@ -22110,9 +22110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b79b7df2f346d43b1ef77369326672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 1696856898}
   arrivalCutscene: {fileID: 562217989}
-  conversationCutscene: {fileID: 0}
+  conversationCutscene: {fileID: 562217989}
   exitCutscene: {fileID: 562217989}
 --- !u!4 &1658056175
 Transform:
@@ -22256,14 +22255,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc4efd556b83f644aced4f8f7a9659b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textComponent: {fileID: 1623797968}
-  lines:
-  - Ama namin sumasalangit ka
-  - Sambahin ang ngalan mo
-  - Mapasaamin ang kaharian mo
-  - Sundin ang loob mo
-  - Dito sa lupa, para nang sa langit
-  - 'Bigyan mo kami ngayon '
+  dialogueBox: {fileID: 1696856894}
+  dialogueText: {fileID: 1623797968}
+  nameText: {fileID: 1415533007}
+  firstDialogueLines:
+  - asdasd
+  - asdasd
+  - asdasd
+  firstNpcNames:
+  - God
+  - Gave
+  - Me You
+  secondDialogueLines:
+  - Show
+  - me
+  - Whats Real
+  secondNpcNames:
+  - Nig
+  - G
+  - a
   textSpeed: 0.1
 --- !u!1001 &1702816196
 PrefabInstance:
