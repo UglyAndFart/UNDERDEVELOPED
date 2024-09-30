@@ -67,9 +67,11 @@ public class GameManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log("GameManager: saved onDestroy");
-
-        SaveSystemManager.SavePlayer(_player);
+        if (_player == null)
+        {
+            Debug.Log("GameManager: saved onDestroy");
+            SaveSystemManager.SavePlayer(_player);        
+        }
 
         if (_instance == this)
         {

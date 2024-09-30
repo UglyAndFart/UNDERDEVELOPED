@@ -21,16 +21,16 @@ public class TimelineEndChecker : MonoBehaviour
         _timelineOver = true;
     }
 
+    public bool GetTimelineOver()
+    {
+        return _timelineOver;
+    }
+
     private void OnDestroy()
     {
         if (_playableDirector != null)
         {
             _playableDirector.stopped -= OnTimelineStop;
         }
-    }
-
-    public bool GetTimelineOver()
-    {
-        return _timelineOver;
     }
 }

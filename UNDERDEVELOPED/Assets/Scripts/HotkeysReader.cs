@@ -26,17 +26,17 @@ public class HotkeysReader : MonoBehaviour
         _hudManager = HUDManager._instance;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (Input.GetKeyDown(_codeEditorKey) && !_hudManager._codeEditorOnScreen)
-        {
-            _hudManager.OpenCodeEditor();
-            return;
-        }
-        
         if (Input.GetKeyDown(_codeEditorKey))
         {
-            _hudManager.CloseCodeEditor();
+            if (_hudManager._codeEditorOnScreen)
+            {
+                _hudManager.CloseCodeEditor();
+                return;
+            }
+
+            _hudManager.OpenCodeEditor();
             return;
         }
     }

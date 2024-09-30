@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.CodeEditor;
 using UnityEngine;
 
 public class ChallengeGiver : MonoBehaviour
@@ -16,13 +17,18 @@ public class ChallengeGiver : MonoBehaviour
         {
             Debug.LogWarning("ChallengeGiver: Challenge Not Found");
         }
+
+        QuestTriggerRange.OnPlayerEnter += GiveChallenge;
     }
 
     public void GiveChallenge()
     {
         Debug.Log("Challenge Given!");
-        _challenge.SetChallengeName(_challengeName);
-        _challenge.SetChallengeArea(_challengeArea);
-        _challenge.SetChallengeLevel(_challengeLevel);
+        _challenge.SetChallengeValues(_challengeName, _challengeArea, _challengeLevel);
+    }
+
+    private void OnDestroy()
+    {
+        QuestTriggerRange.OnPlayerEnter -= GiveChallenge;
     }
 }

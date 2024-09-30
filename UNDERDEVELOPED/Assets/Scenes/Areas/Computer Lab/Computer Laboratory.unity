@@ -1872,11 +1872,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8517865507390342717, guid: 879f6d87baa33ff49bba19a292beeb86,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 876890447}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 879f6d87baa33ff49bba19a292beeb86, type: 3}
 --- !u!1 &121185656
 GameObject:
@@ -12369,24 +12365,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &876890441 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8517865507390342717, guid: 879f6d87baa33ff49bba19a292beeb86,
-    type: 3}
-  m_PrefabInstance: {fileID: 106005540}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &876890447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876890441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 542d69c2aaa37e040b934d5d90652390, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &881308923
 GameObject:
   m_ObjectHideFlags: 0
@@ -35804,10 +35782,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1986299349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4508c3cde8df9264ba84507ffca144b4, type: 3}
+  m_Script: {fileID: 11500000, guid: af6eb996365c7b542a068d5272f24730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialQuestTrigger: {fileID: 2032060785}
 --- !u!1 &2000923390
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ public class ChallengeManagerReyal : MonoBehaviour
     private string[] _currentChallengeData;
     private string _challengeName, _challengeArea, _challengeLevel, _challengeText;
     // private int _playerAttemptCount;
-    private bool _loadedChallenge = false;
+    private bool _playerInRange = false;
 
     private void Awake()
     {
@@ -29,6 +29,9 @@ public class ChallengeManagerReyal : MonoBehaviour
         }
 
         _instance = this;
+
+        Challenge.OnChallengeGive += LoadChallenge;
+        QuestTriggerRange.OnPlayerExit += ResetLocalVariables;
     }
 
     private void Start()
@@ -45,23 +48,21 @@ public class ChallengeManagerReyal : MonoBehaviour
     //might be the promblem
     private void Update()
     {
-        if (!_hudManager._codeEditorOnScreen)
+        if (_playerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            _loadedChallenge = false;
-            return;
-        }
-        
-        if (_loadedChallenge)
-        {
-            return;
+            Debug.Log("ChallengeManagerReyal: Player Inrange");
+            _hudManager.OpenCodeEditor();
+            _playerInRange = false;
         }
 
-        LoadChallenge();
-        _loadedChallenge = true;
+        Debug.Log("ChallengeManagerReyal: Player Not Inrange");
     }
 
     private void LoadChallenge()
-    {
+    {   
+        Debug.Log("ChallengeManagerReyal: LoadChallenge");
+        _playerInRange = true;
+
         FetchCurrentChallenge();
         SetCurrentChallenge();
         GetChallengeString();
@@ -82,10 +83,12 @@ public class ChallengeManagerReyal : MonoBehaviour
 
     private void ResetLocalVariables()
     {
+        Debug.Log("ChallengeManagerReyal: Reset variables");
         _challengeName = null;
         _challengeArea = null;
         _challengeLevel = null;
         _challengeText = null;
+        _playerInRange = false;
     }
 
     private void SetCurrentChallenge()
@@ -101,7 +104,7 @@ public class ChallengeManagerReyal : MonoBehaviour
         }
         else
         {
-            //Debug.Log("No challenge active");
+            Debug.Log("ChallengeManager: No challenge active");
             _challengeName = null;
             _challengeArea = null;
             _challengeLevel = null;
@@ -169,5 +172,7 @@ public class ChallengeManagerReyal : MonoBehaviour
         }
 
         CodeRunner.OnPlayerSuccess -= ChallengeSolved;
+        Challenge.OnChallengeGive -= LoadChallenge;
+        QuestTriggerRange.OnPlayerExit -= ResetLocalVariables;
     }
 }

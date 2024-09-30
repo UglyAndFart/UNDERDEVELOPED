@@ -12,16 +12,24 @@ namespace Cainos.PixelArtTopDown_Basic
         private Animator animator;
         private Rigidbody2D rigidBody2D;
         private Vector2 dir;
+        private bool _activeUI = false;
 
         private void Start()
         {
             animator = GetComponent<Animator>();
             rigidBody2D = GetComponent<Rigidbody2D>();
+            HUDManager.OnUIOpen += DisablePlayerControls;
+            HUDManager.OnUIClose += EnablePlayerControls;
         }
-
 
         private void Update()
         {
+            if (_activeUI)
+            {
+                Debug.Log("TopDownCharacterController: a UI is Active");
+                return;
+            }
+
             dir = Vector2.zero;
             if (Input.GetKey(KeyCode.A))
             {
@@ -54,6 +62,22 @@ namespace Cainos.PixelArtTopDown_Basic
             }
 
             rigidBody2D.MovePosition(rigidBody2D.position + dir * speed * Time.deltaTime);
+        }
+
+        private void DisablePlayerControls()
+        {
+            _activeUI = false;
+        }
+
+        private void EnablePlayerControls()
+        {
+            _activeUI = true;
+        }
+
+        private void OnDestroy()
+        {
+            HUDManager.OnUIOpen -= DisablePlayerControls;
+            HUDManager.OnUIClose -= EnablePlayerControls;
         }
     }
 }

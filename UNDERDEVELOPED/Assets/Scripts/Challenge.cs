@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Challenge : MonoBehaviour
 {
+    public delegate void ChallengeEventHandler();
+    public static ChallengeEventHandler OnChallengeGive;
     public static Challenge _instance;
     private string _challengeName, _challengeArea, _challengeLevel;
 
@@ -53,6 +55,15 @@ public class Challenge : MonoBehaviour
         _challengeName = null;
         _challengeArea = null;
         _challengeLevel = null;
+    }
+
+    public void SetChallengeValues(string name, string area, string level)
+    {
+        _challengeName = name;
+        _challengeArea = area;
+        _challengeLevel = level;
+
+        OnChallengeGive?.Invoke();
     }
 
     private void OnDestroy()

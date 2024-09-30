@@ -50,7 +50,6 @@ public class InitialQuestTrigger : MonoBehaviour
                 _challengeGiver.GiveChallenge();
                 _hudManager.OpenCodeEditor();
             }
-
         }
     }
 

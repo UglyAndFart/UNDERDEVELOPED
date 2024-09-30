@@ -11,7 +11,7 @@ public class TopDownMovementController : MonoBehaviour
     private GameObject _attackPoint;
     private Vector2 _direction;
     private Vector2 _facingDirection;
-    private bool _flipSprite;
+    private bool _flipSprite, _activeUI = false;
     private List<Collider2D> _enemyHits;
 
     private void Awake()
@@ -23,6 +23,7 @@ public class TopDownMovementController : MonoBehaviour
         }
         
         _instance = this;
+
     }
 
     private void Start()
@@ -35,10 +36,18 @@ public class TopDownMovementController : MonoBehaviour
         _enemyHits = new List<Collider2D>();
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+        HUDManager.OnUIOpen += DisablePlayerControls;
+        HUDManager.OnUIClose += EnablePlayerControls;
     }
 
     private void Update()
-    {
+    {   
+        if (_activeUI)
+        {
+            Debug.Log("TopDownMovementController: a UI is Active");
+            return;
+        }
+
         Movement();
         Dash();
         Attack();
@@ -171,9 +180,21 @@ public class TopDownMovementController : MonoBehaviour
     {
         transform.position = newPosition; 
     }
+    
+    private void EnablePlayerControls()
+    {
+        _activeUI = false;
+    }
+
+    private void DisablePlayerControls()
+    {
+        _activeUI = true;
+    }
 
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        HUDManager.OnUIOpen -= DisablePlayerControls;
+        HUDManager.OnUIClose -= EnablePlayerControls;
     }
 }

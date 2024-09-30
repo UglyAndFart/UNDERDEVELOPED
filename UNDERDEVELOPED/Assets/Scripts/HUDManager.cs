@@ -6,6 +6,11 @@ public class HUDManager : MonoBehaviour
 {
     public static HUDManager _instance; 
 
+    public delegate void HUDManagerHandler();
+    public static event HUDManagerHandler OnUIOpen;
+    public static event HUDManagerHandler OnUIClose;
+
+
     [SerializeField]
     private GameObject _codeEditor;
     [SerializeField]
@@ -34,12 +39,16 @@ public class HUDManager : MonoBehaviour
     {
         _codeEditorOnScreen = true;
         _codeEditor.SetActive(true);
+
+        OnUIOpen?.Invoke();
     }
 
     public void CloseCodeEditor()
     {
         _codeEditorOnScreen = false;
         _codeEditor.SetActive(false);
+
+        OnUIClose?.Invoke();
     }
 
     public void OpenPlayerStatus()
@@ -57,11 +66,15 @@ public class HUDManager : MonoBehaviour
     public void OpenInventory()
     {
         _invenroty.SetActive(true);
+
+        OnUIOpen?.Invoke();
     }
 
     public void CloseInventory()
     {
         _invenroty.SetActive(false);
+
+        OnUIClose?.Invoke();
     }
 
     public void OpenOptions()
