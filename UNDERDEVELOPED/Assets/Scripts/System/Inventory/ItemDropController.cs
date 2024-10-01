@@ -7,7 +7,7 @@ public class ItemDropController : MonoBehaviour
 {
     [SerializeField]
     private float _itemPickupRadius = 2f, _travelSpeed;
-
+    
     [SerializeField]
     private Item _item;
 
@@ -23,7 +23,7 @@ public class ItemDropController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.F))
+        if (other.CompareTag("Player") && Input.GetButtonDown("Interact"))
         {
             OnItemPickup();
         }
@@ -36,7 +36,7 @@ public class ItemDropController : MonoBehaviour
 
         if (pickedUp)
         {
-            Destroy(this.gameObject);
+            Destroy(this);
         }
     }
 }

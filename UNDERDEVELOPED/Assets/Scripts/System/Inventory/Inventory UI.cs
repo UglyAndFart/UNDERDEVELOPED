@@ -20,7 +20,7 @@ public class InventoryUI : MonoBehaviour
         
         _instance = this;
     }
-        
+    
     private void Start()
     {
         _inventory = Inventory._instance;

@@ -57,26 +57,38 @@ public class TopDownMovementController : MonoBehaviour
     private void Movement()
     {
         _direction = Vector2.zero;
+        
+        _direction.x = Input.GetAxis("Horizontal");
+        _direction.y = Input.GetAxis("Vertical");
 
-        if (Input.GetKey(KeyCode.A))
+        if (_direction.x < 0)
         {
-            _direction.x = -1;
             _flipSprite = true;
         }
-        else if (Input.GetKey(KeyCode.D))
+        else
         {
-            _direction.x = 1;
             _flipSprite = false;
         }
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            _direction.y = 1;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            _direction.y = -1;
-        }
+        // if (Input.GetKey(KeyCode.A))
+        // {
+        //     _direction.x = -1;
+        //     _flipSprite = true;
+        // }
+        // else if (Input.GetKey(KeyCode.D))
+        // {
+        //     _direction.x = 1;
+        //     _flipSprite = false;
+        // }
+
+        // if (Input.GetKey(KeyCode.W))
+        // {
+        //     _direction.y = 1;
+        // }
+        // else if (Input.GetKey(KeyCode.S))
+        // {
+        //     _direction.y = -1;
+        // }
 
         if (_direction.x != 0 || _direction.y != 0)
         {
@@ -98,7 +110,7 @@ public class TopDownMovementController : MonoBehaviour
 
         // }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Dash"))
         {
             DashTrigger();
         }

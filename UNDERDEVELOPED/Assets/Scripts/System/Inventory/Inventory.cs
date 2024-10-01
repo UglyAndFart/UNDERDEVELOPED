@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
 
     public bool AddItem(Item item)
     {
-        if (item.defaultItem)
+        if (item._defaultItem)
         {
             return false;
         }

@@ -10,7 +10,6 @@ public class AttackController : MonoBehaviour
     [SerializeField]
     private TopDownMovementController _topDownMovementController;
 
-
     public void OnAttackEnd()
     {
         _attackPoint.SetActive(false);
@@ -18,7 +17,7 @@ public class AttackController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D enemyHit)
     {
-        Debug.Log(enemyHit.name);
+        Debug.Log("AttackController: " + enemyHit.name);
         if (enemyHit.CompareTag("Enemy"))
         {
             _topDownMovementController.AddEnemyToArray(enemyHit);

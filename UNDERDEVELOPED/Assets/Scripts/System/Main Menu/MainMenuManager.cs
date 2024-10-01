@@ -6,9 +6,8 @@ public class MainMenuManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject mainWindow, loadWindow, optionWindow, exitWindow;
-    
     private GameObject currentWindow;
-    
+
     private void Awake()
     {
         mainWindow.SetActive(true);
@@ -24,7 +23,7 @@ public class MainMenuManager : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("Cancel"))
         {
             currentWindow.SetActive(false);
             currentWindow = null;
