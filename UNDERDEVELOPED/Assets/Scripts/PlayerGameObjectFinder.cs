@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+//Note: Remove all references then remove this from Main Menu scene
 public class PlayerGameObjectFinder : MonoBehaviour
 {
     public static Player FindPlayerScript()

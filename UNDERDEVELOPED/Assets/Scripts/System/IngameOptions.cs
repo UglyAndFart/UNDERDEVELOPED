@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class IngameOptions : MonoBehaviour
@@ -46,5 +47,7 @@ public class IngameOptions : MonoBehaviour
         {
             _instance = null;
         }
+        
+        DirectoryManager.SetCurrentSaveFolder("");
     }
 }

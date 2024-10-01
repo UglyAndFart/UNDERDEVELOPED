@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7281753348864744527}
   - component: {fileID: 6633054779592392271}
   - component: {fileID: 3686196526229985403}
-  - component: {fileID: 6300144709141541613}
   - component: {fileID: 3910219099207795052}
   - component: {fileID: 1231273064739464129}
   - component: {fileID: 5816595240030971212}
@@ -111,18 +110,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6300144709141541613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562884454460559929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 002b309cb72cb104e89e4323f03912a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &3910219099207795052
 Rigidbody2D:
   serializedVersion: 4
@@ -387,7 +374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackPoint: {fileID: 1195994112264286824}
-  _topDownMovementController: {fileID: 6300144709141541613}
+  _topDownMovementController: {fileID: 0}
 --- !u!68 &4058355155929106589
 EdgeCollider2D:
   m_ObjectHideFlags: 0

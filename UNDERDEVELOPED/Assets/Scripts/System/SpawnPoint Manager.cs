@@ -29,6 +29,7 @@ public class SpawnPointManager : MonoBehaviour
         {
             if (spawnPoint.name == spawnPointName)
             {
+                Debug.Log("SpawnPointManager: Found Spawn Point");
                 return spawnPoint;
             }
         }

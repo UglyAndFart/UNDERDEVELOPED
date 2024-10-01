@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.SceneManagement;
 
 public class NPCDialogueManager : MonoBehaviour
 {
@@ -8,9 +7,12 @@ public class NPCDialogueManager : MonoBehaviour
     public PlayableDirector conversationCutscene; // Second cutscene (mid-dialogue)
     public PlayableDirector exitCutscene; // Final cutscene
 
+    [SerializeField]
+    private NewGameFileManager _newGameFileManager;
+
     private bool hasTalked = false; // Track if first dialogue has been shown
     private Dialogue dialogue; // Reference to the Dialogue script
-
+    
     void Start()
     {
         dialogue = FindObjectOfType<Dialogue>(); // Reference to the Dialogue script
@@ -62,9 +64,13 @@ public class NPCDialogueManager : MonoBehaviour
         exitCutscene.stopped += OnExitCutsceneStopped; // Trigger after cutscene stops
     }
 
+    /* Note:    the CreateNewGame call is just temp coz the ExitScene value
+                is same as Arrival and Conversation it be called 3 times :>
+    */
     private void OnExitCutsceneStopped(PlayableDirector director)
     {
-        SceneManager.LoadScene("NextScene"); // Load the next scene
+        _newGameFileManager.CreateNewGame();
+        SceneLoader.LoadNextScene("South Forest");
         exitCutscene.stopped -= OnExitCutsceneStopped; // Unsubscribe
     }
 }

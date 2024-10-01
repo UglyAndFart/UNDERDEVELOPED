@@ -24,7 +24,7 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {   
-        _playerManager = PlayerGameObjectFinder.FindPlayerManagerScript();
+        _playerManager = PlayerManager._instance;
         _enemy = GetComponent<Enemy>();
         _animator = GetComponent<Animator>();
         _rigidBody2D = GetComponent<Rigidbody2D>();

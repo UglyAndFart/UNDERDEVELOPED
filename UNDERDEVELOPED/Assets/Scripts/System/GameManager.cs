@@ -67,7 +67,8 @@ public class GameManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_player == null)
+        if (_player != null && (!string.IsNullOrEmpty(DirectoryManager.GetCurrentSaveFolder())
+            || !string.IsNullOrWhiteSpace(DirectoryManager.GetCurrentSaveFolder())))
         {
             Debug.Log("GameManager: saved onDestroy");
             SaveSystemManager.SavePlayer(_player);        

@@ -36,13 +36,14 @@ public class NewGameFileManager : MonoBehaviour
 
     //Create new folder name slot n
     //limited to 5 folder
-    //if exists it will prompt to pick a slot to be overwritten
+    //if slot is full it will prompt to pick a slot to be overwritten
     public void CreateNewGame()
     {
         if (!CheckEmptySlot())
         {
             //prompt to choose slot to be overwriten
-            Debug.Log("No empty slot available");
+
+            Debug.LogWarning("NewGameFileManager: No empty slot available");
             return;
         }
         
@@ -53,6 +54,8 @@ public class NewGameFileManager : MonoBehaviour
 
     private void CreateNewFolder()
     {
+        Debug.Log("NewGameFileManager: Creating new game folder");
+
         for (int i = 1; i <= 5; i++)
         {
             if (_slotPaths.Length == 0)
@@ -78,7 +81,9 @@ public class NewGameFileManager : MonoBehaviour
 
     private void CreateNewGameFile()
     {
-        string playerName = GameObject.Find("Player").GetComponent<Player>().GetName();
+        Debug.Log("NewGameFileManager: Creating new game file");
+
+        string playerName = Player._instance.GetName();
         string path = Path.Combine(DirectoryManager.GetCurrentSaveFolder(), $"{playerName}.plyr");
         DirectoryManager.SetCurrentSaveFolder(path);
         SaveSystemManager.SavePlayer(Player._instance);
@@ -94,9 +99,10 @@ public class NewGameFileManager : MonoBehaviour
         ChallengeManagerReyal._instance.enabled = true;
     }
 
+    //Create the save file and folder before the next scene loads
     // private void OnDestroy()
     // {
-    //     Debug.Log("NewGameFileManager OnDestroy Trigger");
-    //     CreateNewGameFile();    
+    //     Debug.Log("NewGameFileManager: OnDestroy Trigger");
+    //     CreateNewGame();    
     // }
 }

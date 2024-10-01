@@ -76,7 +76,7 @@ public class PlayerManager : MonoBehaviour
         if (!_dashing)
         {
             _rigidBody2D.MovePosition(_rigidBody2D.position + direction * _moveSpeed * Time.deltaTime);
-            _player.SetPlayerPosition(_rigidBody2D.position);
+            _player.SetPlayerPosition(TopDownMovementController._instance.GetPosition());
         }
     }
 
@@ -184,6 +184,7 @@ public class PlayerManager : MonoBehaviour
         return _canDash;
     }
 
+    
     public void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "South Forest")

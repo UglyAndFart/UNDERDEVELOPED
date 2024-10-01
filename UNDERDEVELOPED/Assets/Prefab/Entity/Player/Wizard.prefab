@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4986857197865484351}
   - component: {fileID: 1423682725208315775}
   - component: {fileID: 2752142099375022313}
-  - component: {fileID: 8108472054550394911}
   - component: {fileID: 2823288294807681476}
   m_Layer: 0
   m_Name: Wizard
@@ -144,18 +143,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.02}
   serializedVersion: 2
   m_Radius: 0.22
---- !u!114 &8108472054550394911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4736492137475888668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 002b309cb72cb104e89e4323f03912a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &2823288294807681476
 Rigidbody2D:
   serializedVersion: 4
