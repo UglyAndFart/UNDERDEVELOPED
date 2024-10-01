@@ -1,43 +1,68 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour
 {
-    public GameObject dialogueBox; // Reference to the DialogueBox GameObject
-    public TextMeshProUGUI dialogueText; // Reference to the DialogueText TMP component
-    public TextMeshProUGUI nameText; // Reference to the NameText TMP component
+    public GameObject dialogueBox;
+    public TextMeshProUGUI dialogueText;
+    public TextMeshProUGUI nameText;
+    public UnityEngine.UI.Image npcImage;
 
-    public string[] firstDialogueLines; // Array of dialogue lines for the first part
-    public string[] firstNpcNames; // Array of NPC names for the first part
-    public string[] secondDialogueLines; // Array of dialogue lines for the second part
-    public string[] secondNpcNames; // Array of NPC names for the second part
+    public string[] firstDialogueLines;
+    public string[] firstNpcNames;
+    public Sprite[] firstNpcImages;
+    public string[] secondDialogueLines;
+    public string[] secondNpcNames;
+    public Sprite[] secondNpcImages;
 
-    private string[] currentLines; // Current dialogue lines
-    private string[] currentNpcNames; // Current NPC names
-    private int index; // Current dialogue line index
-    public float textSpeed = 0.05f; // Speed at which text is displayed
+    public GameObject skipConfirmationPanel; // Reference to the skip confirmation panel
+    public Button yesButton; // Reference to the Yes button in the confirmation
+    public Button noButton; // Reference to the No button in the confirmation
+
+    private string[] currentLines;
+    private string[] currentNpcNames;
+    private Sprite[] currentNpcImages;
+    private int index;
+    public float textSpeed = 0.05f;
+    private bool isPaused = false; // To keep track of whether the dialogue is paused
+
+    public Toggle autoToggle; // Toggle for auto mode
+    public Button skipButton; // Button for skipping
+
+    private Coroutine typingCoroutine; // Reference to the active typing coroutine
 
     void Start()
     {
-        dialogueText.text = string.Empty; // Clear the dialogue text
-        nameText.text = string.Empty; // Clear the name text
-        dialogueBox.SetActive(false); // Hide dialogue box initially
+        dialogueText.text = string.Empty;
+        nameText.text = string.Empty;
+        dialogueBox.SetActive(false);
+        npcImage.gameObject.SetActive(false);
+        skipConfirmationPanel.SetActive(false); // Ensure pop-up is initially hidden
+
+        // Hook up the Yes and No button listeners
+        yesButton.onClick.AddListener(SkipDialogue);
+        noButton.onClick.AddListener(CloseConfirmation);
+
+        // Hook up the skip button listener
+        skipButton.onClick.AddListener(ShowSkipConfirmation);
     }
 
     void Update()
     {
-        // Check for mouse click only if dialogue is active
-        if (dialogueBox.activeSelf && Input.GetMouseButtonDown(0))
+        if (isPaused) return; // Do nothing if the dialogue is paused
+
+        if (dialogueBox.activeSelf && Input.GetMouseButtonDown(0) && !autoToggle.isOn)
         {
-            if (dialogueText.text == currentLines[index]) // If the current line is fully displayed
+            if (dialogueText.text == currentLines[index])
             {
-                NextLine(); // Go to the next line
+                NextLine();
             }
             else
             {
-                StopAllCoroutines(); // Stop typing effect
-                dialogueText.text = currentLines[index]; // Show the current line immediately
+                StopAllCoroutines();
+                dialogueText.text = currentLines[index];
             }
         }
     }
@@ -45,32 +70,46 @@ public class Dialogue : MonoBehaviour
     // Start the first dialogue
     public void StartDialogue()
     {
-        currentLines = firstDialogueLines; // Set the first dialogue lines
-        currentNpcNames = firstNpcNames; // Set the first NPC names
-        index = 0; // Start from the first line
-        dialogueBox.SetActive(true); // Show the dialogue box
-        StartCoroutine(TypeLine()); // Start typing the first line
+        currentLines = firstDialogueLines;
+        currentNpcNames = firstNpcNames;
+        currentNpcImages = firstNpcImages;
+        index = 0;
+        dialogueBox.SetActive(true);
+        npcImage.gameObject.SetActive(true);
+        UpdateNpcImage();
+        typingCoroutine = StartCoroutine(TypeLine());
     }
 
-    // Start the second dialogue (after the second cutscene)
+    // Start the second dialogue
     public void StartSecondDialogue()
     {
-        currentLines = secondDialogueLines; // Set the second dialogue lines
-        currentNpcNames = secondNpcNames; // Set the second NPC names
-        index = 0; // Reset to the first line of the second dialogue
-        dialogueBox.SetActive(true); // Show the dialogue box again
-        StartCoroutine(TypeLine()); // Start typing the first line of the second dialogue
+        currentLines = secondDialogueLines;
+        currentNpcNames = secondNpcNames;
+        currentNpcImages = secondNpcImages;
+        index = 0;
+        dialogueBox.SetActive(true);
+        npcImage.gameObject.SetActive(true);
+        UpdateNpcImage();
+        typingCoroutine = StartCoroutine(TypeLine());
     }
 
     IEnumerator TypeLine()
     {
-        nameText.text = currentNpcNames[index]; // Display the current NPC's name
-        dialogueText.text = string.Empty; // Clear previous dialogue text
+        nameText.text = currentNpcNames[index];
+        dialogueText.text = string.Empty;
+        UpdateNpcImage();
 
         foreach (char c in currentLines[index].ToCharArray())
         {
-            dialogueText.text += c; // Add each character one by one
-            yield return new WaitForSeconds(textSpeed); // Wait between characters
+            dialogueText.text += c;
+            yield return new WaitForSeconds(textSpeed);
+        }
+
+        // Automatically move to the next line if auto mode is on
+        if (autoToggle.isOn && !isPaused) // Only continue if not paused
+        {
+            yield return new WaitForSeconds(1f); // Add a delay before moving to the next line
+            NextLine();
         }
     }
 
@@ -78,18 +117,65 @@ public class Dialogue : MonoBehaviour
     {
         if (index < currentLines.Length - 1)
         {
-            index++; // Move to the next dialogue line
-            StartCoroutine(TypeLine()); // Start typing the new line
+            index++;
+            typingCoroutine = StartCoroutine(TypeLine());
         }
         else
         {
-            EndDialogue(); // End the dialogue if all lines are done
+            EndDialogue();
         }
     }
 
     public void EndDialogue()
     {
-        dialogueBox.SetActive(false); // Hide the dialogue box
-        FindObjectOfType<NPCDialogueManager>().OnDialogueEnd(); // Notify the NPCDialogueManager that dialogue is done
+        dialogueBox.SetActive(false);
+        npcImage.gameObject.SetActive(false);
+        FindObjectOfType<NPCDialogueManager>().OnDialogueEnd();
+    }
+
+    // Show the confirmation dialog when Skip is clicked
+    public void ShowSkipConfirmation()
+    {
+        isPaused = true; // Pause the dialogue
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine); // Stop the typing effect immediately
+        }
+
+        autoToggle.isOn = false; // Disable the auto toggle when the skip button is clicked
+        autoToggle.interactable = false; // Optionally, make the toggle unclickable while the confirmation is up
+
+        skipConfirmationPanel.SetActive(true); // Show the confirmation panel
+    }
+
+    // Skip the dialogue when Yes is clicked
+    public void SkipDialogue()
+    {
+        skipConfirmationPanel.SetActive(false); // Hide the confirmation panel
+        isPaused = false; // Unpause
+        EndDialogue(); // Skip to the end of the dialogue
+    }
+
+    // Close the confirmation dialog when No is clicked
+    public void CloseConfirmation()
+    {
+        skipConfirmationPanel.SetActive(false); // Hide the confirmation panel
+        isPaused = false; // Unpause
+
+        autoToggle.interactable = true; // Re-enable the auto toggle if necessary
+
+        // Resume the typing effect
+        if (index < currentLines.Length)
+        {
+            typingCoroutine = StartCoroutine(TypeLine()); // Resume the typing coroutine
+        }
+    }
+
+    void UpdateNpcImage()
+    {
+        if (index < currentNpcImages.Length)
+        {
+            npcImage.sprite = currentNpcImages[index];
+        }
     }
 }
