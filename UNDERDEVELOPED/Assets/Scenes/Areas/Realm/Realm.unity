@@ -495,6 +495,106 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a941f8bef3ad2184f8ce3ae5027a04ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &133466164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 133466165}
+  - component: {fileID: 133466166}
+  m_Layer: 0
+  m_Name: DialogueCutsceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &133466165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133466164}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -916.89594, y: -441.95795, z: -4.3798375}
+  m_LocalScale: {x: 2.1199143, y: 2.1199143, z: 2.1199143}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 328690854}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &133466166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133466164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b520f0d41ab2448835c1801acf016e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  steps:
+  - stepType: 1
+    dialogueLines: []
+    npcNames: []
+    npcImages: []
+    cutscene: {fileID: 562217989}
+  - stepType: 0
+    dialogueLines:
+    - 100000000000000
+    - NIgga Nigga Nigga NIgga Nigger Nigger Nigger Nigger
+    - 300000000000000200000000000000200000000000000
+    - 400000000000000200000000000000200000000000000
+    - 500000000000000
+    npcNames:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    npcImages: []
+    cutscene: {fileID: 0}
+  - stepType: 1
+    dialogueLines: []
+    npcNames: []
+    npcImages: []
+    cutscene: {fileID: 1851886939}
+  - stepType: 0
+    dialogueLines:
+    - 600000000000000
+    - 700000000000000
+    - 800000000000000
+    - 900000000000000
+    - 1000000000000000
+    npcNames:
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    npcImages: []
+    cutscene: {fileID: 0}
+  - stepType: 1
+    dialogueLines: []
+    npcNames: []
+    npcImages: []
+    cutscene: {fileID: 562217989}
+  dialogueBox: {fileID: 1696856894}
+  dialogueText: {fileID: 1623797968}
+  nameText: {fileID: 1415533007}
+  npcImage: {fileID: 0}
+  textSpeed: 0.05
+  autoToggle: {fileID: 1399689602}
+  skipConfirmationPanel: {fileID: 1885388472}
+  yesButton: {fileID: 206307870}
+  noButton: {fileID: 925843715}
+  skipButton: {fileID: 2132532973}
 --- !u!95 &165730676 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7954695495422552359, guid: ee03ab5ee9d701f4dbaf6c9eaf2c65fd,
@@ -1071,6 +1171,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 643610593}
+  - {fileID: 133466165}
   - {fileID: 1696856895}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1838,7 +1939,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 968d6e86731b1074b897d3f5e71f616a, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -17320,7 +17421,6 @@ Transform:
   m_Children:
   - {fileID: 562217988}
   - {fileID: 1851886938}
-  - {fileID: 1658056175}
   - {fileID: 1397841750}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17468,9 +17568,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399689600}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.822, y: 1.822, z: 1.822}
+  m_LocalScale: {x: 1.8220003, y: 1.8220003, z: 1.8220003}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1914762666}
@@ -17479,7 +17579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 441, y: -127}
+  m_AnchoredPosition: {x: 441.0001, y: -127.00003}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1399689602
@@ -22982,7 +23082,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623797966}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -22991,7 +23091,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -118.38193, y: 0}
+  m_AnchoredPosition: {x: -118.38208, y: -0.000015258789}
   m_SizeDelta: {x: 1413.2361, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1623797968
@@ -23423,54 +23523,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1658056173
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1658056175}
-  - component: {fileID: 1658056174}
-  m_Layer: 0
-  m_Name: NPCDialogueManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1658056174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1658056173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5b79b7df2f346d43b1ef77369326672, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrivalCutscene: {fileID: 562217989}
-  conversationCutscene: {fileID: 1851886939}
-  exitCutscene: {fileID: 562217989}
-  _newGameFileManager: {fileID: 130913625}
---- !u!4 &1658056175
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1658056173}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -585.997, y: -316.7792, z: -3.231547}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1367936775}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1671168333
 GameObject:
   m_ObjectHideFlags: 0
@@ -23517,7 +23569,6 @@ GameObject:
   - component: {fileID: 1696856895}
   - component: {fileID: 1696856897}
   - component: {fileID: 1696856896}
-  - component: {fileID: 1696856898}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -23532,7 +23583,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696856894}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23548,7 +23599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.000032425, y: 212}
+  m_AnchoredPosition: {x: 0.000030517578, y: 246.18054}
   m_SizeDelta: {x: 1756.8611, y: 295.525}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1696856896
@@ -23589,157 +23640,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696856894}
   m_CullTransparentMesh: 1
---- !u!114 &1696856898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1696856894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dc4efd556b83f644aced4f8f7a9659b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueBox: {fileID: 1696856894}
-  dialogueText: {fileID: 1623797968}
-  nameText: {fileID: 1415533007}
-  npcImage: {fileID: 1427255161}
-  firstDialogueLines:
-  - You have arrived at last...
-  - Where... am I?
-  - And who are you?!
-  - I am the Guardian of Spellscriptia, and you, outsider, are my final hope.
-  - "My world is on the brink of collapse. A great threat\u2014Glitchlord\u2014has
-    risen."
-  - His corruption consumes entire realms, turning them into chaos.
-  - My power dwindles as my world fades.
-  - 'You are here because I have summoned you." '
-  - Summoned me?
-  - "But... I\u2019m just a student! I didn\u2019t sign up for any of this!\""
-  - "Indeed, your summoning was a desperate act. The Glitchlord's armies\u2014the
-    glitchlings\u2014press hard upon us."
-  - "They are corrupted entities, born from destroyed realms, twisted to serve the
-    Glitchlord\u2019s will."
-  - I can no longer hold them off.
-  - "(Nervous but trying to stay calm) I don\u2019t know how to fight! How am I supposed
-    to help you?"
-  - Do not fear. The power you need lies within you. In this world, magic and code
-    are intertwined.
-  - You have the potential to wield the magic of C#. This is why you were chosen.
-  - C# magic? So, you're saying I can fight with code?
-  - Precisely. As you grow, so too will your command of this magic. But right now,
-    you are not yet strong enough to face the Glitchlord.
-  - You must first learn, practice, and hone your skills. Only then will you be able
-    to stand against his armies.
-  - "So, you're saying if I get stronger, learn this \u2018C# magic,\u2019 I might
-    have a shot at stopping this... Glitchlord?"
-  - Yes. And though it may seem daunting, you possess the ability to learn quickly.
-    However... there is more.
-  - The summoning has drained nearly all my power. I cannot send you back to your
-    world. Not yet.
-  - "(Surprised) You mean I\u2019m stuck here?!"
-  - "For now, yes. But you have my word\u2014once Spellscriptia is safe, I will find
-    a way to return you."
-  - Until then, your only path is forward.
-  - "(sighs, then brightens up)  Well... no sense in freaking out. I\u2019ve always
-    wanted to learn C# anyway. "
-  - "Might as well make the best of it. I\u2019ll help you stop this Glitchlord,
-    and maybe, I\u2019ll figure out how to get home."
-  firstNpcNames:
-  - God
-  - You
-  - You
-  - God
-  - God
-  - God
-  - God
-  - God
-  - You
-  - You
-  - God
-  - God
-  - God
-  - You
-  - God
-  - God
-  - You
-  - God
-  - God
-  - You
-  - God
-  - God
-  - You
-  - God
-  - God
-  - You
-  - You
-  firstNpcImages:
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 0}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 0}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 0}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 0}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  secondDialogueLines:
-  - "(alarmed)   What\u2019s going on now?!"
-  - The glitchlings... they have found us. Seraphims cannot hold them back any longer.
-  - What do we do?!
-  - I will send you far from here. To Spellscriptia itself.
-  - There, you will find others who can guide you, but I must stay and fight. My
-    time is near its end.
-  - (worried) Wait, you're staying behind?!
-  - I have no choice. The glitchlings will overwhelm us if I leave.
-  - I can only protect you by fighting here. Go now, and remember, you are the last
-    hope for Spellscriptia.
-  - "I\u2019ll do my best... I promise."
-  secondNpcNames:
-  - You
-  - God
-  - You
-  - God
-  - God
-  - You
-  - God
-  - God
-  - You
-  secondNpcImages:
-  - {fileID: 0}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 0}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 0}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 396776487, guid: 56937e479a74f844c8d4c841d3b8785d, type: 3}
-  - {fileID: 0}
-  skipConfirmationPanel: {fileID: 1885388472}
-  yesButton: {fileID: 206307870}
-  noButton: {fileID: 925843715}
-  textSpeed: 0.05
-  autoToggle: {fileID: 1399689602}
-  skipButton: {fileID: 2132532973}
 --- !u!1001 &1702816196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24053,7 +23953,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885388472}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -27673,7 +27573,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132532971}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
