@@ -14,4 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Ball of Wisdom
   _icon: {fileID: -1939870773, guid: 2200102bb5ddfec40a83029b69119b5f, type: 3}
-  defaultItem: 0
+  _description:
+  - :>>
+  - Shield
+  - 0
+  - 0
+  _defaultItem: 0

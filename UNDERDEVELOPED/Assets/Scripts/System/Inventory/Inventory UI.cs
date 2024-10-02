@@ -25,8 +25,8 @@ public class InventoryUI : MonoBehaviour
     {
         _inventory = Inventory._instance;
         _inventory.onItemChangedCallBack += UpdateInventoryUI;
-
         _inventorySlots = _slotsHolder.GetComponentsInChildren<InventorySlotController>();
+        UpdateInventoryUI();
     }
 
     private void Update()
@@ -55,5 +55,7 @@ public class InventoryUI : MonoBehaviour
         {
             _instance = null;
         }
+
+        _inventory.onItemChangedCallBack -= UpdateInventoryUI;
     }
 }

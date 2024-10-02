@@ -30,11 +30,13 @@ public class HotkeysReader : MonoBehaviour
     private void  Start()
     {
         _hudManager = HUDManager._instance;
+        Debug.Log("HotKeysReader: Started");
     }
 
     //_activeUI value 0 means no UI is open
     private void Update()
     {
+        Debug.Log(Input.GetButtonDown("CodeEditor"));
         if (Input.GetButtonDown("CodeEditor"))
         {
             if (_activeUI == 0)
@@ -77,6 +79,7 @@ public class HotkeysReader : MonoBehaviour
         //     return;
         // }
         
+        Debug.Log("HotkeysReader: No key :(");
     }
 
     private void OnDestroy()
