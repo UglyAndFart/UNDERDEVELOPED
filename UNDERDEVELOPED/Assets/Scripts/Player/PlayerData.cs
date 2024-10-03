@@ -24,7 +24,7 @@ public class PlayerData
         _staminaRecoveryBufferTime = player.GetStaminaRecoveryBufferTime();
 
         _map = player.GetCurrentMap();
-        _name = player.GetName();
+        _name = player.GetPlayerName();
         _characterType = player.GetCharacterType();
 
         position = new float[3];

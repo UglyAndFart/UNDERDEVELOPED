@@ -7,7 +7,7 @@ public class SaveSystem
 {
     public static void SavePlayer (Player player)
     {
-        string playerName = player.GetName();
+        string playerName = player.GetPlayerName();
         BinaryFormatter formatter = new BinaryFormatter();
         string path = DirectoryManager.GetCurrentSaveFolder();
         

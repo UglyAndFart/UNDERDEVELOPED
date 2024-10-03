@@ -17,7 +17,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField]
     private GameObject _deathScreen;
     [SerializeField]
-    private GameObject _invenroty;
+    private GameObject _inventory;
     [SerializeField]
     private GameObject _options;
 
@@ -60,14 +60,14 @@ public class HUDManager : MonoBehaviour
 
     public void OpenInventory()
     {
-        _invenroty.SetActive(true);
+        _inventory.SetActive(true);
 
         OnUIOpen?.Invoke();
     }
 
     public void CloseInventory()
     {
-        _invenroty.SetActive(false);
+        _inventory.SetActive(false);
 
         OnUIClose?.Invoke();
     }

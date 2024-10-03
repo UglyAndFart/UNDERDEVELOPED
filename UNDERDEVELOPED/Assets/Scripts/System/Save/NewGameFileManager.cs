@@ -83,7 +83,7 @@ public class NewGameFileManager : MonoBehaviour
     {
         Debug.Log("NewGameFileManager: Creating new game file");
 
-        string playerName = Player._instance.GetName();
+        string playerName = Player._instance.GetPlayerName();
         string path = Path.Combine(DirectoryManager.GetCurrentSaveFolder(), $"{playerName}.plyr");
         DirectoryManager.SetCurrentSaveFolder(path);
         SaveSystemManager.SavePlayer(Player._instance);

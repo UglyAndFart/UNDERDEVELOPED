@@ -13,7 +13,7 @@ public class HotkeysReader : MonoBehaviour
     // [Header("Inventory")]
     // [SerializeField]
     // private KeyCode _inventoryKey;
-
+    
     private int _activeUI = 0;
 
     private void Awake()
@@ -36,7 +36,7 @@ public class HotkeysReader : MonoBehaviour
     //_activeUI value 0 means no UI is open
     private void Update()
     {
-        Debug.Log(Input.GetButtonDown("CodeEditor"));
+        // Debug.Log(Input.GetButtonDown("CodeEditor"));
         if (Input.GetButtonDown("CodeEditor"))
         {
             if (_activeUI == 0)
@@ -50,7 +50,7 @@ public class HotkeysReader : MonoBehaviour
                 _activeUI = 0;
             }
 
-            Debug.Log("HotKeysReader: CodeEditor Pressed");
+            // Debug.Log("HotKeysReader: CodeEditor Pressed");
         }
         else if (Input.GetButtonDown("Inventory"))
        {
@@ -65,7 +65,7 @@ public class HotkeysReader : MonoBehaviour
                 _activeUI = 0;
             }
 
-            Debug.Log("HotKeysReader: Inventory Pressed");
+            // Debug.Log("HotKeysReader: Inventory Pressed");
        }
         // if (Input.GetKeyDown(_codeEditorKey))
         // {

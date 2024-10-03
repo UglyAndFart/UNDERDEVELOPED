@@ -1,4 +1,3 @@
-using UnityEditor.Search;
 using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
@@ -6,10 +5,11 @@ public class InventoryUI : MonoBehaviour
     public static InventoryUI _instance;
     
     [SerializeField]
-    private Transform _slotsHolder;
+    private Transform _itemSlotsHolder, _equipmentSlotsHolder;
     
     private Inventory _inventory;
-    private InventorySlotController[] _inventorySlots;
+    private InventorySlotController[] _itemSlots;
+    private InventorySlotController[] _equipmentSlots;
 
     private void Awake()
     {
@@ -25,7 +25,8 @@ public class InventoryUI : MonoBehaviour
     {
         _inventory = Inventory._instance;
         _inventory.onItemChangedCallBack += UpdateInventoryUI;
-        _inventorySlots = _slotsHolder.GetComponentsInChildren<InventorySlotController>();
+        _itemSlots = _itemSlotsHolder.GetComponentsInChildren<InventorySlotController>();
+        _equipmentSlots = _equipmentSlotsHolder.GetComponentsInChildren<InventorySlotController>();
         UpdateInventoryUI();
     }
 
@@ -36,15 +37,27 @@ public class InventoryUI : MonoBehaviour
 
     private void UpdateInventoryUI()
     {
-        for (int i = 0; i < _inventorySlots.Length; i++)
+        for (int i = 0; i < _itemSlots.Length; i++)
         {
             if (i < _inventory._items.Count)
             {
-                _inventorySlots[i].AddItem(_inventory._items[i]);
+                _itemSlots[i].AddItem(_inventory._items[i]);
             }
             else
             {
-                _inventorySlots[i].ClearItemSlot();
+                _itemSlots[i].ClearItemSlot();
+            }
+        }
+
+        for (int i = 0; i < _equipmentSlots.Length; i++)
+        {
+            if (i < _inventory._equipments.Count)
+            {
+                _equipmentSlots[i].AddItem(_inventory._equipments[i]);
+            }
+            else
+            {
+                _equipmentSlots[i].ClearItemSlot();
             }
         }
     }

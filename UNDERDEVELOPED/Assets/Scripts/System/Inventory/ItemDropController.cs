@@ -6,16 +6,20 @@ public class ItemDropController : MonoBehaviour
 {
     [SerializeField]
     private float _itemPickupRadius = 2f, _travelSpeed = 0;
-    [SerializeField]
-    private Item _item;
+    public Item _item;
     private CircleCollider2D _circleCollider2D;
+    private SpriteRenderer _spriteRenderer;
     private bool _playerInrange;
 
     private void Start()
     {
         _circleCollider2D = GetComponent<CircleCollider2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        
         _circleCollider2D.radius = _itemPickupRadius;
-        GetComponent<SpriteRenderer>().sprite = _item._icon;
+        _circleCollider2D.isTrigger = true;
+        _spriteRenderer.sprite = _item._icon;
+        _spriteRenderer.sortingLayerName = "Foreground";
     }
 
     private void Update()

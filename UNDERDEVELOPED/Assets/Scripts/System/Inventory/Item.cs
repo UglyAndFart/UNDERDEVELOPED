@@ -11,6 +11,12 @@ public class Item : ScriptableObject
 
     public virtual bool UseItem()
     {
+        Debug.Log("Item: Using " + _name);
         return true;
+    }
+
+    public void OnItemUse()
+    {
+        Inventory._instance.RemoveItem(this);
     }
 }

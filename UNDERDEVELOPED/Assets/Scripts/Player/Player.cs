@@ -11,7 +11,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private string _name, _map, _characterType;
-    
+    private Vector3 _playerPosition;
+    private Item[] _equipments;
+
     [Header("Player Stats")]
     [SerializeField]
     private float _maxHealth;
@@ -19,7 +21,6 @@ public class Player : MonoBehaviour
     private float _health, _maxStamina, _stamina, _moveSpeed,
     _physicalDamage, _magicDamage, _dashDistance, _dashDuration, _dashCooldown,
     _dashCost, _staminaRegenRate, _staminaRecoveryBufferTime;
-    private Vector3 _playerPosition;
     
     private void Awake()
     {
@@ -163,7 +164,7 @@ public class Player : MonoBehaviour
         _name = name;
     }
     
-    public string GetName()
+    public string GetPlayerName()
     {
         return _name;
     }
@@ -178,6 +179,16 @@ public class Player : MonoBehaviour
         return _characterType;
     }
     
+    public void SetEquipItem(Item item, int index)
+    {
+        _equipments[index] = item;
+    }
+
+    public Item[] GetCurrentEquipItem()
+    {
+        return _equipments;
+    }
+
     public Vector3 GetPlayerPosition()
     {
         return _playerPosition;
