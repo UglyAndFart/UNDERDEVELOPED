@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Transactions;
-using TMPro;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class Player : MonoBehaviour
 {
@@ -12,7 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private string _name, _map, _characterType;
     private Vector3 _playerPosition;
-    private Item[] _equipments;
+    // private Item[] _equipments;
 
     [Header("Player Stats")]
     [SerializeField]
@@ -21,6 +16,8 @@ public class Player : MonoBehaviour
     private float _health, _maxStamina, _stamina, _moveSpeed,
     _physicalDamage, _magicDamage, _dashDistance, _dashDuration, _dashCooldown,
     _dashCost, _staminaRegenRate, _staminaRecoveryBufferTime;
+    [SerializeField]
+    private float[][] _statModifiers = new float[7][];
     
     private void Awake()
     {
@@ -179,15 +176,15 @@ public class Player : MonoBehaviour
         return _characterType;
     }
     
-    public void SetEquipItem(Item item, int index)
-    {
-        _equipments[index] = item;
-    }
+    // public void SetEquipItem(Item item, int index)
+    // {
+    //     _equipments[index] = item;
+    // }
 
-    public Item[] GetCurrentEquipItem()
-    {
-        return _equipments;
-    }
+    // public Item[] GetCurrentEquipItem()
+    // {
+    //     return _equipments;
+    // }
 
     public Vector3 GetPlayerPosition()
     {
@@ -197,6 +194,11 @@ public class Player : MonoBehaviour
     public void SetPlayerPosition(Vector3 position)
     {
         _playerPosition = position;
+    }
+
+    public void SetStatModifiers(float[] statModifiers, int index)
+    {
+        _statModifiers[index] = statModifiers;
     }
 
     private void OnDestroy()

@@ -18,5 +18,8 @@ MonoBehaviour:
   - asdagf
   _defaultItem: 0
   _equipmentSlot: 3
-  _armor: 0
-  damage: 0
+  _stats:
+  - 0
+  - 0
+  - 4
+  - 0

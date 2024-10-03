@@ -7,7 +7,7 @@ public class Equipment : Item
 {
     public EquipmentSlot _equipmentSlot;
 
-    public int _armor, damage;
+    public float[] _stats;
 
     public override bool UseItem()
     {

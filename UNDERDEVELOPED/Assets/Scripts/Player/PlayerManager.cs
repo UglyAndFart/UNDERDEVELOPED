@@ -25,6 +25,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         _instance = this;
+        EquipmentManager.onEquipmentChanged += SetEquipmentStatModifiers;
     }
 
     private void Start()
@@ -184,6 +185,23 @@ public class PlayerManager : MonoBehaviour
         return _canDash;
     }
 
+    private void SetEquipmentStatModifiers(Equipment newItem, Equipment oldItem)
+    {
+        // System.Enum.GetNames(typeof(EquipmentSlot)).Length;
+        // float[] modifiers;
+        
+        for (int i = 0; i < 7; i++)
+        {
+            if ((int)newItem._equipmentSlot == i)
+            {
+                // modifiers = newItem._stats;
+                // Debug.Log("PlayerManager: " + _player);
+                // Debug.Log("PlayerManager: " + newItem._stats[2]);
+                _player.SetStatModifiers(newItem._stats, i);
+            }
+        }
+        // _player.SetStatModifiers();
+    }
     
     public void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
