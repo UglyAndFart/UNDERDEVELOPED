@@ -70,7 +70,7 @@ public class NPCDialogueManager : MonoBehaviour
     private void OnExitCutsceneStopped(PlayableDirector director)
     {
         _newGameFileManager.CreateNewGame();
-        SceneLoader.LoadNextScene("South Forest");
+        SceneLoader.LoadScene("South Forest");
         exitCutscene.stopped -= OnExitCutsceneStopped; // Unsubscribe
     }
 }

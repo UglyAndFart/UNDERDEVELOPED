@@ -19,6 +19,8 @@ public class NewGameFileManager : MonoBehaviour
         PlayerManager._instance.enabled = true;
         // TopDownMovementController._instance.enabled = true;
         // GameManager._instance.enabled = true;
+
+        CreateNewGame();
     }
     
     //Checks if theres available spot for new game file 
@@ -49,7 +51,6 @@ public class NewGameFileManager : MonoBehaviour
         
         CreateNewFolder();
         CreateNewGameFile();
-        SceneLoader.LoadNextScene("South Forest");
     }
 
     private void CreateNewFolder()

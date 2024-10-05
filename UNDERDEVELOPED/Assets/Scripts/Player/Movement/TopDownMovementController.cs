@@ -183,6 +183,15 @@ public class TopDownMovementController : MonoBehaviour
         _activeUI = true;
     }
 
+    // private void SetNewGamePosition()
+    // {
+    //     if (SpawnPointManager._instance._newGame)
+    //     {
+    //         Debug.Log("TopDownMovementController: set tot newgame Main");
+    //         SetPosition(SpawnPointManager._instance.GetSpawnPoint("Main").transform.position);
+    //     }
+    // }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("TopDownMovementContorllers: On load triggered");

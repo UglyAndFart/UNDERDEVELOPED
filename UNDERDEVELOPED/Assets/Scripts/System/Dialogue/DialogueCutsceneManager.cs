@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Playables;
+using UnityEditor;
 
 public class DialogueCutsceneManager : MonoBehaviour
 {
@@ -40,8 +41,16 @@ public class DialogueCutsceneManager : MonoBehaviour
 
     private bool isSkipping; // Flag to check if skipping is active
 
-    void Start()
+    private void Start()
     {
+         for (int i = 0; i < steps.Length; i++)
+        {
+            if (steps[i].stepType == StepType.Dialogue)
+            {
+                SetCharacterUIImage(steps[i]);
+            }
+        }
+
         dialogueBox.SetActive(false); // Hide the dialogue box initially
         skipConfirmationPanel.SetActive(false); // Ensure skip confirmation is hidden
 
@@ -153,6 +162,7 @@ public class DialogueCutsceneManager : MonoBehaviour
         ProcessCurrentStep(); // Process the next step
     }
 
+    // Create New Game and Load scene are Temp
     private void EndSequence()
     {
         dialogueBox.SetActive(false); // Hide the dialogue box at the end
@@ -199,6 +209,29 @@ public class DialogueCutsceneManager : MonoBehaviour
         {
             StopCoroutine(typingCoroutine); // Stop the typing coroutine
             typingCoroutine = StartCoroutine(TypeLine(steps[currentStepIndex])); // Resume typing the current line
+        }
+    }
+
+    public void SetNPCImage(Sprite sprite)
+    {
+        npcImage.sprite = sprite;
+    }
+
+    private void SetCharacterUIImage(Step step)
+    {
+        if (step.npcImages.Length == 0)
+        {
+            return;
+        }
+
+        for (int i = 0; i < step.npcImages.Length; i++)
+        {
+            if (step.npcImages[i] == null)
+            {
+                step.npcImages[i] = npcImage.sprite;
+                Debug.LogWarning("DialougeCutSceneManager: NPC UI Image set");
+            }
+
         }
     }
 }

@@ -33,7 +33,7 @@ public class CharacterSelector : MonoBehaviour
         Debug.Log("Selected Character Type:" + _player.GetCharacterType());
         _player.SetPlayerName("HelpME");
         //_characterPrefabLoader.EnableCharacter();
-        SceneLoader.LoadNextScene("Realm"); // temp
+        SceneLoader.LoadScene("Realm"); // temp
     }
 
     private void EnableCharacterSelection()

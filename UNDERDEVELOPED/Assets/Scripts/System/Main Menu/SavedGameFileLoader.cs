@@ -96,7 +96,7 @@ public class SavedGameFileLoader : MonoBehaviour
     public void PrepareLoadFile(int slotIndex)
     {
         DirectoryManager.SetCurrentSaveFolder(_savedFiles[slotIndex]);
-        SceneLoader.LoadNextScene("Retrieving Game File Data");
+        SceneLoader.LoadScene("Retrieving Game File Data");
     }
 
     // private void LoadGame()

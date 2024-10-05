@@ -50,7 +50,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void NewGame()
     {
-        SceneLoader.LoadNextScene("Computer Laboratory");
+        SceneLoader.LoadScene("Computer Laboratory");
     }
 
     public void OptionWindowOpen()

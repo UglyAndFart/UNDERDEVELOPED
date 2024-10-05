@@ -32,7 +32,7 @@ public class IngameOptions : MonoBehaviour
         }
 
         Destroy(SaveSystemManager._instance.transform.parent.gameObject);
-        SceneLoader.LoadNextScene("Main Menu");
+        SceneLoader.LoadScene("Main Menu");
 
         // Debug.Log($"Destroying {CharacterPrefabLoader._instance.GetCurrentCharacter().transform.parent.transform.parent.gameObject}");
         // Destroy(CharacterPrefabLoader._instance.GetCurrentCharacter().transform.parent.transform.parent.gameObject);

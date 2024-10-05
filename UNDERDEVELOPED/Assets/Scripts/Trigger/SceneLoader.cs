@@ -9,19 +9,31 @@ public class SceneLoader : MonoBehaviour
     [SerializeField]
     private float _switchDelay = 0;
     [SerializeField]
-    private bool _useTimer;
+    private bool _useTimer = false, _useTimelineEnd = false;
     [SerializeField]
     private string _sceneToLoad;
+    [SerializeField]
+    private TimelineEndChecker _timelineEndChecker;
 
-    private void Start()
+    private void Update()
     {
         if (_useTimer)
         {
             StartCoroutine(StartTimer());       
+            _useTimer = false;
+        }
+        else if (_useTimelineEnd)
+        {
+            if (_timelineEndChecker.GetTimelineOver())
+            {
+                StartCoroutine(StartTimer());
+                _useTimelineEnd = false;
+                Debug.LogWarning("Pee pooooo");
+            }
         }
     }
 
-    public static void LoadNextScene(string sceneToLoad)
+    public static void LoadScene(string sceneToLoad)
     {
         SceneManager.LoadScene(sceneToLoad);
     }
