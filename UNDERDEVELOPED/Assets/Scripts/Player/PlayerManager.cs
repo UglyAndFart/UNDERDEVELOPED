@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     private float _moveSpeed, _dashDistance, _dashDuration, _dashCooldown,
     _dashCost, _staminaRegenRate, _staminaRecoveryBufferTime = 0;
     private bool _canDash = true, _dashing = false;
+    private string _previousMap;
 
     private void Awake()
     {
@@ -184,7 +185,6 @@ public class PlayerManager : MonoBehaviour
         return _canDash;
     }
 
-    
     public void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "South Forest")
@@ -193,8 +193,15 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public string GetPreviousMap()
+    {
+        return _previousMap;
+    }
+
+    // Set the previousMap value with the current scene name
     private void OnDestroy()
     {
+        _previousMap = SceneManager.GetActiveScene().name;
         SceneManager.sceneLoaded -= OnSceneLoad;    
     }
 }

@@ -29,6 +29,19 @@ public class SaveSystemManager : MonoBehaviour
         return playerData;
     }
 
+    public static void SaveGame(Player player, GameEnvironment environment)
+    {
+        SaveSystem.SaveGame(player, environment);
+    }
+    
+    public static GameData LoadGame()
+    {
+        string saveFilePath = DirectoryManager.GetCurrentSaveFolder();
+        Debug.Log("From SaveSystemMnager: " + saveFilePath);
+        GameData gameData = SaveSystem.LoadGame(saveFilePath);
+        return gameData;
+    }
+
     private void OnDestroy()
     {
         if (_instance == this)

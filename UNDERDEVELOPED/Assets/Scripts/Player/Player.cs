@@ -34,26 +34,26 @@ public class Player : MonoBehaviour
 
     public void SetPlayer()
     {
-        PlayerData playerData = SaveSystemManager.LoadPlayer();
+        GameData gameData = SaveSystemManager.LoadGame();
         Vector3 position;
         
-        _health = playerData._health;
-        _moveSpeed = playerData._moveSpeed;
-        _stamina = playerData._stamina;
-        _physicalDamage = playerData._physicalDamage;
-        _magicDamage = playerData._magicDamage;
-        _dashDistance = playerData._dashDistance;
-        _dashCooldown = playerData._dashCooldown;
-        _dashDuration = playerData._dashDuration;
-        _staminaRecoveryBufferTime = playerData._staminaRecoveryBufferTime;
+        _health = gameData._health;
+        _moveSpeed = gameData._moveSpeed;
+        _stamina = gameData._stamina;
+        _physicalDamage = gameData._physicalDamage;
+        _magicDamage = gameData._magicDamage;
+        _dashDistance = gameData._dashDistance;
+        _dashCooldown = gameData._dashCooldown;
+        _dashDuration = gameData._dashDuration;
+        _staminaRecoveryBufferTime = gameData._staminaRecoveryBufferTime;
 
-        _name = playerData._name;
-        _map = playerData._map;
-        _characterType = playerData._characterType;
+        _name = gameData._name;
+        _map = gameData._map;
+        _characterType = gameData._characterType;
 
-        position.x = playerData.position[0];
-        position.y = playerData.position[1];
-        position.z = playerData.position[2];
+        position.x = gameData.position[0];
+        position.y = gameData.position[1];
+        position.z = gameData.position[2];
 
         _playerPosition = position;
 

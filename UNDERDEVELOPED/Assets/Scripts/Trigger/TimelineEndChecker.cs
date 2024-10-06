@@ -26,6 +26,12 @@ public class TimelineEndChecker : MonoBehaviour
         return _timelineOver;
     }
 
+    public void SetCutscene(PlayableDirector playableDirector)
+    {
+        _playableDirector = playableDirector;
+        _timelineOver = false;
+    }
+
     private void OnDestroy()
     {
         if (_playableDirector != null)

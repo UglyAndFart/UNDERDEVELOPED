@@ -13,7 +13,8 @@ public class SavedGameFileLoader : MonoBehaviour
     [SerializeField]
     private GameObject[] _saveSlots;
     private List<string> _savedFiles;
-    private PlayerData[] _savedGameInfos;
+    // private PlayerData[] _savedGameInfos;
+    private GameData[] _savedGameInfos;
     private string _savesFolderPath;
 
     private void Awake()
@@ -54,14 +55,16 @@ public class SavedGameFileLoader : MonoBehaviour
     //Iterate each file in string[] to display retrieved data
     public void DisplaySavedGameFile()
     {
-        _savedGameInfos = new PlayerData[_savedFiles.Count];
+        // _savedGameInfos = new PlayerData[_savedFiles.Count];
+        _savedGameInfos = new GameData[_savedFiles.Count];
 
         for (int i = 0; i < _savedFiles.Count; i++)
         {
             Debug.Log("path: " + _savedFiles[i]);
             DirectoryManager.SetCurrentSaveFolder(_savedFiles[i]);
             Debug.Log("Warp to: " + _savedFiles[i]);
-            _savedGameInfos[i] = SaveSystemManager.LoadPlayer();
+            // _savedGameInfos[i] = SaveSystemManager.LoadPlayer();
+            _savedGameInfos[i] = SaveSystemManager.LoadGame();
          
             _saveSlots[i].SetActive(true);
             

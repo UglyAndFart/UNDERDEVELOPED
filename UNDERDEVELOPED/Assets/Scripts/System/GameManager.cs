@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager _instance;
     private Player _player;
+    private GameEnvironment _environment;
     [SerializeField]
     private int _saveInterval = 10;
 
@@ -25,21 +26,39 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _player = Player._instance;
+        
         if (_player == null)
         {
-            Debug.Log("GameManager: Player Not Found");
+            Debug.LogWarning("GameManager: Player Not Found");
+        }
+
+        _environment = GameEnvironment._instance;
+        
+        if (_environment == null)
+        {
+            Debug.LogWarning("GameManager: GameEnvironment Not Found");
         }
 
         SceneManager.sceneLoaded += OnSceneLoad;
-        StartCoroutine(PlayerDataAutoSave());
+        // StartCoroutine(PlayerDataAutoSave());
     }
 
-    private IEnumerator PlayerDataAutoSave()
+    // private IEnumerator PlayerDataAutoSave()
+    // {
+    //     while(true)
+    //     {
+    //         SaveSystemManager.SavePlayer(_player);
+    //         Debug.Log("PlayerData saved");
+    //         yield return new WaitForSeconds(_saveInterval);
+    //     }
+    // }
+
+    private IEnumerator GameDataAutoSave()
     {
         while(true)
         {
-            SaveSystemManager.SavePlayer(_player);
-            Debug.Log("PlayerData saved");
+            SaveSystemManager.SaveGame(_player, _environment);
+            Debug.Log("GameData saved");
             yield return new WaitForSeconds(_saveInterval);
         }
     }
@@ -61,7 +80,8 @@ public class GameManager : MonoBehaviour
             // HUDManager._instance.transform.parent.gameObject.SetActive(true);
             // Inventory._instance.transform.parent.gameObject.SetActive(true);
 
-            SaveSystemManager.SavePlayer(_player);
+            // SaveSystemManager.SavePlayer(_player);
+            SaveSystemManager.SaveGame(_player, _environment);
         }
     }
 
@@ -71,7 +91,8 @@ public class GameManager : MonoBehaviour
             || !string.IsNullOrWhiteSpace(DirectoryManager.GetCurrentSaveFolder())))
         {
             Debug.Log("GameManager: saved onDestroy");
-            SaveSystemManager.SavePlayer(_player);        
+            // SaveSystemManager.SavePlayer(_player);
+            SaveSystemManager.SaveGame(_player, _environment);        
         }
 
         if (_instance == this)

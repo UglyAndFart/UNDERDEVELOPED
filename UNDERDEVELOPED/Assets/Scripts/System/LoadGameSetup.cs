@@ -11,6 +11,7 @@ public class LoadGameSetup : MonoBehaviour
     private void Awake()
     {
         PlayerManager._instance.enabled = true;
+        GameEnvironment._instance.SetGameEnvironment();
         Player._instance.SetPlayer();
         CharacterPrefabLoader._instance.EnableCharacter();
         TopDownMovementController._instance.enabled = true;

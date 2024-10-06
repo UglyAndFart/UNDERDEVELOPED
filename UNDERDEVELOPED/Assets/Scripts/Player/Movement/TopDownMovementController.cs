@@ -205,10 +205,29 @@ public class TopDownMovementController : MonoBehaviour
                 SetPosition(SpawnPointManager._instance.GetSpawnPoint("Main").transform.position);
             }
 
+            if (_playerManager.GetPreviousMap() != null && _playerManager.GetPreviousMap() == "SF2");
+            {
+                SetPosition(SpawnPointManager._instance.GetSpawnPoint("From SF2").transform.position);
+            }
+
             // Debug.Log("OnSceneLoaded from TopDownMovement");
             // //transform.position = new Vector3(658.77f, 289.22f, 0);
             // GameObject spawnpoint = PlayerGameObjectFinder.FindSpawnPoint("Player Deault Spawnpoint");
             // transform.position = spawnpoint.transform.position;
+        }
+        else if (scene.name == "SF2")
+        {
+            if (_playerManager.GetPreviousMap() != null && _playerManager.GetPreviousMap() == "South Forest")
+            {
+                SetPosition(SpawnPointManager._instance.GetSpawnPoint("From South Forest").transform.position);
+            }
+        }
+        else if (scene.name == "Outside Town")
+        {
+            if (_playerManager.GetPreviousMap() != null && _playerManager.GetPreviousMap() == "SF2")
+            {
+                SetPosition(SpawnPointManager._instance.GetSpawnPoint("From SF2").transform.position);
+            }
         }
         // else if (scene.name == "Realm")
         // {

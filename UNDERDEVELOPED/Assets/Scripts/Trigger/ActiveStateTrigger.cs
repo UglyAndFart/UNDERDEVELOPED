@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ActiveStateTrigger : MonoBehaviour
 {
-   private void OnEnable()
-   {
+   [SerializeField]
+   private GameObject _gameObject;
+   [SerializeField]
+   private bool _activeState;
 
-   }
-
-   private void OnDisable()
+   private void OnTriggerEnter2D(Collider2D col)
    {
-    
+      _gameObject.SetActive(_gameObject);
    }
 }

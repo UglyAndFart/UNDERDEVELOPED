@@ -17,6 +17,7 @@ public class NewGameFileManager : MonoBehaviour
     {
         CharacterPrefabLoader._instance.EnableCharacter();
         PlayerManager._instance.enabled = true;
+        GameEnvironmentManager._instance.enabled = true;
         // TopDownMovementController._instance.enabled = true;
         // GameManager._instance.enabled = true;
 
@@ -87,12 +88,13 @@ public class NewGameFileManager : MonoBehaviour
         string playerName = Player._instance.GetPlayerName();
         string path = Path.Combine(DirectoryManager.GetCurrentSaveFolder(), $"{playerName}.plyr");
         DirectoryManager.SetCurrentSaveFolder(path);
-        SaveSystemManager.SavePlayer(Player._instance);
+        // SaveSystemManager.SavePlayer(Player._instance);
+        SaveSystemManager.SaveGame(Player._instance, GameEnvironment._instance);    
 
         TopDownMovementController._instance.enabled = true;
         GameManager._instance.enabled = true;
 
-        PlayerStatUpdater._instance.enabled = true;
+        // PlayerStatUpdater._instance.enabled = true;
         // ChallengeManager._instance.enabled = true;
         DatabaseManager._instance.enabled = true;
         HotkeysReader._instance.enabled = true;
@@ -101,9 +103,9 @@ public class NewGameFileManager : MonoBehaviour
     }
 
     //Create the save file and folder before the next scene loads
-    // private void OnDestroy()
-    // {
-    //     Debug.Log("NewGameFileManager: OnDestroy Trigger");
-    //     CreateNewGame();    
-    // }
+    private void OnDestroy()
+    {
+        PlayerStatUpdater._instance.enabled = true; 
+        IngameOptions._instance.enabled = true;
+    }
 }

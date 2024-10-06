@@ -6745,9 +6745,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30672446d0beca64391a60b9c681eded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bossesState: 
-  _chestsState: 
-  _potsState: 
+  _southForestCutscenes: 00
+  _sf2: 
 --- !u!1 &1420286303
 GameObject:
   m_ObjectHideFlags: 0
