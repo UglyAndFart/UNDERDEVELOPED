@@ -2,8 +2,6 @@ using UnityEngine;
 using TMPro;
 using System.IO;
 using System;
-using System.Text;
-using UnityEditor.ShaderGraph.Internal;
 
 public class CodeRunner : MonoBehaviour
 {
