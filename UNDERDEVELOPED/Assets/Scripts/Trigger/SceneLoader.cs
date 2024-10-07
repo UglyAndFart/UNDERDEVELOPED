@@ -9,15 +9,29 @@ public class SceneLoader : MonoBehaviour
     [SerializeField]
     private float _switchDelay = 0;
     [SerializeField]
-    private bool _useTimer = false, _useTimelineEnd = false;
+    private bool _useTimer = false, _useTimelineEnd = false, _useInteract = false;
     [SerializeField]
     private string _sceneToLoad;
     [SerializeField]
     private TimelineEndChecker _timelineEndChecker;
+    private bool _inRange = false;
 
     private void Update()
-    {
-        if (_useTimer)
+    {   
+        if (_useInteract)
+        {
+            if (!_inRange)
+            {
+                return;
+            }
+
+            if (Input.GetButtonDown("Interact"))
+            {
+                StartCoroutine(StartTimer());
+                _useInteract = false;
+            }
+        }
+        else if (_useTimer)
         {
             StartCoroutine(StartTimer());       
             _useTimer = false;
@@ -49,5 +63,21 @@ public class SceneLoader : MonoBehaviour
     public void SetSceneToLoad(string sceneToLoad)
     {
         _sceneToLoad = sceneToLoad;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _inRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _inRange = false;
+        }
     }
 }

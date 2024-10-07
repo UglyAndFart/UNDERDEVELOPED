@@ -66,12 +66,12 @@ namespace Cainos.PixelArtTopDown_Basic
 
         private void DisablePlayerControls()
         {
-            _activeUI = false;
+            _activeUI = true;
         }
 
         private void EnablePlayerControls()
         {
-            _activeUI = true;
+            _activeUI = false;
         }
 
         private void OnDestroy()

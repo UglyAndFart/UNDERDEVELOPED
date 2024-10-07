@@ -185,12 +185,9 @@ public class PlayerManager : MonoBehaviour
         return _canDash;
     }
 
-    public void OnSceneLoad(Scene scene, LoadSceneMode mode)
+    public void SetPreviousMap(string previousMap)
     {
-        if (scene.name == "South Forest")
-        {
-            _player.SetCurrentMap(scene.name);
-        }
+        _previousMap = previousMap;
     }
 
     public string GetPreviousMap()
@@ -198,10 +195,44 @@ public class PlayerManager : MonoBehaviour
         return _previousMap;
     }
 
+    public void OnSceneLoad(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "South Forest")
+        {
+            _player.SetCurrentMap(scene.name);
+        }
+        else if (scene.name == "SF 2")
+        {
+            _player.SetCurrentMap(scene.name);
+        }
+        else if (scene.name == "Outside Town")
+        {
+            _player.SetCurrentMap(scene.name);
+        }
+        else if (scene.name == "Town")
+        {
+            _player.SetCurrentMap(scene.name);
+        }
+    }
+
     // Set the previousMap value with the current scene name
     private void OnDestroy()
     {
-        _previousMap = SceneManager.GetActiveScene().name;
+        // string currentScene = SceneManager.GetActiveScene().name;
+        
+        // if (currentScene == "South Forest")
+        // {
+        //     _previousMap = currentScene;
+        // }
+        // else if (currentScene == "SF 2")
+        // {
+        //     _previousMap = currentScene;
+        // }
+        // else if (currentScene == "Outside Town")
+        // {
+        //     _previousMap = currentScene;
+        // }
+            
         SceneManager.sceneLoaded -= OnSceneLoad;    
     }
 }

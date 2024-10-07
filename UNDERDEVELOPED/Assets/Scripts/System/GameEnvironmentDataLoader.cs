@@ -31,6 +31,11 @@ public class GameEnvironmentDataLoader : MonoBehaviour
 
     private void EnableCutscene()
     {
+        if (_cutscenesObject == null)
+        {
+            return;
+        }
+
         List<List<bool>> cutscenes = GameEnvironment._instance.GetCutsceneStates();
         
         for (int i = 0; i < _cutscenesObject.Length; i++)
@@ -46,7 +51,17 @@ public class GameEnvironmentDataLoader : MonoBehaviour
 
     private void CutsceneEnd()
     {
+        if (_timelineEndChecker == null)
+        {
+            return;
+        }
+
         if (!_timelineEndChecker.GetTimelineOver())
+        {
+            return;
+        }
+
+        if (_cutscenes == null)
         {
             return;
         }
@@ -71,18 +86,40 @@ public class GameEnvironmentDataLoader : MonoBehaviour
         {
             area = 0;
         }
-        else if (scene.name == "SF2")
+        else if (scene.name == "SF 2")
         {
             area = 1;
         }
-        else if (scene.name == "Outside town")
+        else if (scene.name == "Outside Town")
         {
             area = 2;
+        }
+        else if (scene.name == "Town")
+        {
+            area = 3;
         }
     }
 
     private void OnDestroy()
     {
-
+        // PlayerManager._instance.SetPreviousMap(SceneManager.GetActiveScene().name);
+        string currentScene = SceneManager.GetActiveScene().name;
+        
+        if (currentScene == "South Forest")
+        {
+            PlayerManager._instance.SetPreviousMap(currentScene);
+        }
+        else if (currentScene == "SF 2")
+        {
+            PlayerManager._instance.SetPreviousMap(currentScene);
+        }
+        else if (currentScene == "Outside Town")
+        {
+            PlayerManager._instance.SetPreviousMap(currentScene);
+        }
+        else if (currentScene == "Town")
+        {
+            PlayerManager._instance.SetPreviousMap(currentScene);
+        }
     }
 }

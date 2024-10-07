@@ -77,6 +77,11 @@ public class DirectoryManager : MonoBehaviour
         _gameFolderPath = gameFolderPath;
     }
 
+    public static void DeleteSaveFolder()
+    {
+        Directory.Delete(_currentSaveFolder);
+    }
+
     //saves the current gameFolderPath to playerprefs before exiting
     private void OnApplicationQuit()
     {

@@ -30,7 +30,7 @@ public class InitialQuestTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && _playerInRange)
+        if (Input.GetButtonDown("Interact") && _playerInRange)
         {
             if (_computerNumber == 1 && !_windowOpen)
             {

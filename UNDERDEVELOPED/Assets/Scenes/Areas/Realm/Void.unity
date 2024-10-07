@@ -2356,7 +2356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &845549454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4039,6 +4039,7 @@ GameObject:
   - component: {fileID: 1296249643}
   - component: {fileID: 1296249645}
   - component: {fileID: 1296249644}
+  - component: {fileID: 1296249646}
   m_Layer: 0
   m_Name: Scene Manager
   m_TagString: Untagged
@@ -4090,6 +4091,25 @@ MonoBehaviour:
   _objectsToBeDisabled: []
   _behavioursToBeEnabled:
   - {fileID: 1168020870}
+  _timelineEndChecker: {fileID: 1296249644}
+  _enableDelay: 0
+  _disableDelay: 0
+--- !u!114 &1296249646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296249642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4989e9055929b0941be2a4dd874f0e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _switchDelay: 2
+  _useTimer: 0
+  _useTimelineEnd: 1
+  _sceneToLoad: South Forest
   _timelineEndChecker: {fileID: 1296249644}
 --- !u!1 &1363201400
 GameObject:

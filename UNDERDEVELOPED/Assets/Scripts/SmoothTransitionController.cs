@@ -12,15 +12,16 @@ public class SmoothTransitionController : MonoBehaviour
     private Behaviour[] _behavioursToBeEnabled;
     [SerializeField]
     private TimelineEndChecker _timelineEndChecker;
+    [SerializeField]
+    private float _enableDelay, _disableDelay;
     private bool _objectsActivated = true;
     
     private void Update()
     {
         if (_timelineEndChecker.GetTimelineOver() && _objectsActivated)
         {
-            EnableObjects();
-            DisableObjects();
-            EnableBehaviours();
+            StartCoroutine(Enable());
+            StartCoroutine(Disable());
             _objectsActivated = false;
         }
     }
@@ -62,5 +63,20 @@ public class SmoothTransitionController : MonoBehaviour
         {
             _behavioursToBeEnabled[i].enabled = true;
         }
+    }
+
+    private IEnumerator Enable()
+    {
+        yield return new WaitForSeconds(_enableDelay);
+        EnableObjects();
+        EnableBehaviours();
+        StopCoroutine(Enable());
+    }
+
+    private IEnumerator Disable()
+    {
+        yield return new WaitForSeconds(_disableDelay);
+        DisableObjects();
+        StopCoroutine(Disable());
     }
 }

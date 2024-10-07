@@ -40,7 +40,9 @@ public class DialogueCutsceneManager : MonoBehaviour
     public Button skipButton; // Button for skipping dialogues
 
     private bool isSkipping; // Flag to check if skipping is active
-
+    [SerializeField]
+    private float _startDelay;
+    
     private void Start()
     {
          for (int i = 0; i < steps.Length; i++)
@@ -59,7 +61,14 @@ public class DialogueCutsceneManager : MonoBehaviour
         noButton.onClick.AddListener(CloseConfirmation);
         skipButton.onClick.AddListener(ShowSkipConfirmation);
 
-        StartSequence(); // Start the sequence immediately
+        if (_startDelay > 0)
+        {
+            StartCoroutine(StartSequenceWithDelay());
+        }
+        else
+        {
+            StartSequence(); // Start the sequence immediately
+        }
     }
 
     public void StartSequence()
@@ -98,7 +107,11 @@ public class DialogueCutsceneManager : MonoBehaviour
 
     private IEnumerator TypeLine(Step step)
     {
-        nameText.text = step.npcNames[currentLineIndex]; // Update the name text
+        if (step.npcNames != null)
+        {
+            nameText.text = step.npcNames[currentLineIndex]; // Update the name text
+        }
+
         dialogueText.text = ""; // Clear previous dialogue text
 
         foreach (char c in step.dialogueLines[currentLineIndex])
@@ -210,6 +223,13 @@ public class DialogueCutsceneManager : MonoBehaviour
             StopCoroutine(typingCoroutine); // Stop the typing coroutine
             typingCoroutine = StartCoroutine(TypeLine(steps[currentStepIndex])); // Resume typing the current line
         }
+    }
+
+    private IEnumerator StartSequenceWithDelay()
+    {
+        yield return new WaitForSeconds(_startDelay);
+        StartSequence();
+        StopCoroutine(StartSequenceWithDelay());
     }
 
     public void SetNPCImage(Sprite sprite)

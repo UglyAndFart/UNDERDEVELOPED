@@ -50,6 +50,7 @@ public class SpawnPointManager : MonoBehaviour
         
         if (spawnPointStorage == null)
         {
+            Debug.LogWarning("SpawnPointManager: Is null");
             return;
         }
 

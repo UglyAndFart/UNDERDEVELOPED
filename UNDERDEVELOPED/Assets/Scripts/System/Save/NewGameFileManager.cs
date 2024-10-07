@@ -98,7 +98,7 @@ public class NewGameFileManager : MonoBehaviour
         // ChallengeManager._instance.enabled = true;
         DatabaseManager._instance.enabled = true;
         HotkeysReader._instance.enabled = true;
-        IngameOptions._instance.enabled = true;
+        // IngameOptions._instance.enabled = true;
         ChallengeManagerReyal._instance.enabled = true;
     }
 

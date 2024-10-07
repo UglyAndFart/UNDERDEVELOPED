@@ -48,7 +48,7 @@ public class ChallengeManagerReyal : MonoBehaviour
     //might be the promblem
     private void Update()
     {
-        if (_playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (_playerInRange && Input.GetButtonDown("Interact"))
         {
             Debug.Log("ChallengeManagerReyal: Player Inrange");
             _hudManager.OpenCodeEditor();

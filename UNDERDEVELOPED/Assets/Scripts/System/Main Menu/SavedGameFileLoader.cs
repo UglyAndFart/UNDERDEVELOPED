@@ -11,6 +11,8 @@ public class SavedGameFileLoader : MonoBehaviour
     [SerializeField]
     private Button _continue;
     [SerializeField]
+    private GameObject _overwriteAlert;
+    [SerializeField]
     private GameObject[] _saveSlots;
     private List<string> _savedFiles;
     // private PlayerData[] _savedGameInfos;
@@ -27,6 +29,12 @@ public class SavedGameFileLoader : MonoBehaviour
     private void Start()
     {
         RetrieveSavedGameFile();
+    }
+
+    public void LoadAllGameFile()
+    {
+        RetrieveSavedGameFile();
+        DisplaySavedGameFile();
     }
 
     //Retrieve the .plyr file inside currentSavesFilepath
@@ -53,7 +61,7 @@ public class SavedGameFileLoader : MonoBehaviour
     }
 
     //Iterate each file in string[] to display retrieved data
-    public void DisplaySavedGameFile()
+    private void DisplaySavedGameFile()
     {
         // _savedGameInfos = new PlayerData[_savedFiles.Count];
         _savedGameInfos = new GameData[_savedFiles.Count];
@@ -82,6 +90,15 @@ public class SavedGameFileLoader : MonoBehaviour
         // }
     }
     
+    public void CheckForEmptySlot()
+    {
+        if (_savedFiles.Count >= 5)
+        {
+            _overwriteAlert.SetActive(true);
+            return;
+        }
+    }
+
     private void DisableContinue()
     {
         _continue.enabled = false;
@@ -98,9 +115,21 @@ public class SavedGameFileLoader : MonoBehaviour
     //Set the slot path as currentsavefolder Then load the next scene
     public void PrepareLoadFile(int slotIndex)
     {
+        CheckForEmptySlot();
+
         DirectoryManager.SetCurrentSaveFolder(_savedFiles[slotIndex]);
         SceneLoader.LoadScene("Retrieving Game File Data");
     }
+
+    // public void SelectFileToOverwrite(int slotIndex)
+    // {
+    //     DirectoryManager.SetCurrentSaveFolder(_savedFiles[slotIndex]);
+    // }
+
+    // public void OverwriteFile()
+    // {
+    //     SceneLoader.LoadScene("Computer Laboratory");
+    // }
 
     // private void LoadGame()
     // {

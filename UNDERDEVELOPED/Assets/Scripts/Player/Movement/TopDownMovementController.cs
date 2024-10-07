@@ -194,7 +194,9 @@ public class TopDownMovementController : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("TopDownMovementContorllers: On load triggered");
+        string previousMap = _playerManager.GetPreviousMap();
+        Debug.Log("TopDownMovementContorllers: " + previousMap);
+
         if (scene.name == "South Forest")
         {
             Debug.Log("TopDownMovementController: on South Forest load");
@@ -203,11 +205,13 @@ public class TopDownMovementController : MonoBehaviour
             {
                 Debug.Log("TopDownMovementController: set tot newgame Main");
                 SetPosition(SpawnPointManager._instance.GetSpawnPoint("Main").transform.position);
+                SpawnPointManager._instance._newGame = false;
+                return;
             }
 
-            if (_playerManager.GetPreviousMap() != null && _playerManager.GetPreviousMap() == "SF2");
+            if (previousMap != null && previousMap == "SF 2")
             {
-                SetPosition(SpawnPointManager._instance.GetSpawnPoint("From SF2").transform.position);
+                SetPosition(SpawnPointManager._instance.GetSpawnPoint("From SF 2").transform.position);
             }
 
             // Debug.Log("OnSceneLoaded from TopDownMovement");
@@ -215,18 +219,29 @@ public class TopDownMovementController : MonoBehaviour
             // GameObject spawnpoint = PlayerGameObjectFinder.FindSpawnPoint("Player Deault Spawnpoint");
             // transform.position = spawnpoint.transform.position;
         }
-        else if (scene.name == "SF2")
+        else if (scene.name == "SF 2")
         {
-            if (_playerManager.GetPreviousMap() != null && _playerManager.GetPreviousMap() == "South Forest")
+            Debug.Log("TopDownMovementController: SF 2 loaded");
+            if (previousMap != null && previousMap == "South Forest")
             {
+                Debug.Log("TopDownMovementController: South Forest point found");
                 SetPosition(SpawnPointManager._instance.GetSpawnPoint("From South Forest").transform.position);
+            }
+            else if (previousMap != null && previousMap == "Outside Town")
+            {
+                SetPosition(SpawnPointManager._instance.GetSpawnPoint("From Outside Town").transform.position);
             }
         }
         else if (scene.name == "Outside Town")
         {
-            if (_playerManager.GetPreviousMap() != null && _playerManager.GetPreviousMap() == "SF2")
+            if (previousMap != null && previousMap == "SF 2")
             {
-                SetPosition(SpawnPointManager._instance.GetSpawnPoint("From SF2").transform.position);
+                SetPosition(SpawnPointManager._instance.GetSpawnPoint("From SF 2").transform.position);
+            }
+            else if (previousMap != null && previousMap == "Town")
+            {
+                SetPosition(SpawnPointManager._instance.GetSpawnPoint("From Town").transform.position);
+                CharacterPrefabLoader._instance.GetCurrentCharacter().GetComponent<Rigidbody2D>().gravityScale = 0;
             }
         }
         // else if (scene.name == "Realm")

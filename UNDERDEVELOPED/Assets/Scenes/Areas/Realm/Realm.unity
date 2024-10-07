@@ -353,7 +353,7 @@ MonoBehaviour:
   _switchDelay: 0
   _useTimer: 0
   _useTimelineEnd: 1
-  _sceneToLoad: South Forest
+  _sceneToLoad: Void
   _timelineEndChecker: {fileID: 102937437}
 --- !u!114 &102937436
 MonoBehaviour:
@@ -369,9 +369,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _objectsToBeEnabled: []
   _objectsToBeDisabled: []
-  _behavioursToBeEnabled:
-  - {fileID: 1876054925}
+  _behavioursToBeEnabled: []
   _timelineEndChecker: {fileID: 102937437}
+  _enableDelay: 0
+  _disableDelay: 0
 --- !u!114 &102937437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,6 +667,7 @@ MonoBehaviour:
   yesButton: {fileID: 206307870}
   noButton: {fileID: 925843715}
   skipButton: {fileID: 2132532973}
+  _startDelay: 0
 --- !u!95 &165730676 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7954695495422552359, guid: ee03ab5ee9d701f4dbaf6c9eaf2c65fd,
@@ -16807,7 +16809,6 @@ Transform:
   m_Children:
   - {fileID: 102937434}
   - {fileID: 584013831}
-  - {fileID: 1876054924}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1298053500
@@ -22849,50 +22850,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2010561785}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1876054923
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1876054924}
-  - component: {fileID: 1876054925}
-  m_Layer: 0
-  m_Name: New game file handler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1876054924
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876054923}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1293882333}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1876054925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876054923}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a941f8bef3ad2184f8ce3ae5027a04ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1885388472 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7115117860178749493, guid: 0c7ad803ad1b78d4fb6436217dea1f2e,
