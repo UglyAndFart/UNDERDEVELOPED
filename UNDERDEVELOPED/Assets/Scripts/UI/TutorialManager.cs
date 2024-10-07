@@ -5,38 +5,54 @@ using TMPro;
 public class TutorialManager : MonoBehaviour
 {
     [Header("UI Elements")]
-    public GameObject tutorialPanel;          // Main Tutorial Panel
-    public Button closeButton;                // Button to close the panel
-    public TMP_Text tutorialText;             // Text at the top that changes with category
-    public Button[] categoryButtons;          // Buttons for categories like UI, Combat, etc.
-    public GameObject scrollViewContent;      // Content inside the Scroll View for toggle buttons
-    public GameObject toggleButtonPrefab;     // Prefab for the toggle buttons
-    public TMP_Text detailsText;              // Text in the details panel
-    public GameObject detailsPanel;           // Panel that shows the details
+    public GameObject tutorialPanel;
+    public Button closeButton;
+    public TMP_Text tutorialText;
+    public Button[] categoryButtons;
+    public GameObject scrollViewContent;
+    public GameObject toggleButtonPrefab;
+    public TMP_Text detailsText;
+    public GameObject detailsPanel;
+    public Image detailsImage;
+    public Button nextButton;
+    public Button backButton;
+    
+    [Header("Search Bar")]
+    public TMP_InputField searchBar;  // The search input field
 
     [Header("Tutorial Data")]
-    public TutorialCategory[] tutorialCategories;  // Array to hold all tutorial categories and topics
+    public TutorialCategory[] tutorialCategories;
 
-    private Toggle currentToggle;             // Keeps track of the active toggle
+    private Toggle currentToggle;
+    private int additionalInfoIndex = 0;
+    private TutorialTopic currentTopic;
+    private string currentSearchQuery = "";  // Holds the current search query
+    private TutorialCategory currentCategory; // Holds the currently selected category
 
     void Start()
     {
-        // Initialize the tutorial panel (hide on start)
         tutorialPanel.SetActive(false);
 
-        // Assign button listeners for each category
         foreach (Button categoryButton in categoryButtons)
         {
             categoryButton.onClick.AddListener(() => OnCategorySelected(categoryButton));
         }
 
-        // Assign listener for the close button
         closeButton.onClick.AddListener(CloseTutorialPanel);
+        nextButton.onClick.AddListener(ShowNextAdditionalInfo);
+        backButton.onClick.AddListener(ShowPreviousAdditionalInfo);
+
+        // Listener for search bar input
+        searchBar.onValueChanged.AddListener(OnSearchInputChanged);
+
+        nextButton.gameObject.SetActive(false);
+        backButton.gameObject.SetActive(false);
     }
 
     public void OpenTutorialPanel()
     {
         tutorialPanel.SetActive(true);
+        OnCategorySelected(categoryButtons[0]);
     }
 
     public void CloseTutorialPanel()
@@ -46,60 +62,141 @@ public class TutorialManager : MonoBehaviour
 
     void OnCategorySelected(Button selectedCategoryButton)
     {
+        string categoryName = selectedCategoryButton.name;
+        currentCategory = GetCategoryByName(categoryName);
+
+        if (currentCategory != null)
+        {
+            tutorialText.text = currentCategory.categoryName;
+            UpdateScrollView();
+        }
+    }
+
+    // Update the scroll view based on the current category and search query
+    void UpdateScrollView()
+    {
         // Clear the scroll view content first
         foreach (Transform child in scrollViewContent.transform)
         {
             Destroy(child.gameObject);
         }
 
-        // Find the corresponding category
-        string categoryName = selectedCategoryButton.name;
-        TutorialCategory selectedCategory = GetCategoryByName(categoryName);
-        
-        if (selectedCategory == null)
+        if (currentCategory == null)
         {
-            Debug.LogError($"Category not found: {categoryName}");
-            return; // Exit if the category is not found
+            return;
         }
 
-        // Update the tutorial text to the selected category
-        tutorialText.text = selectedCategory.categoryName;
-
-        // Populate scroll view with topics for this category
-        foreach (var topic in selectedCategory.topics)
+        // Populate scroll view with filtered topics
+        Toggle firstToggle = null;
+        foreach (var topic in currentCategory.topics)
         {
-            GameObject toggleButtonObj = Instantiate(toggleButtonPrefab, scrollViewContent.transform);
-            Toggle toggle = toggleButtonObj.GetComponent<Toggle>();
-            TMP_Text toggleText = toggleButtonObj.GetComponentInChildren<TMP_Text>();
-            toggleText.text = topic.topicName;  // Update toggle text
-            
-            // Debugging the toggle text
-            Debug.Log($"Creating toggle for topic: {toggleText.text}");
-
-            // Add listener for the toggle button
-            toggle.onValueChanged.AddListener(delegate
+            if (IsTopicMatchingSearch(topic))  // Filter topics based on search input
             {
-                if (toggle.isOn)
+                GameObject toggleButtonObj = Instantiate(toggleButtonPrefab, scrollViewContent.transform);
+                Toggle toggle = toggleButtonObj.GetComponent<Toggle>();
+                TMP_Text toggleText = toggleButtonObj.GetComponentInChildren<TMP_Text>();
+                toggleText.text = topic.topicName;
+
+                toggle.onValueChanged.AddListener(delegate
                 {
-                    UpdateDetailsPanel(topic);
-                    if (currentToggle != null && currentToggle != toggle)
+                    if (toggle.isOn)
                     {
-                        currentToggle.isOn = false;
+                        UpdateDetailsPanel(topic);
+                        if (currentToggle != null && currentToggle != toggle)
+                        {
+                            currentToggle.isOn = false;
+                        }
+                        currentToggle = toggle;
                     }
-                    currentToggle = toggle;
+                });
+
+                if (firstToggle == null)
+                {
+                    firstToggle = toggle;
                 }
-            });
+            }
+        }
+
+        // Automatically select the first matching topic if available
+        if (firstToggle != null)
+        {
+            firstToggle.isOn = true;
         }
     }
 
-    // Function to update details panel with selected topic
+    // Function to check if the topic matches the search input
+    bool IsTopicMatchingSearch(TutorialTopic topic)
+    {
+        if (string.IsNullOrEmpty(currentSearchQuery))
+        {
+            return true; // If no search query, show all topics
+        }
+
+        return topic.topicName.ToLower().Contains(currentSearchQuery.ToLower());
+    }
+
+    // Listener for search input changes
+    void OnSearchInputChanged(string newSearchQuery)
+    {
+        currentSearchQuery = newSearchQuery;  // Update the current search query
+        UpdateScrollView();  // Re-filter topics based on the current search query
+    }
+
     void UpdateDetailsPanel(TutorialTopic selectedTopic)
     {
-        detailsText.text = selectedTopic.details;
-        detailsPanel.SetActive(true);
+        currentTopic = selectedTopic;
+        additionalInfoIndex = 0;
+        UpdateAdditionalInfo();
     }
 
-    // Helper function to get category by name
+    void UpdateAdditionalInfo()
+    {
+        if (additionalInfoIndex == 0)
+        {
+            detailsText.text = currentTopic.details;
+            detailsImage.sprite = currentTopic.image;
+            detailsImage.gameObject.SetActive(currentTopic.image != null);
+        }
+        else
+        {
+            if (additionalInfoIndex - 1 < currentTopic.additionalDetails.Length)
+            {
+                detailsText.text = currentTopic.additionalDetails[additionalInfoIndex - 1];
+            }
+
+            if (additionalInfoIndex - 1 < currentTopic.additionalImages.Length)
+            {
+                detailsImage.sprite = currentTopic.additionalImages[additionalInfoIndex - 1];
+                detailsImage.gameObject.SetActive(true);
+            }
+            else
+            {
+                detailsImage.gameObject.SetActive(false);
+            }
+        }
+
+        nextButton.gameObject.SetActive(additionalInfoIndex < currentTopic.additionalDetails.Length);
+        backButton.gameObject.SetActive(additionalInfoIndex > 0);
+    }
+
+    void ShowNextAdditionalInfo()
+    {
+        if (additionalInfoIndex < currentTopic.additionalDetails.Length)
+        {
+            additionalInfoIndex++;
+            UpdateAdditionalInfo();
+        }
+    }
+
+    void ShowPreviousAdditionalInfo()
+    {
+        if (additionalInfoIndex > 0)
+        {
+            additionalInfoIndex--;
+            UpdateAdditionalInfo();
+        }
+    }
+
     TutorialCategory GetCategoryByName(string categoryName)
     {
         foreach (var category in tutorialCategories)
@@ -116,13 +213,16 @@ public class TutorialManager : MonoBehaviour
 [System.Serializable]
 public class TutorialCategory
 {
-    public string categoryName;   // Name of the category (e.g., "UI", "Combat")
-    public TutorialTopic[] topics; // Array of topics in the category
+    public string categoryName;
+    public TutorialTopic[] topics;
 }
 
 [System.Serializable]
 public class TutorialTopic
 {
-    public string topicName;  // Name of the topic (e.g., "Basic Attacks")
-    public string details;    // Detailed description or information for the topic
+    public string topicName;
+    public string details;
+    public Sprite image;
+    public string[] additionalDetails;
+    public Sprite[] additionalImages;
 }
