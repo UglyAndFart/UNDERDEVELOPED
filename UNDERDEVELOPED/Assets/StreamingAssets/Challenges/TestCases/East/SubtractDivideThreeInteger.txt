@@ -1,0 +1,5 @@
+        //Subtract num3 from num2 then divide num1
+        public static int PlayerCodeTest(int num1, int num2, int num3)
+        {
+            return (num3 - num2) / num1;
+        }

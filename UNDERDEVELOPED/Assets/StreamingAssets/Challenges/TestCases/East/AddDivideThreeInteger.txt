@@ -1,0 +1,6 @@
+        //Add Num1 with Num2 Then Divide with num3
+
+        public static int PlayerCodeTest(int num1, int num2, int num3)
+        {
+
+        }

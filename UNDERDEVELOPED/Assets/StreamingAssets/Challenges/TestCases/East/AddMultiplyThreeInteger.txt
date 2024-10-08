@@ -1,0 +1,6 @@
+        //Add Num3 with Num1 and Multiply Num2
+
+        public static int PlayerCodeTest(int num1, int num2, int num3)
+        {
+
+        }
