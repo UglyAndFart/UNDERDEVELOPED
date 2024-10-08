@@ -1,0 +1,33 @@
+using System;
+using System.Security.Cryptography.X509Certificates;
+
+namespace Mynamespace
+{
+    public class PlayerCodeTestcase
+    {
+        static void Main(string[] args)
+        {
+            PlayerCodeTestChecker();
+        }
+
+        public static void PlayerCodeTestChecker()
+        {
+            int[] inputs = { 1, 4, 90, 45, 201, 320, 916, 20, 23, 12 };
+            int[] outputs = { 2, 5, 91, 46, 202, 321, 917, 21, 24, 13 };
+
+            for (int i = 0; i < inputs.Length; i++)
+            {
+                int result = PlayerCodeTest(inputs[i]);
+    
+                if (result == outputs[i])
+                {
+                    Console.WriteLine($"Testcase {i + 1} passed!");
+                }
+                else
+                {
+                    Console.WriteLine($"Incorrect output at TestCase {i + 1}: expected {outputs[i]}, got {result}");
+                }
+            }
+        }
+    }
+}

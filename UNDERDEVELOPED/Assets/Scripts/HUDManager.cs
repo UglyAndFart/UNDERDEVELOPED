@@ -24,6 +24,8 @@ public class HUDManager : MonoBehaviour
     private GameObject _tutorialButton;
     [SerializeField]
     private GameObject _tutorialMenu;
+    [SerializeField]
+    private GameObject _challengeComplete;
 
     private void Awake()
     {
@@ -111,6 +113,16 @@ public class HUDManager : MonoBehaviour
     public void OpenTutorialButton()
     {
         _tutorialButton.SetActive(true);
+    }
+
+    public void OpenChallengeComplete()
+    {
+        _challengeComplete.SetActive(true);
+    }
+
+    public void CloseChallengeComplele()
+    {
+        _challengeComplete.SetActive(false);
     }
 
     private void OnDestroy()

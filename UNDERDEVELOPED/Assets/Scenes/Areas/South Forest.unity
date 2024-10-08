@@ -4371,6 +4371,11 @@ PrefabInstance:
       propertyPath: _gameObject
       value: 
       objectReference: {fileID: 4260720138844910399}
+    - target: {fileID: 6169685690152719922, guid: 27aa9015f5ca13c459979f6fcf9693a6,
+        type: 3}
+      propertyPath: _challengeArea
+      value: South
+      objectReference: {fileID: 0}
     - target: {fileID: 8462478921515594018, guid: 27aa9015f5ca13c459979f6fcf9693a6,
         type: 3}
       propertyPath: m_LocalPosition.x

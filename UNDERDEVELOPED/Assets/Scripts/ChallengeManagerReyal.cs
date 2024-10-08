@@ -52,7 +52,7 @@ public class ChallengeManagerReyal : MonoBehaviour
         {
             Debug.Log("ChallengeManagerReyal: Player Inrange");
             _hudManager.OpenCodeEditor();
-            _playerInRange = false;
+            // _playerInRange = false;
         }
 
         Debug.Log("ChallengeManagerReyal: Player Not Inrange");
@@ -67,6 +67,8 @@ public class ChallengeManagerReyal : MonoBehaviour
         SetCurrentChallenge();
         GetChallengeString();
         
+        Debug.Log("ChallengeManagerReyal: " + _challengeText);
+
         if (_challengeText != null)
         {
             Debug.Log("Console Shit");
@@ -124,8 +126,9 @@ public class ChallengeManagerReyal : MonoBehaviour
             string filePath = Path.Combine(Application.streamingAssetsPath, Path.Combine(_currentChallengeData[3], _currentChallengeData[0] + ".txt"));
             _challengeText = ReadChallengeTxt(filePath);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            Debug.LogError(ex.Message);
             return;
         }
     }
@@ -144,6 +147,8 @@ public class ChallengeManagerReyal : MonoBehaviour
             }
         }
 
+        Debug.LogWarning("ChallengeManagerReyal: curret challenge test" + _challengeText);
+
         return challengeTxt;
     }
 
@@ -157,6 +162,14 @@ public class ChallengeManagerReyal : MonoBehaviour
         _hudManager.CloseCodeEditor();
         _databaseManager.UpdateChallengeStatus(_challengeName, "Done");
         _challenge.ResetChallengeValues();
+        StartCoroutine(OnChallengeComplete());
+    }
+
+    private IEnumerator OnChallengeComplete()
+    {
+        HUDManager._instance.OpenChallengeComplete();
+        yield return new WaitForSeconds(3);
+        HUDManager._instance.CloseChallengeComplele();
     }
 
     private void OnDisable()
