@@ -24,7 +24,7 @@ public class ChallengeManagerReyal : MonoBehaviour
     {
         if (_instance != null && _instance != this)
         {
-            Destroy(_instance);
+            Destroy(this);
             return;
         }
 
@@ -168,7 +168,7 @@ public class ChallengeManagerReyal : MonoBehaviour
     {
         if (_instance == this)
         {
-            _instance = this;
+            _instance = null;
         }
 
         CodeRunner.OnPlayerSuccess -= ChallengeSolved;

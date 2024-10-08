@@ -22,6 +22,8 @@ public class GameEnvironmentDataLoader : MonoBehaviour
     {
         OnSceneLoad();
         EnableCutscene();
+        HUDManager._instance.OpenTutorialButton();
+        HUDManager._instance.OpenOptions();
     }
 
     private void Update()

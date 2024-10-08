@@ -107,5 +107,6 @@ public class NewGameFileManager : MonoBehaviour
     {
         PlayerStatUpdater._instance.enabled = true; 
         IngameOptions._instance.enabled = true;
+        Debug.Log("NewGameFileManager: Destroy");
     }
 }

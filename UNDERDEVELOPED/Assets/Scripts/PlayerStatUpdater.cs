@@ -17,7 +17,7 @@ public class PlayerStatUpdater : MonoBehaviour
     {
         if (_instance != null && _instance != this)
         {
-            Destroy(_instance);
+            Destroy(this);
             return;
         }
 

@@ -20,6 +20,10 @@ public class HUDManager : MonoBehaviour
     private GameObject _inventory;
     [SerializeField]
     private GameObject _options;
+    [SerializeField]
+    private GameObject _tutorialButton;
+    [SerializeField]
+    private GameObject _tutorialMenu;
 
     private void Awake()
     {
@@ -82,9 +86,26 @@ public class HUDManager : MonoBehaviour
         _options.SetActive(false);
     }
 
+    public void OpenTutorial()
+    {
+        _tutorialMenu.SetActive(true);
+        OnUIOpen?.Invoke();
+    }
+
+    public void CloseTutorial()
+    {
+        _tutorialMenu.SetActive(false);
+        OnUIClose?.Invoke();
+    }
+
     public void OpenDeathScreen()
     {
         _deathScreen.SetActive(true);
+    }
+    
+    public void OpenTutorialButton()
+    {
+        _tutorialButton.SetActive(true);
     }
 
     private void OnDestroy()

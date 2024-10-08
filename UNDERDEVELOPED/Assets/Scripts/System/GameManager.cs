@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager _instance;
     private Player _player;
+    [SerializeField]
+    private GameObject _savingIndicator;
     private GameEnvironment _environment;
     [SerializeField]
     private int _saveInterval = 10;
@@ -40,7 +42,7 @@ public class GameManager : MonoBehaviour
         }
 
         SceneManager.sceneLoaded += OnSceneLoad;
-        // StartCoroutine(PlayerDataAutoSave());
+        StartCoroutine(GameDataAutoSave());
     }
 
     // private IEnumerator PlayerDataAutoSave()
@@ -59,8 +61,17 @@ public class GameManager : MonoBehaviour
         {
             SaveSystemManager.SaveGame(_player, _environment);
             Debug.Log("GameData saved");
+            StartCoroutine(SavingIndicator());
             yield return new WaitForSeconds(_saveInterval);
         }
+    }
+
+    private IEnumerator SavingIndicator()
+    {
+        _savingIndicator.SetActive(true);
+        yield return new WaitForSeconds(1);
+        _savingIndicator.SetActive(false);
+        StopCoroutine(SavingIndicator());
     }
 
     private void OnSceneLoad(Scene scene, LoadSceneMode mode)
@@ -92,7 +103,8 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("GameManager: saved onDestroy");
             // SaveSystemManager.SavePlayer(_player);
-            SaveSystemManager.SaveGame(_player, _environment);        
+            SaveSystemManager.SaveGame(_player, _environment);      
+              
         }
 
         if (_instance == this)

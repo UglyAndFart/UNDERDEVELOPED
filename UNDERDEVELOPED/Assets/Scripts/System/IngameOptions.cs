@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IngameOptions : MonoBehaviour
 {
     public static IngameOptions _instance;
+    [SerializeField]
+    private Button _openMenu;
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class IngameOptions : MonoBehaviour
 
     private void Start()
     {
-        HUDManager._instance.OpenOptions();
+        _openMenu.onClick.AddListener(BackToMain);
     }
 
     public void BackToMain()
