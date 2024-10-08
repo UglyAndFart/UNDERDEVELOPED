@@ -38,7 +38,7 @@ public class TutorialManager : MonoBehaviour
             categoryButton.onClick.AddListener(() => OnCategorySelected(categoryButton));
         }
 
-        closeButton.onClick.AddListener(CloseTutorialPanel);
+        closeButton.onClick.AddListener(HUDManager._instance.CloseTutorial);
         nextButton.onClick.AddListener(ShowNextAdditionalInfo);
         backButton.onClick.AddListener(ShowPreviousAdditionalInfo);
 

@@ -93,13 +93,15 @@ public class PlayerManager : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        _animator.SetTrigger("Hurt");
+        _player.DeductHealth(damage);
+
         if ((_player.GetHealth() - damage) <= 0)
         {
             _animator.SetBool("Alive", false);
+            OnDeath();
+            return;
         }
-
-        _animator.SetTrigger("Hurt");
-        _player.DeductHealth(damage);
     }
 
     public void DealDamage(List<Collider2D> enemyHits)
@@ -173,6 +175,8 @@ public class PlayerManager : MonoBehaviour
     private void OnDeath()
     {
         _player.GetComponent<TopDownMovementController>().enabled = false;
+        HUDManager._instance.OpenDeathScreen();
+        StartCoroutine(RespawnTimer());
     }
 
     public bool GetDashing()
@@ -213,6 +217,16 @@ public class PlayerManager : MonoBehaviour
         {
             _player.SetCurrentMap(scene.name);
         }
+    }
+
+    private IEnumerator RespawnTimer()
+    {
+        yield return new WaitForSeconds(5);
+        HUDManager._instance.CloseDeathScreen();
+        _player.Die();
+        _player.GetComponent<TopDownMovementController>().enabled = true;
+        _animator.SetBool("Alive", true);
+        StopCoroutine(RespawnTimer());
     }
 
     // Set the previousMap value with the current scene name

@@ -18,11 +18,11 @@ public class CodeRunner : MonoBehaviour
 
     void Start()
     {
-        _storagePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games/Underdeveloped/ExeFile");
+        _storagePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games\\Underdeveloped\\ExeFile");
         MonoCommands.createDir(_storagePath);
         btnEditor_Click();
 
-        _codeRunnerPath = Path.Combine(Application.streamingAssetsPath, "Scripts/PlayerCodeRunner.txt");
+        _codeRunnerPath = Path.Combine(Application.streamingAssetsPath, "Scripts\\PlayerCodeRunner.txt");
         _challengeManager = ChallengeManagerReyal._instance;
     }
 

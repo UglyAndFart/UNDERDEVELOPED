@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-
+        _health = _maxHealth;
     }
 
     public float GetMaxHealth()

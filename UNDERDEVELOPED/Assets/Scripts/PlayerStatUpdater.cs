@@ -45,10 +45,10 @@ public class PlayerStatUpdater : MonoBehaviour
     {
         UpdatePlayerStat();
 
-        if (_player.GetHealth() <= 0)
-        {
-            HUDManager._instance.OpenDeathScreen();
-        }
+        // if (_player.GetHealth() <= 0)
+        // {
+        //     HUDManager._instance.OpenDeathScreen();
+        // }
         
         Debug.Log($"HP: {_player.GetHealth()}");
     }

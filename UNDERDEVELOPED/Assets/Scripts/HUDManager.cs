@@ -102,6 +102,11 @@ public class HUDManager : MonoBehaviour
     {
         _deathScreen.SetActive(true);
     }
+
+    public void CloseDeathScreen()
+    {
+        _deathScreen.SetActive(false);
+    }
     
     public void OpenTutorialButton()
     {
