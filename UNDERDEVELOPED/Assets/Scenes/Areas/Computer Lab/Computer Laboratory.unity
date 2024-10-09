@@ -24360,7 +24360,7 @@ MonoBehaviour:
   steps:
   - stepType: 0
     dialogueLines:
-    - Gonna
+    - I have to turn those off
     npcNames:
     - You
     npcImages:
