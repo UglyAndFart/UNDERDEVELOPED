@@ -16070,42 +16070,66 @@ MonoBehaviour:
   tutorialCategories:
   - categoryName: UI Tutorial
     topics:
-    - topicName: Settings
+    - topicName: Code Editor
       details: Settings
-      image: {fileID: 0}
-      additionalDetails:
-      - asdasd
-      - asdasda
-      additionalImages:
-      - {fileID: -6842384, guid: 2cf50a2f5f1fb46448ebf06e1cc668d6, type: 3}
-      - {fileID: -1328397181, guid: 2cf50a2f5f1fb46448ebf06e1cc668d6, type: 3}
-    - topicName: Health
-      details: Health
-      image: {fileID: 0}
+      image: {fileID: 21300000, guid: 43af5b0ca1baf5646b3f3ff52fabeb14, type: 3}
       additionalDetails: []
       additionalImages: []
-    - topicName: Stamina
-      details: Stamina
-      image: {fileID: 0}
+    - topicName: Health Bar
+      details: Player Health
+      image: {fileID: 21300000, guid: 3898c9c3a63258e49a1b45701299772e, type: 3}
+      additionalDetails: []
+      additionalImages: []
+    - topicName: Stamina Bar
+      details: Player Stamina for dash
+      image: {fileID: 21300000, guid: 4f97f5c62aecd9f4492c9a4498658be0, type: 3}
       additionalDetails: []
       additionalImages: []
   - categoryName: Coding Tutorial
     topics:
-    - topicName: Variables
-      details: Variables are containers for storing data values
+    - topicName: Console
+      details: text-based interface that allows you to interact with the computer's
+        system or run code. You can write and execute commands or programs. it is
+        also used for debugging and troubleshooting.
       image: {fileID: 21300000, guid: ca2b3d475afa068419b154b6bd8c1826, type: 3}
-      additionalDetails:
-      - asd
-      - asdasd
+      additionalDetails: []
       additionalImages:
       - {fileID: 21300000, guid: 1e5bc840751f6b04a968ad9bd309f004, type: 3}
       - {fileID: 21300000, guid: 1e5bc840751f6b04a968ad9bd309f004, type: 3}
-    - topicName: Datatypes
-      details: Datatypes Specify the type of data that cany variable can store, such
-        as float
+    - topicName: Variables
+      details: Variables are containers for storing data values. In C#, there are
+        different types of variables (defined with different keywords)
       image: {fileID: 21300000, guid: 200090b7a2a82e746b4251e9be5abc94, type: 3}
       additionalDetails: []
       additionalImages: []
+    - topicName: DataTypes
+      details: A data type specifies the size and type of variable values. It is
+        important to use the correct data type for the corresponding variables
+      image: {fileID: 21300000, guid: 200090b7a2a82e746b4251e9be5abc94, type: 3}
+      additionalDetails:
+      - The int data type can store whole numbers from -2147483648 to 2147483647.
+        In general, and in our tutorial, the int data type is the preferred data
+        type when we create variables with a numeric value.
+      - 'The long data type can store whole numbers from -9223372036854775808 to
+        9223372036854775807. This is used when int is not large enough to store the
+        value. '
+      - You should use a floating point type whenever you need a number with a decimal,
+        such as 9.99 or 3.14515.  The float and double data types can store fractional
+        numbers.
+      - A boolean data type is declared with the bool keyword and can only take the
+        values true or false
+      - The char data type is used to store a single character. The character must
+        be surrounded by single quotes, like 'A' or 'c'
+      - The string data type is used to store a sequence of characters (text). String
+        values must be surrounded by double quotes
+      additionalImages:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
   - categoryName: Combat Tutorial
     topics:
     - topicName: Melee
@@ -16118,21 +16142,53 @@ MonoBehaviour:
       image: {fileID: 0}
       additionalDetails: []
       additionalImages: []
+    - topicName: Magic
+      details: Range
+      image: {fileID: 0}
+      additionalDetails: []
+      additionalImages: []
+    - topicName: Dash
+      details: Press "space" to dash and dodge enemies attack
+      image: {fileID: 0}
+      additionalDetails: []
+      additionalImages: []
   - categoryName: Enemy Tutorial
     topics:
     - topicName: Slime
-      details: Slime are bouncy
-      image: {fileID: 2024084216, guid: 0ead09c62116ab8498d8fa32343c7a36, type: 3}
+      details: Slime are bouncy sometimes small sometimes BIG
+      image: {fileID: 21300000, guid: 9ba1ddec1bcd54e45ab5a50a8dce9ae9, type: 3}
+      additionalDetails: []
+      additionalImages: []
+    - topicName: Mushroom Soldier
+      details: Fungus type enemy
+      image: {fileID: 21300000, guid: c1b786ed75f0f0d4bba2a0783cfdb144, type: 3}
+      additionalDetails: []
+      additionalImages: []
+    - topicName: Mushroom Bomber
+      details: Fungus type enemy that explodes
+      image: {fileID: 21300000, guid: c00fba68bde00b1418c48b282de7226b, type: 3}
+      additionalDetails: []
+      additionalImages: []
+    - topicName: Orc
+      details: Default Orc Variant
+      image: {fileID: 21300000, guid: b8bc7915d2dca2c49b7194dec78c5094, type: 3}
+      additionalDetails: []
+      additionalImages: []
+  - categoryName: Enemy Tutorial
+    topics:
+    - topicName: Slime
+      details: Slime are bouncy sometimes small sometimes BIG
+      image: {fileID: 21300000, guid: 9ba1ddec1bcd54e45ab5a50a8dce9ae9, type: 3}
       additionalDetails: []
       additionalImages: []
     - topicName: Mushroom Soldier
       details: Mushroom Soldier
-      image: {fileID: 1216417700, guid: e6892a2affe8268438ef8d5d3547f1c8, type: 3}
+      image: {fileID: 21300000, guid: c1b786ed75f0f0d4bba2a0783cfdb144, type: 3}
       additionalDetails: []
       additionalImages: []
     - topicName: Mushroom Bomber
       details: Mushroom Bomber
-      image: {fileID: 21300000, guid: 04821c45fc8a90f4eaff52138dd75aec, type: 3}
+      image: {fileID: 21300000, guid: c00fba68bde00b1418c48b282de7226b, type: 3}
       additionalDetails: []
       additionalImages: []
 --- !u!4 &1525991100
