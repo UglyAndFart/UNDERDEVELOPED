@@ -1,17 +1,18 @@
 using System;
 
 public class PlayerCodeTest
-{
+{	
+	//player function
+
 	public static void Main(string[] args)
 	{
 		PlayerCodeTest playerCodeTest = new PlayerCodeTest();
-		//function call
+		playerCodeTest.Example();
+		playerCodeTest.PlayerCode_Example_Test();
 	}
-	
-	//player function
 
-	public void PlayerCode_PrintOutYourName_DisplayGay()
+	public void PlayerCode_Example_Test()
 	{
-		Console.WriteLine("1");
+		Console.WriteLine("Test");
 	}
 }

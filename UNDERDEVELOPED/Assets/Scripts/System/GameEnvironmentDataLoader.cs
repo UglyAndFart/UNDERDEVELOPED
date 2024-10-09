@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -10,9 +11,13 @@ public class GameEnvironmentDataLoader : MonoBehaviour
     private PlayableDirector[] _cutscenes;
     [SerializeField]
     private GameObject[] _cutscenesObject;
+    // [SerializeField]
+    // private GameObject[] _bosses;
+    [SerializeField]
+    private GameObject[] _bossObjects;
     [SerializeField]
     private  TimelineEndChecker _timelineEndChecker;
-    private int _cutsceneNum = 0, area = 0;
+    private int _cutsceneNum = 0, _bossNum = 0, area = 0;
     private void Awake()
     {
         _gameEnvironmentManager = GameEnvironmentManager._instance;
@@ -22,13 +27,16 @@ public class GameEnvironmentDataLoader : MonoBehaviour
     {
         OnSceneLoad();
         EnableCutscene();
+        EnableBoss();
         HUDManager._instance.OpenTutorialButton();
         HUDManager._instance.OpenOptions();
+        HUDManager._instance.CloseBossHealthbar();
     }
 
     private void Update()
     {
         CutsceneEnd();
+        DisableBoss();
     }
 
     private void EnableCutscene()
@@ -70,7 +78,7 @@ public class GameEnvironmentDataLoader : MonoBehaviour
 
         if (_cutsceneNum == 0)
         {
-            _gameEnvironmentManager.CompletedCutscene("cutscene", area, _cutsceneNum);
+            _gameEnvironmentManager.UpdateGameEnvironment("cutscene", area, _cutsceneNum);
             _cutsceneNum++;
             
             if (_cutsceneNum < _cutscenes.Length)
@@ -78,6 +86,47 @@ public class GameEnvironmentDataLoader : MonoBehaviour
                 _timelineEndChecker.SetCutscene(_cutscenes[_cutsceneNum]);
             }
         }
+    }
+
+    private void EnableBoss()
+    {
+        if (_bossObjects == null || BossHealth._instance == null)
+        {
+            return;
+        }
+
+        List<List<bool>> bosses = GameEnvironment._instance.GetBossesStates();
+        
+        for (int i = 0; i < _bossObjects.Length; i++)
+        {
+            if (bosses[area][i])
+            {
+                continue;
+            }
+
+            // BossHealth._instance.SetBoss(_bossObjects[i].GetComponent<Enemy>());
+            _bossObjects[i].SetActive(true);
+        }
+    }
+
+    private void DisableBoss()
+    {   
+        // if (_bossObjects[_bossNum].GetComponent<Enemy>() == null)
+        // {
+        //     return;
+        // }
+
+        // if (_bossObjects[_bossNum].GetComponent<Enemy>().GetHealth() > 0)
+        // {
+        //     return;
+        // }
+
+        // if (_bossNum == 0)
+        // {   
+        //     _gameEnvironmentManager.UpdateGameEnvironment("boss", area, _bossNum);
+        //     _bossNum++;
+        //     Destroy(_bossObjects[_bossNum].GetComponent<Enemy>());
+        // }
     }
 
     private void OnSceneLoad()

@@ -26,6 +26,8 @@ public class HUDManager : MonoBehaviour
     private GameObject _tutorialMenu;
     [SerializeField]
     private GameObject _challengeComplete;
+    [SerializeField]
+    private GameObject _bossHealthbar;
 
     private void Awake()
     {
@@ -123,6 +125,16 @@ public class HUDManager : MonoBehaviour
     public void CloseChallengeComplele()
     {
         _challengeComplete.SetActive(false);
+    }
+
+    public void OpenBossHealthbar()
+    {
+        _bossHealthbar.SetActive(true);
+    }
+
+    public void CloseBossHealthbar()
+    {
+        _bossHealthbar.SetActive(false);
     }
 
     private void OnDestroy()

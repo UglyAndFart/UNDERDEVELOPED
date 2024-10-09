@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class EnemyActionController : MonoBehaviour
 {
-    private Rigidbody2D _player;
     [SerializeField]
     private int attackCount = 1;
+    private Rigidbody2D _player;
 
     private EnemyManager _enemyManager;
     private Vector2 _currentPosition;

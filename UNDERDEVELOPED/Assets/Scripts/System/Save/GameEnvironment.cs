@@ -7,6 +7,8 @@ public class GameEnvironment : MonoBehaviour
     public static GameEnvironment _instance;
     [SerializeField]
     private bool[] _southForestCutscenes, _sf2;
+    [SerializeField]
+    private bool[] _southForestBosses, _sf2Bosses;
     private List<List<bool>> _bossesState, _chestsState, _potsState, _cutscenesState;
 
     private void Awake()
@@ -24,6 +26,8 @@ public class GameEnvironment : MonoBehaviour
     {
         _cutscenesState = new List<List<bool>>(4);
         _cutscenesState.Add(_southForestCutscenes.ToList());
+        _bossesState = new List<List<bool>>(4);
+        _bossesState.Add(_southForestBosses.ToList());
         // _cutscenesState = new List<List<bool>>(4);
         // _cutscenesState[0] = _southForestCutscene.ToList();
         // _cutscenesState[1] = _sf2.ToList();

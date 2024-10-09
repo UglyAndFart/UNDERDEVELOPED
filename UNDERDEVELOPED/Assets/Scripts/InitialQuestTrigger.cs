@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InitialQuestTrigger : MonoBehaviour
 {
     [SerializeField]
     private GameObject _computer1, _computer2, _computer3, _tutorialOverlay, _characterSelection;
     [SerializeField]
-    private TextMeshProUGUI _content1, _content2;
+    private Image _content1;
+    [SerializeField]
+    private TextMeshProUGUI _content2;
     [SerializeField]
     private ChallengeGiver _challengeGiver;
     private HUDManager _hudManager;

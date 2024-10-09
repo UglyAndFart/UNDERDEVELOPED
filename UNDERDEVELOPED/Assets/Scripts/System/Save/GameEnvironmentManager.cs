@@ -24,19 +24,26 @@ public class GameEnvironmentManager : MonoBehaviour
     {
         _gameEnvironment = GetComponent<GameEnvironment>();
         _cutsceneStates = _gameEnvironment.GetCutsceneStates();
+        _bossesStates = _gameEnvironment.GetBossesStates();
     }
     
-    public void CompletedCutscene(string arrayName, int area, int index)
+    public void UpdateGameEnvironment(string arrayName, int area, int index)
     {
         if (arrayName == "cutscene")
         {   
             _cutsceneStates[area][index] = true;
-            _gameEnvironment.SetCutsceneStates(_cutsceneStates);  
+            _gameEnvironment.SetCutsceneStates(_cutsceneStates);
              
             // bossesStates.Add();
             
             // bossesStates[area][index] = true;
             // _gameEnvironment.SetBossesStates(bossesStates);
+        }
+        else if (arrayName == "boss")
+        {
+            _bossesStates[area][index] = true;
+            _gameEnvironment.SetBossesStates(_bossesStates);
+            Debug.Log("GameEnvironmentManager: No error");
         }
         // else if (arrayName == "chest")
         // {

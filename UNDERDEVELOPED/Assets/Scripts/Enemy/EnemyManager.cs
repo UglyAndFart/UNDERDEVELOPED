@@ -36,7 +36,7 @@ public class EnemyManager : MonoBehaviour
 
     void Update()
     {
-
+        
     }
 
     public void EnemyAnimationMoving(bool moving)
