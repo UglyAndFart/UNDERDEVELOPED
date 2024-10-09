@@ -5,7 +5,9 @@ using UnityEngine;
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject mainWindow, loadWindow, optionWindow, exitWindow;
+    private SavedGameFileLoader _savedGameFileLoader;
+    [SerializeField]
+    private GameObject mainWindow, loadWindow, optionWindow, exitWindow, _overwriteWindow;
     private GameObject currentWindow;
 
     private void Awake()
@@ -50,6 +52,11 @@ public class MainMenuManager : MonoBehaviour
 
     public void NewGame()
     {
+        if (_savedGameFileLoader.SlotAvailable())
+        {
+            _overwriteWindow.SetActive(true);
+            return;
+        }
         SceneLoader.LoadScene("Computer Laboratory");
     }
 
@@ -83,7 +90,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void ExitGame()
     {
-        //UnityEditor.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
 }

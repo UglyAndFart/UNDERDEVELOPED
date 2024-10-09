@@ -7,7 +7,7 @@ using UnityEngine;
 public class OverwriteFileHandler : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _confirmationBox, _overwriteWindow;   
+    private GameObject _confirmationBox, _overwriteWindow, _loadWindow, _saveName;
     [SerializeField]
     private GameObject[] _slots;
     private List<string> _savedFiles;
@@ -74,9 +74,11 @@ public class OverwriteFileHandler : MonoBehaviour
         }
         
         _confirmationBox.SetActive(true);
-        _confirmationBox.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = _savedGameInfos[slotIndex]._name;
-        _overwriteWindow.SetActive(false);
+        Debug.LogWarning("Overwrite: " + _savedGameInfos[slotIndex]._name);
+        Debug.LogWarning("Overwrite: " + _saveName.GetComponent<TextMeshProUGUI>().text);
+        _saveName.GetComponent<TextMeshProUGUI>().text = _savedGameInfos[slotIndex]._name;
         DirectoryManager.SetCurrentSaveFolder(_savedFiles[slotIndex]);
+        _overwriteWindow.SetActive(false);
     }
 
     public void OverwriteFile()
@@ -88,6 +90,7 @@ public class OverwriteFileHandler : MonoBehaviour
     public void OpenOverwriteWindow()
     {
         _overwriteWindow.SetActive(true);
+        _loadWindow.SetActive(false);
     }
 
     private void DisableAllSlots()

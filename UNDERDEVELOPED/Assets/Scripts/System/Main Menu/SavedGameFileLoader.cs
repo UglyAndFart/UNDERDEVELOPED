@@ -90,13 +90,14 @@ public class SavedGameFileLoader : MonoBehaviour
         // }
     }
     
-    public void CheckForEmptySlot()
+    public bool SlotAvailable()
     {
         if (_savedFiles.Count >= 5)
         {
-            _overwriteAlert.SetActive(true);
-            return;
+            return true;
         }
+
+        return false;
     }
 
     private void DisableContinue()
@@ -115,7 +116,11 @@ public class SavedGameFileLoader : MonoBehaviour
     //Set the slot path as currentsavefolder Then load the next scene
     public void PrepareLoadFile(int slotIndex)
     {
-        CheckForEmptySlot();
+        if (!SlotAvailable())
+        {
+            _overwriteAlert.SetActive(true);
+            return;
+        }
 
         DirectoryManager.SetCurrentSaveFolder(_savedFiles[slotIndex]);
         SceneLoader.LoadScene("Retrieving Game File Data");

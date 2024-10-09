@@ -12,6 +12,8 @@ public class InitialQuestTrigger : MonoBehaviour
     private TextMeshProUGUI _content2;
     [SerializeField]
     private ChallengeGiver _challengeGiver;
+    [SerializeField]
+    private GameObject _skipButton;
     private HUDManager _hudManager;
     private bool _playerInRange;
     private int _computerNumber = 1;
@@ -45,6 +47,7 @@ public class InitialQuestTrigger : MonoBehaviour
                 _tutorialOverlay.SetActive(true);
                 _content2.enabled = true;
                 _windowOpen = true;
+                _skipButton.SetActive(true);
             }
             else if (_computerNumber == 3 && !_windowOpen)
             {
@@ -83,6 +86,7 @@ public class InitialQuestTrigger : MonoBehaviour
         _computer2.SetActive(false);
         _computer3.SetActive(true);
         _tutorialOverlay.SetActive(false);
+        // _skipButton.SetActive(true);
     }
 
     public void QuestComplete()

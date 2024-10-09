@@ -19171,7 +19171,7 @@ MonoBehaviour:
   _health: 100
   _maxStamina: 100
   _stamina: 100
-  _moveSpeed: 9
+  _moveSpeed: 7
   _physicalDamage: 25
   _magicDamage: 25
   _dashDistance: 3
@@ -19552,10 +19552,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec3c36f1ccc3294e963fa6dd3b223cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _savedGameFileLoader: {fileID: 876535098}
   mainWindow: {fileID: 128916650}
   loadWindow: {fileID: 636821155}
   optionWindow: {fileID: 1474847000}
   exitWindow: {fileID: 24378902}
+  _overwriteWindow: {fileID: 650693184}
 --- !u!114 &1811992405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28731,6 +28733,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _confirmationBox: {fileID: 549720050}
   _overwriteWindow: {fileID: 1515035450}
+  _loadWindow: {fileID: 636821155}
+  _saveName: {fileID: 381291502}
   _slots:
   - {fileID: 420369108}
   - {fileID: 303980383}

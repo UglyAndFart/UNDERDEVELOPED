@@ -79,7 +79,24 @@ public class DirectoryManager : MonoBehaviour
 
     public static void DeleteSaveFolder()
     {
-        Directory.Delete(_currentSaveFolder);
+        string directoryPath = Path.GetDirectoryName(_currentSaveFolder);
+
+        if (!string.IsNullOrEmpty(directoryPath))
+        {
+            try
+            {
+                Directory.Delete(directoryPath, true);
+                Debug.Log("Directory deleted: " + directoryPath);
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                Debug.LogError("Access denied: " + e.Message);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Error deleting directory: " + e.Message);
+            }
+        }
     }
 
     //saves the current gameFolderPath to playerprefs before exiting

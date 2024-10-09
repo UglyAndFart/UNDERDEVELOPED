@@ -52,7 +52,7 @@ public class ChallengeManagerReyal : MonoBehaviour
         {
             Debug.Log("ChallengeManagerReyal: Player Inrange");
             _hudManager.OpenCodeEditor();
-            // _playerInRange = false;
+            _playerInRange = false;
         }
 
         Debug.Log("ChallengeManagerReyal: Player Not Inrange");
