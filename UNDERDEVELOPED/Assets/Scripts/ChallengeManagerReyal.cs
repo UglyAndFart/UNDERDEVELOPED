@@ -14,9 +14,12 @@ public class ChallengeManagerReyal : MonoBehaviour
     private Challenge _challenge;
     [SerializeField]
     private TMP_InputField _editorText;
+    [SerializeField]
+    private TextMeshProUGUI _descriptionText;
 
     private string[] _currentChallengeData;
-    private string _challengeName, _challengeArea, _challengeLevel, _challengeText;
+    private string _challengeName, _challengeArea, _challengeLevel,
+     _challengeText, _challengeDescription;
     // private int _playerAttemptCount;
     private bool _isPlayerInRange = false;
 
@@ -55,7 +58,7 @@ public class ChallengeManagerReyal : MonoBehaviour
             _isPlayerInRange = false;
         }
 
-        Debug.Log("ChallengeManagerReyal: Player Not Inrange");
+        // Debug.Log("ChallengeManagerReyal: Player Not Inrange");
     }
 
     private void LoadChallenge()
@@ -66,6 +69,7 @@ public class ChallengeManagerReyal : MonoBehaviour
         FetchCurrentChallenge();
         SetCurrentChallenge();
         GetChallengeString();
+        GetChallengeDescription();
         
         Debug.Log("ChallengeManagerReyal: " + _challengeText);
 
@@ -117,6 +121,12 @@ public class ChallengeManagerReyal : MonoBehaviour
     private void LoadChallengeToConsole()
     {
         _editorText.text = _challengeText;
+        _descriptionText.text = _challengeDescription;
+    }
+
+    public void ResetChallengeText()
+    {
+        _editorText.text = _challengeText;
     }
 
     public void GetChallengeString()
@@ -131,6 +141,11 @@ public class ChallengeManagerReyal : MonoBehaviour
             Debug.LogError(ex.Message);
             return;
         }
+    }
+
+    public void GetChallengeDescription()
+    {
+        _challengeDescription = _currentChallengeData[1];
     }
 
     public string ReadChallengeTxt(string filePath)

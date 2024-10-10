@@ -74,14 +74,14 @@ public class HUDManager : MonoBehaviour
     public void OpenInventory()
     {
         _inventory.SetActive(true);
-
+        _options.SetActive(false);
         OnUIOpen?.Invoke();
     }
 
     public void CloseInventory()
     {
         _inventory.SetActive(false);
-
+        _options.SetActive(true);
         OnUIClose?.Invoke();
     }
 
@@ -98,23 +98,29 @@ public class HUDManager : MonoBehaviour
     public void OpenTutorial()
     {
         _tutorialMenu.SetActive(true);
+        _options.SetActive(false);
+        _playerStatus.SetActive(false);
         OnUIOpen?.Invoke();
     }
 
     public void CloseTutorial()
     {
         _tutorialMenu.SetActive(false);
+        _options.SetActive(true);
+        _playerStatus.SetActive(true);
         OnUIClose?.Invoke();
     }
 
     public void OpenDeathScreen()
     {
         _deathScreen.SetActive(true);
+        _options.SetActive(false);
     }
 
     public void CloseDeathScreen()
     {
         _deathScreen.SetActive(false);
+        _options.SetActive(true);
     }
 
     public void OpenChallengeComplete()
@@ -160,11 +166,13 @@ public class HUDManager : MonoBehaviour
     public void OpenIngameMenu()
     {
         _ingameMenu.SetActive(true);
+        _options.SetActive(false);
     }
 
     public void CloseIngameMenu()
     {
         _ingameMenu.SetActive(false);
+        _options.SetActive(true);
     }
 
     private void OnDestroy()

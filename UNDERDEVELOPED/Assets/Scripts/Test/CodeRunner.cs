@@ -18,7 +18,7 @@ public class CodeRunner : MonoBehaviour
     [SerializeField]
     private Button _btnEditor;
     [SerializeField]
-    private Button _btnConsole, _btnSubmit, _btnRun, _btnClose;
+    private Button _btnConsole, _btnReset, _btnSubmit, _btnRun, _btnClose;
 
     public delegate void CodeRunnerHandler();
     public static event CodeRunnerHandler OnPlayerSuccess;
@@ -26,12 +26,17 @@ public class CodeRunner : MonoBehaviour
     //add reference to another gameObject for test status 
     
     private string _exeStoragePath, _codeRunnerPath;
-    private string _txt;
+    private string _description;
     private bool _haveError;
 
     private void Awake()
     {
         SetupListenerToButtons();
+    }
+
+    private void OnEnable()
+    {
+        
     }
 
     private void Start()
@@ -272,6 +277,7 @@ public class CodeRunner : MonoBehaviour
         _btnEditor.onClick.AddListener(BtnEditor_Click);
         _btnConsole.onClick.AddListener(BtnConsole_Click);
         _btnSubmit.onClick.AddListener(BtnSubmit_Click);
+        _btnReset.onClick.AddListener(BtnReset_Click);
         _btnRun.onClick.AddListener(BtnRun_Click);
         _btnClose.onClick.AddListener(Btn_Close);
     }
@@ -296,6 +302,11 @@ public class CodeRunner : MonoBehaviour
     private void BtnRun_Click()
     {
         RunPlayerCode();
+    }
+
+    private void BtnReset_Click()
+    {
+        _challengeManager.ResetChallengeText();
     }
 
     private void Btn_Close()

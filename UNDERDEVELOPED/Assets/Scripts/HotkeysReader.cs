@@ -42,18 +42,18 @@ public class HotkeysReader : MonoBehaviour
             if (_activeUI == 0)
             {
                 _hudManager.OpenCodeEditor();
-                _activeUI = 1;
+                // _activeUI = 1;
             }
-            else if (_activeUI == 1)
-            {
-                _hudManager.CloseCodeEditor();
-                _activeUI = 0;
-            }
+            // else if (_activeUI == 1)
+            // {
+            //     _hudManager.CloseCodeEditor();
+            //     _activeUI = 0;
+            // }
 
             // Debug.Log("HotKeysReader: CodeEditor Pressed");
         }
         else if (Input.GetButtonDown("Inventory"))
-       {
+        {
             if (_activeUI == 0)
             {
                 _hudManager.OpenInventory();
@@ -66,7 +66,34 @@ public class HotkeysReader : MonoBehaviour
             }
 
             // Debug.Log("HotKeysReader: Inventory Pressed");
-       }
+        }
+        else if (Input.GetButtonDown("Codex"))
+        {  
+            if (_activeUI == 0)
+            {
+                _hudManager.OpenIngameMenu();
+                _activeUI = 3;
+            }
+            else if (_activeUI == 3)
+            {
+                _hudManager.CloseIngameMenu();
+                _activeUI = 0;
+            }
+        }
+        else if (Input.GetButtonDown("Option"))
+        {  
+            if (_activeUI == 0)
+            {
+                _hudManager.OpenIngameMenu();
+                _activeUI = 4;
+            }
+            else if (_activeUI == 4)
+            {
+                _hudManager.CloseIngameMenu();
+                _activeUI = 0;
+            }
+        }
+
         // if (Input.GetKeyDown(_codeEditorKey))
         // {
         //     if (_hudManager._codeEditorOnScreen)
