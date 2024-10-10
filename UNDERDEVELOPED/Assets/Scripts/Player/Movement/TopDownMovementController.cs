@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class TopDownMovementController : MonoBehaviour
 {
@@ -11,7 +9,7 @@ public class TopDownMovementController : MonoBehaviour
     private GameObject _attackPoint;
     private Vector2 _direction;
     private Vector2 _facingDirection;
-    private bool _flipSprite;
+    private bool _flipSprite, _activeUI = false;
     private List<Collider2D> _enemyHits;
 
     private void Awake()
@@ -27,18 +25,25 @@ public class TopDownMovementController : MonoBehaviour
 
     private void Start()
     {
-        _playerManager = PlayerManager._instance;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        HUDManager.OnUIOpen += DisablePlayerControls;
+        HUDManager.OnUIClose += EnablePlayerControls;
 
-        _attackPoint = transform.Find("Attack Pivot").gameObject;
+        _playerManager = PlayerManager._instance;
+        _attackPoint = CharacterPrefabLoader._instance.GetCurrentCharacter().transform.Find("Attack Pivot").gameObject;
         _flipSprite = false;
         _facingDirection = Vector2.right;
         _enemyHits = new List<Collider2D>();
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Update()
-    {
+    {   
+        if (_activeUI)
+        {
+            Debug.Log("TopDownMovementController: a UI is Active");
+            return;
+        }
+
         Movement();
         Dash();
         Attack();
@@ -52,26 +57,38 @@ public class TopDownMovementController : MonoBehaviour
     private void Movement()
     {
         _direction = Vector2.zero;
+        
+        _direction.x = Input.GetAxis("Horizontal");
+        _direction.y = Input.GetAxis("Vertical");
 
-        if (Input.GetKey(KeyCode.A))
+        if (_direction.x < 0)
         {
-            _direction.x = -1;
             _flipSprite = true;
         }
-        else if (Input.GetKey(KeyCode.D))
+        else
         {
-            _direction.x = 1;
             _flipSprite = false;
         }
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            _direction.y = 1;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            _direction.y = -1;
-        }
+        // if (Input.GetKey(KeyCode.A))
+        // {
+        //     _direction.x = -1;
+        //     _flipSprite = true;
+        // }
+        // else if (Input.GetKey(KeyCode.D))
+        // {
+        //     _direction.x = 1;
+        //     _flipSprite = false;
+        // }
+
+        // if (Input.GetKey(KeyCode.W))
+        // {
+        //     _direction.y = 1;
+        // }
+        // else if (Input.GetKey(KeyCode.S))
+        // {
+        //     _direction.y = -1;
+        // }
 
         if (_direction.x != 0 || _direction.y != 0)
         {
@@ -93,7 +110,7 @@ public class TopDownMovementController : MonoBehaviour
 
         // }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Dash"))
         {
             DashTrigger();
         }
@@ -145,13 +162,56 @@ public class TopDownMovementController : MonoBehaviour
         
     // }
 
+    public void SetPosition(Vector3 newPosition)
+    {
+        CharacterPrefabLoader._instance.GetCurrentCharacter().transform.position = newPosition;
+        // transform.localPosition = transform.TransformPoint(newPosition); 
+    }
+    
+    public Vector3 GetPosition()
+    {
+        return CharacterPrefabLoader._instance.GetCurrentCharacter().transform.position;
+    }
+
+    public void EnablePlayerControls()
+    {
+        _activeUI = false;
+    }
+
+    public void DisablePlayerControls()
+    {
+        _activeUI = true;
+    }
+
+    // private void SetNewGamePosition()
+    // {
+    //     if (SpawnPointManager._instance._newGame)
+    //     {
+    //         Debug.Log("TopDownMovementController: set tot newgame Main");
+    //         SetPosition(SpawnPointManager._instance.GetSpawnPoint("Main").transform.position);
+    //     }
+    // }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        string previousMap = _playerManager.GetPreviousMap();
+        Debug.Log("TopDownMovementContorllers: " + previousMap);
+
         if (scene.name == "South Forest")
         {
+            Debug.Log("TopDownMovementController: on South Forest load");
+
             if (SpawnPointManager._instance._newGame)
             {
-                SetPosition(SpawnPointManager._instance.GetSpawnPoint("Main").gameObject.transform.position);
+                Debug.Log("TopDownMovementController: set tot newgame Main");
+                SetPosition(SpawnPointManager._instance.GetSpawnPoint("Main").transform.position);
+                SpawnPointManager._instance._newGame = false;
+                return;
+            }
+
+            if (previousMap != null && previousMap == "SF 2")
+            {
+                SetPosition(SpawnPointManager._instance.GetSpawnPoint("From SF 2").transform.position);
             }
 
             // Debug.Log("OnSceneLoaded from TopDownMovement");
@@ -159,6 +219,36 @@ public class TopDownMovementController : MonoBehaviour
             // GameObject spawnpoint = PlayerGameObjectFinder.FindSpawnPoint("Player Deault Spawnpoint");
             // transform.position = spawnpoint.transform.position;
         }
+        else if (scene.name == "SF 2")
+        {
+            Debug.Log("TopDownMovementController: SF 2 loaded");
+            if (previousMap != null && previousMap == "South Forest")
+            {
+                Debug.Log("TopDownMovementController: South Forest point found");
+                SetPosition(SpawnPointManager._instance.GetSpawnPoint("From South Forest").transform.position);
+            }
+            else if (previousMap != null && previousMap == "Outside Town")
+            {
+                SetPosition(SpawnPointManager._instance.GetSpawnPoint("From Outside Town").transform.position);
+            }
+        }
+        else if (scene.name == "Outside Town")
+        {
+            if (previousMap != null && previousMap == "SF 2")
+            {
+                SetPosition(SpawnPointManager._instance.GetSpawnPoint("From SF 2").transform.position);
+            }
+            else if (previousMap != null && previousMap == "Town")
+            {
+                SetPosition(SpawnPointManager._instance.GetSpawnPoint("From Town").transform.position);
+                CharacterPrefabLoader._instance.GetCurrentCharacter().GetComponent<Rigidbody2D>().gravityScale = 0;
+            }
+        }
+        // else if (scene.name == "Realm")
+        // {
+        //     SetPosition(SpawnPointManager._instance.GetSpawnPoint("Main").gameObject.transform.position);
+        //     Debug.Log("Realm: Position is set to Realm Main");
+        // }
         // else if (scene.name == "Realm")
         // {
         //     GameObject spawnpoint = PlayerGameObjectFinder.FindSpawnPoint("SpawnPoint");
@@ -167,13 +257,15 @@ public class TopDownMovementController : MonoBehaviour
         
     }
 
-    public void SetPosition(Vector3 newPosition)
-    {
-        transform.position = newPosition; 
-    }
-
     private void OnDestroy()
     {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
+
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        HUDManager.OnUIOpen -= DisablePlayerControls;
+        HUDManager.OnUIClose -= EnablePlayerControls;
     }
 }

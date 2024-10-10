@@ -258,7 +258,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Retriveing Load File Data
+  m_text: Retrieving Load File Data
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -381,7 +381,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _switchDelay: 2
   _useTimer: 1
+  _useTimelineEnd: 0
+  _useInteract: 0
   _sceneToLoad: 
+  _timelineEndChecker: {fileID: 0}
 --- !u!1 &1162181974
 GameObject:
   m_ObjectHideFlags: 0

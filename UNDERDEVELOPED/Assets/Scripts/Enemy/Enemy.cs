@@ -6,6 +6,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
+    private string _name;
+    [SerializeField]
     private float _health, _physicalDamage, _magicDamage, _aggroRange, _moveSpeed, _attackRange, _attackSpeed;    
 
     private void Start()
@@ -50,5 +52,10 @@ public class Enemy : MonoBehaviour
     public float GetAttackSpeed()
     {
         return _attackSpeed;
+    }
+
+    public string GetName()
+    {
+        return _name;
     }
 }

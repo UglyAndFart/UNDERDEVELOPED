@@ -6,6 +6,7 @@ public class QuestRangeChecker : MonoBehaviour
 {
     [SerializeField]
     private InitialQuestTrigger _initialQuestTrigger;
+    
     public void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Default Player"))

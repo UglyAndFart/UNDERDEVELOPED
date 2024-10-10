@@ -11,7 +11,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private string _name, _map, _characterType;
-    
+    private Vector3 _playerPosition;
+    private Item[] _equipments;
+
     [Header("Player Stats")]
     [SerializeField]
     private float _maxHealth;
@@ -19,13 +21,13 @@ public class Player : MonoBehaviour
     private float _health, _maxStamina, _stamina, _moveSpeed,
     _physicalDamage, _magicDamage, _dashDistance, _dashDuration, _dashCooldown,
     _dashCost, _staminaRegenRate, _staminaRecoveryBufferTime;
-    private Vector3 _playerPosition;
     
     private void Awake()
     {
         if (_instance != null && _instance != this)
         {
             Destroy(this);
+            return;
         }
 
         _instance = this;
@@ -33,26 +35,26 @@ public class Player : MonoBehaviour
 
     public void SetPlayer()
     {
-        PlayerData playerData = SaveSystemManager.LoadPlayer();
+        GameData gameData = SaveSystemManager.LoadGame();
         Vector3 position;
         
-        _health = playerData._health;
-        _moveSpeed = playerData._moveSpeed;
-        _stamina = playerData._stamina;
-        _physicalDamage = playerData._physicalDamage;
-        _magicDamage = playerData._magicDamage;
-        _dashDistance = playerData._dashDistance;
-        _dashCooldown = playerData._dashCooldown;
-        _dashDuration = playerData._dashDuration;
-        _staminaRecoveryBufferTime = playerData._staminaRecoveryBufferTime;
+        _health = gameData._health;
+        _moveSpeed = gameData._moveSpeed;
+        _stamina = gameData._stamina;
+        _physicalDamage = gameData._physicalDamage;
+        _magicDamage = gameData._magicDamage;
+        _dashDistance = gameData._dashDistance;
+        _dashCooldown = gameData._dashCooldown;
+        _dashDuration = gameData._dashDuration;
+        _staminaRecoveryBufferTime = gameData._staminaRecoveryBufferTime;
 
-        _name = playerData._name;
-        _map = playerData._map;
-        _characterType = playerData._characterType;
+        _name = gameData._name;
+        _map = gameData._map;
+        _characterType = gameData._characterType;
 
-        position.x = playerData.position[0];
-        position.y = playerData.position[1];
-        position.z = playerData.position[2];
+        position.x = gameData.position[0];
+        position.y = gameData.position[1];
+        position.z = gameData.position[2];
 
         _playerPosition = position;
 
@@ -80,7 +82,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-
+        _health = _maxHealth;
     }
 
     public float GetMaxHealth()
@@ -163,7 +165,7 @@ public class Player : MonoBehaviour
         _name = name;
     }
     
-    public string GetName()
+    public string GetPlayerName()
     {
         return _name;
     }
@@ -178,6 +180,16 @@ public class Player : MonoBehaviour
         return _characterType;
     }
     
+    public void SetEquipItem(Item item, int index)
+    {
+        _equipments[index] = item;
+    }
+
+    public Item[] GetCurrentEquipItem()
+    {
+        return _equipments;
+    }
+
     public Vector3 GetPlayerPosition()
     {
         return _playerPosition;

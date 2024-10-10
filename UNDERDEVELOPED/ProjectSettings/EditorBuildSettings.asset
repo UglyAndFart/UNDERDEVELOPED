@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Loading Screen/Initial.unity
+    guid: 71072dd455fcf204ca52247c4ba9041c
+  - enabled: 1
     path: Assets/Scenes/Areas/Cave.unity
     guid: 2d76d46dd2b52f045b03ec54d752aa11
   - enabled: 1
@@ -30,6 +33,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 4ef963e7a0c8d78438d46618f48f9f08
   - enabled: 1
+    path: Assets/Scenes/Areas/SF 2.unity
+    guid: 98b29a6134212194fbc0e36f6757d7f5
+  - enabled: 1
     path: Assets/Scenes/Loading Screen/Retrieving Game File Data.unity
     guid: 6672feab09b2cf44c8ec40299891432d
+  - enabled: 1
+    path: Assets/Scenes/Areas/Realm/Void.unity
+    guid: e4adbda3afe2edd4fa21bff13317c83b
   m_configObjects: {}

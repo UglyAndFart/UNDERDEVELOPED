@@ -6,7 +6,7 @@ public class CharacterPrefabLoader : MonoBehaviour
 {
     public static CharacterPrefabLoader _instance;
     private GameObject _currentCharacter;
-
+    
     [SerializeField]
     private GameObject[] _characters;
     private Player _player;

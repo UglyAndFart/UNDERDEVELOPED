@@ -1,22 +1,20 @@
 using System;
 using System.IO;
-using System.Net.NetworkInformation;
-using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public class DirectoryManager : MonoBehaviour
 {
-    public static DirectoryManager _instance;
+    // public static DirectoryManager _instance;
     private static string _gameFolderPath; 
     private static string _savesFolderPath;
     private static string _currentSaveFolder;
 
     private void Awake()
     {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this);
-        }
+        // if (_instance != null && _instance != this)
+        // {
+        //     Destroy(this);
+        // }
 
         LoadGameFolderPath();
         // _gameFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games\\Underdevelop");
@@ -79,11 +77,33 @@ public class DirectoryManager : MonoBehaviour
         _gameFolderPath = gameFolderPath;
     }
 
-    //saves the current gameFolderPath to playerprefs before exiting
     private void OnApplicationQuit()
     {
         SaveGameFolderPath(_gameFolderPath);
     }
+
+    //saves the current gameFolderPath to playerprefs before exiting
+    public static void DeleteSaveFolder()
+    {
+        string directoryPath = Path.GetDirectoryName(_currentSaveFolder);
+
+        if (!string.IsNullOrEmpty(directoryPath))
+        {
+            try
+            {
+                Directory.Delete(directoryPath, true);
+                Debug.Log("Directory deleted: " + directoryPath);
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                Debug.LogError("Access denied: " + e.Message);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Error deleting directory: " + e.Message);
+            }
+        }
+    }    
 
     public static void SetSavesFolderPath(string newSavesFolderPath)
     {

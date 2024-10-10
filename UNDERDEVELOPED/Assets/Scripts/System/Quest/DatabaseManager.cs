@@ -5,7 +5,19 @@ using System.IO;
 
 public class DatabaseManager : MonoBehaviour
 {
+    public static DatabaseManager _instance;
     private string _dbPath;
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+
+        _instance = this;
+    }
 
     void Start()
     {
@@ -283,6 +295,14 @@ public class DatabaseManager : MonoBehaviour
                 command.ExecuteNonQuery();
             }
             connection.Close();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
         }
     }
 }

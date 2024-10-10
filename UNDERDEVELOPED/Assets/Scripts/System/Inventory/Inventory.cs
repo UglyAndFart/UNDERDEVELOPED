@@ -8,7 +8,8 @@ public class Inventory : MonoBehaviour
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallBack;
     public List<Item> _items = new List<Item>();
-    private int _inventoryCapacity = 81;
+    public List<Equipment> _equipments = new List<Equipment>();
+    private int _inventoryCapacity = 36;
 
     private void Awake()
     {
@@ -24,7 +25,26 @@ public class Inventory : MonoBehaviour
 
     public bool AddItem(Item item)
     {
-        if (item.defaultItem)
+        if (item is Equipment equipment)
+        {
+            if (equipment._defaultItem)
+            {
+                return false;
+            }
+
+            if (_equipments.Count >= _inventoryCapacity)
+            {
+                Debug.LogWarning("Full Inventory");
+                return false;
+            }
+
+            _equipments.Add(equipment);
+
+            onItemChangedCallBack?.Invoke();
+            return true;
+        }
+
+        if (item._defaultItem)
         {
             return false;
         }
@@ -37,21 +57,30 @@ public class Inventory : MonoBehaviour
         
         _items.Add(item);
 
-        if (onItemChangedCallBack != null)
-        {
-            onItemChangedCallBack.Invoke();
-        }
+        onItemChangedCallBack?.Invoke();
         
         return true;
     }
 
     public void RemoveItem(Item item)
     {
-        _items.Remove(item);
-        
-        if (onItemChangedCallBack != null)
+        if (item is Equipment equipment)
         {
-            onItemChangedCallBack.Invoke();
+            _equipments.Remove(equipment);
+        }
+        else if (item is Item)
+        {
+            _items.Remove(item);
+        }
+
+        onItemChangedCallBack?.Invoke();
+    }
+
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
         }
     }
 }

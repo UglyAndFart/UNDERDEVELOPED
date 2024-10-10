@@ -17,8 +17,11 @@ public class NewGameFileManager : MonoBehaviour
     {
         CharacterPrefabLoader._instance.EnableCharacter();
         PlayerManager._instance.enabled = true;
+        GameEnvironmentManager._instance.enabled = true;
         // TopDownMovementController._instance.enabled = true;
         // GameManager._instance.enabled = true;
+
+        CreateNewGame();
     }
     
     //Checks if theres available spot for new game file 
@@ -36,23 +39,25 @@ public class NewGameFileManager : MonoBehaviour
 
     //Create new folder name slot n
     //limited to 5 folder
-    //if exists it will prompt to pick a slot to be overwritten
+    //if slot is full it will prompt to pick a slot to be overwritten
     public void CreateNewGame()
     {
         if (!CheckEmptySlot())
         {
             //prompt to choose slot to be overwriten
-            Debug.Log("No empty slot available");
+
+            Debug.LogWarning("NewGameFileManager: No empty slot available");
             return;
         }
         
         CreateNewFolder();
         CreateNewGameFile();
-        SceneLoader.LoadNextScene("South Forest");
     }
 
     private void CreateNewFolder()
     {
+        Debug.Log("NewGameFileManager: Creating new game folder");
+
         for (int i = 1; i <= 5; i++)
         {
             if (_slotPaths.Length == 0)
@@ -78,18 +83,30 @@ public class NewGameFileManager : MonoBehaviour
 
     private void CreateNewGameFile()
     {
-        string playerName = GameObject.Find("Player").GetComponent<Player>().GetName();
+        Debug.Log("NewGameFileManager: Creating new game file");
+
+        string playerName = Player._instance.GetPlayerName();
         string path = Path.Combine(DirectoryManager.GetCurrentSaveFolder(), $"{playerName}.plyr");
         DirectoryManager.SetCurrentSaveFolder(path);
-        SaveSystemManager.SavePlayer(Player._instance);
+        // SaveSystemManager.SavePlayer(Player._instance);
+        SaveSystemManager.SaveGame(Player._instance, GameEnvironment._instance);    
 
         TopDownMovementController._instance.enabled = true;
         GameManager._instance.enabled = true;
+
+        // PlayerStatUpdater._instance.enabled = true;
+        // ChallengeManager._instance.enabled = true;
+        DatabaseManager._instance.enabled = true;
+        HotkeysReader._instance.enabled = true;
+        // IngameOptions._instance.enabled = true;
+        ChallengeManagerReyal._instance.enabled = true;
     }
 
-    // private void OnDestroy()
-    // {
-    //     Debug.Log("NewGameFileManager OnDestroy Trigger");
-    //     CreateNewGameFile();    
-    // }
+    //Create the save file and folder before the next scene loads
+    private void OnDestroy()
+    {
+        PlayerStatUpdater._instance.enabled = true; 
+        IngameOptions._instance.enabled = true;
+        Debug.Log("NewGameFileManager: Destroy");
+    }
 }

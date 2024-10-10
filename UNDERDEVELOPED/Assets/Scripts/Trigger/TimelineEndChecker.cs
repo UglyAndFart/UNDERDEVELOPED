@@ -21,16 +21,22 @@ public class TimelineEndChecker : MonoBehaviour
         _timelineOver = true;
     }
 
+    public bool GetTimelineOver()
+    {
+        return _timelineOver;
+    }
+
+    public void SetCutscene(PlayableDirector playableDirector)
+    {
+        _playableDirector = playableDirector;
+        _timelineOver = false;
+    }
+
     private void OnDestroy()
     {
         if (_playableDirector != null)
         {
             _playableDirector.stopped -= OnTimelineStop;
         }
-    }
-
-    public bool GetTimelineOver()
-    {
-        return _timelineOver;
     }
 }

@@ -7,9 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager _instance;
-
-    [SerializeField]
     private Player _player;
+    private GameEnvironment _environment;
     [SerializeField]
     private int _saveInterval = 10;
 
@@ -26,39 +25,85 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        _player = Player._instance;
+        
         if (_player == null)
         {
-            Debug.Log("GameManager: Player Not Found");
+            Debug.LogWarning("GameManager: Player Not Found");
+        }
+
+        _environment = GameEnvironment._instance;
+        
+        if (_environment == null)
+        {
+            Debug.LogWarning("GameManager: GameEnvironment Not Found");
         }
 
         SceneManager.sceneLoaded += OnSceneLoad;
-        StartCoroutine(PlayerDataAutoSave());
+        StartCoroutine(GameDataAutoSave());
     }
 
-    private IEnumerator PlayerDataAutoSave()
+    // private IEnumerator PlayerDataAutoSave()
+    // {
+    //     while(true)
+    //     {
+    //         SaveSystemManager.SavePlayer(_player);
+    //         Debug.Log("PlayerData saved");
+    //         yield return new WaitForSeconds(_saveInterval);
+    //     }
+    // }
+
+    private IEnumerator GameDataAutoSave()
     {
         while(true)
         {
-            SaveSystemManager.SavePlayer(_player);
-            Debug.Log("PlayerData saved");
+            SaveSystemManager.SaveGame(_player, _environment);
+            Debug.Log("GameData saved");
+            StartCoroutine(SavingIndicator());
             yield return new WaitForSeconds(_saveInterval);
         }
+    }
+
+    private IEnumerator SavingIndicator()
+    {
+        HUDManager._instance.OpenSaveIndicator();
+        yield return new WaitForSeconds(1);
+        HUDManager._instance.CloseSaveIndicator();
+        StopCoroutine(SavingIndicator());
     }
 
     private void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
         //Check if boss is alive
+        //if ()
+
+
         if (scene.name == "South Forest" )
         {
-            SaveSystemManager.SavePlayer(_player);
+            // PlayerStatUpdater._instance.enabled = true;
+            // ChallengeManager._instance.enabled = true;
+            // DatabaseManager._instance.enabled = true;
+            // HotkeysReader._instance.enabled = true;
+            // IngameOptions._instance.enabled = true;
+            // Debug.Log("GameManager: Loading " + HUDManager._instance.transform.parent.gameObject.name);
+            // HUDManager._instance.transform.parent.gameObject.SetActive(true);
+            // Inventory._instance.transform.parent.gameObject.SetActive(true);
+
+            // SaveSystemManager.SavePlayer(_player);
+            SaveSystemManager.SaveGame(_player, _environment);
         }
     }
 
     private void OnDestroy()
     {
-        Debug.Log("GameManager: saved onDestroy");
-
-        SaveSystemManager.SavePlayer(_player);
+        if (_player != null && (!string.IsNullOrEmpty(DirectoryManager.GetCurrentSaveFolder())
+            || !string.IsNullOrWhiteSpace(DirectoryManager.GetCurrentSaveFolder())))
+        {
+            Debug.Log("GameManager: saved onDestroy");
+            // SaveSystemManager.SavePlayer(_player);
+            SaveSystemManager.SaveGame(_player, _environment);      
+              
+        }
 
         if (_instance == this)
         {
