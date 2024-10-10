@@ -1,57 +1,107 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameEnvironment : MonoBehaviour
 {
     public static GameEnvironment _instance;
-    
     [SerializeField]
-    private bool[] _bossesState, _chestsState, _potsState;
+    private bool[] _southForestCutscenes, _sf2;
+    [SerializeField]
+    private bool[] _southForestBosses, _sf2Bosses;
+    private List<List<bool>> _bossesState, _chestsState, _potsState, _cutscenesState;
 
     private void Awake()
     {
         if (_instance != null && _instance != this)
         {
             Destroy(this);
+            return;
         }
 
         _instance = this;
     }
 
-    public void SetEnvironmentData()
+    private void Start()
     {
-        GameEnvironmentData environmentData = new GameEnvironmentData(_bossesState, _chestsState, _potsState);
+        _cutscenesState = new List<List<bool>>(4);
+        _cutscenesState.Add(_southForestCutscenes.ToList());
+        _bossesState = new List<List<bool>>(4);
+        _bossesState.Add(_southForestBosses.ToList());
+        // _cutscenesState = new List<List<bool>>(4);
+        // _cutscenesState[0] = _southForestCutscene.ToList();
+        // _cutscenesState[1] = _sf2.ToList();
     }
 
-    public bool[] GetBossesStates()
+    public void SetGameEnvironment()
+    {
+        GameData gameData = SaveSystemManager.LoadGame();
+
+        _bossesState = gameData._bossesState;
+        _chestsState = gameData._chestsState;
+        _potsState =gameData._potsState;
+        _cutscenesState = gameData._cutscenesState;
+    }
+
+    public void SetEnvironmentData()
+    {
+        GameEnvironmentData environmentData = new GameEnvironmentData(ConvertToArray(_bossesState),
+            ConvertToArray(_chestsState), ConvertToArray(_potsState), ConvertToArray(_cutscenesState));
+    }
+
+    public List<List<bool>> GetBossesStates()
     {
         return _bossesState;
     }
 
-    public void SetBossesStates(bool[] newBossesState)
+    public void SetBossesStates(List<List<bool>> newBossesState)
     {
         _bossesState = newBossesState;
     }
 
-    public bool[] GetChestsStates()
+    public List<List<bool>> GetChestsStates()
     {
         return _chestsState;
     }
 
-    public void SetChestsStates(bool[] newChestsState)
+    public void SetChestsStates(List<List<bool>> newChestsState)
     {
         _chestsState = newChestsState;
     }
 
-    public bool[] GetPotsStates()
+    public List<List<bool>> GetPotsStates()
     {
         return _potsState;
     }
 
-    public void SetPotsStates(bool[] newPotsState)
+    public void SetPotsStates(List<List<bool>> newPotsState)
     {
         _potsState = newPotsState;
+    }
+
+    public List<List<bool>> GetCutsceneStates()
+    {
+        return _cutscenesState;
+    }
+
+    public void SetCutsceneStates(List<List<bool>> newCutsceneState)
+    {
+        _cutscenesState = newCutsceneState;
+    }
+
+    private bool[][] ConvertToArray(List<List<bool>> list)
+    {
+        if (list == null)
+            return null;
+
+        bool[][] jaggedArray = new bool[list.Count][];
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            jaggedArray[i] = list[i].ToArray();
+        }
+
+        return jaggedArray;
     }
 
     private void OnDestroy()

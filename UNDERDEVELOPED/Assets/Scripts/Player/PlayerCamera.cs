@@ -14,7 +14,7 @@ public class PlayerCamera : MonoBehaviour
         _virtualCamera = GetComponent<CinemachineVirtualCamera>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         SetPlayerToVirtualCam();
     }
@@ -22,6 +22,11 @@ public class PlayerCamera : MonoBehaviour
     private void SetPlayerToVirtualCam()
     {
         _virtualCamera.Follow = _player.transform;
+    }
+
+    private void OnDisable()
+    {
+        _virtualCamera.Follow = null;
     }
     // [SerializeField]
     // private GameObject mainCamera;

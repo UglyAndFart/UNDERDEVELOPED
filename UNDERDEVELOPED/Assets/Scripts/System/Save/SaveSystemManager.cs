@@ -11,6 +11,7 @@ public class SaveSystemManager : MonoBehaviour
         if (_instance != null && _instance != this)
         {
             Destroy(this);
+            return;
         }
 
         _instance = this;
@@ -27,6 +28,19 @@ public class SaveSystemManager : MonoBehaviour
         Debug.Log("From SaveSystemMnager: " + saveFilePath);
         PlayerData playerData = SaveSystem.LoadPlayer(saveFilePath);
         return playerData;
+    }
+
+    public static void SaveGame(Player player, GameEnvironment environment)
+    {
+        SaveSystem.SaveGame(player, environment);
+    }
+    
+    public static GameData LoadGame()
+    {
+        string saveFilePath = DirectoryManager.GetCurrentSaveFolder();
+        Debug.Log("From SaveSystemMnager: " + saveFilePath);
+        GameData gameData = SaveSystem.LoadGame(saveFilePath);
+        return gameData;
     }
 
     private void OnDestroy()

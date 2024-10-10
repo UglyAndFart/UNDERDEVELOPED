@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.CodeEditor;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TutorialQuestManager : MonoBehaviour
@@ -26,7 +22,7 @@ public class TutorialQuestManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && _playerInRange)
+        if (Input.GetButtonDown("Interact") && _playerInRange)
         {
             if (_questNumber == 0)
             {

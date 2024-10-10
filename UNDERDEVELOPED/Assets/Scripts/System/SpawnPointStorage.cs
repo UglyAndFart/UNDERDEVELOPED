@@ -5,5 +5,5 @@ using UnityEngine;
 public class SpawnPointStorage : MonoBehaviour
 {
     [SerializeField]
-    public GameObject[] spawnPoints; 
+    public GameObject[] spawnPoints;
 }

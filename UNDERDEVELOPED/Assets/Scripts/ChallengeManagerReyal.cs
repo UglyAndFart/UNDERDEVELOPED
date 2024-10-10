@@ -8,60 +8,76 @@ using UnityEngine;
 //Retrive from DB and set to console
 public class ChallengeManagerReyal : MonoBehaviour
 {
-    [SerializeField]
+    public static ChallengeManagerReyal _instance;
     private DatabaseManager _databaseManager;
-    [SerializeField]
     private HUDManager _hudManager;
-    [SerializeField]
     private Challenge _challenge;
     [SerializeField]
     private TMP_InputField _editorText;
+    [SerializeField]
+    private TextMeshProUGUI _descriptionText;
 
     private string[] _currentChallengeData;
-    private string _challengeName, _challengeArea, _challengeLevel, _challengeText;
-    private int _playerAttemptCount;
-    private bool _loadedChallenge = false;
+    private string _challengeName, _challengeArea, _challengeLevel,
+     _challengeText, _challengeDescription;
+    // private int _playerAttemptCount;
+    private bool _isPlayerInRange = false;
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+
+        _instance = this;
+
+        Challenge.OnChallengeGive += LoadChallenge;
+        QuestTriggerRange.OnPlayerExit += ResetLocalVariables;
+    }
 
     private void Start()
     {
+        _hudManager = HUDManager._instance;
+        _challenge = Challenge._instance;
+        _databaseManager = DatabaseManager._instance;
         _currentChallengeData = new string[7];
-        _playerAttemptCount = 0;
+
+        CodeRunner.OnPlayerSuccess += ChallengeSolved;
+        // _playerAttemptCount = 0;
     }
 
     //might be the promblem
     private void Update()
     {
-        if (!_hudManager._codeEditorOnScreen)
+        if (_isPlayerInRange && Input.GetButtonDown("Interact"))
         {
-            _loadedChallenge = false;
-            return;
-        }
-        
-        if (_loadedChallenge)
-        {
-            return;
+            Debug.Log("ChallengeManagerReyal: Player Inrange");
+            _hudManager.OpenCodeEditor();
+            _isPlayerInRange = false;
         }
 
-        LoadChallenge();
-        _loadedChallenge = true;
+        // Debug.Log("ChallengeManagerReyal: Player Not Inrange");
     }
 
     private void LoadChallenge()
-    {
+    {   
+        Debug.Log("ChallengeManagerReyal: LoadChallenge");
+        _isPlayerInRange = true;
+
         FetchCurrentChallenge();
         SetCurrentChallenge();
         GetChallengeString();
+        GetChallengeDescription();
         
+        Debug.Log("ChallengeManagerReyal: " + _challengeText);
+
         if (_challengeText != null)
         {
             Debug.Log("Console Shit");
             LoadChallengeToConsole();
         }
-    }
-
-    private void OnDisable()
-    {
-        ResetLocalVariables();
     }
 
     private void FetchCurrentChallenge()
@@ -73,10 +89,12 @@ public class ChallengeManagerReyal : MonoBehaviour
 
     private void ResetLocalVariables()
     {
+        Debug.Log("ChallengeManagerReyal: Reset variables");
         _challengeName = null;
         _challengeArea = null;
         _challengeLevel = null;
         _challengeText = null;
+        _isPlayerInRange = false;
     }
 
     private void SetCurrentChallenge()
@@ -92,7 +110,7 @@ public class ChallengeManagerReyal : MonoBehaviour
         }
         else
         {
-            //Debug.Log("No challenge active");
+            Debug.Log("ChallengeManager: No challenge active");
             _challengeName = null;
             _challengeArea = null;
             _challengeLevel = null;
@@ -101,6 +119,12 @@ public class ChallengeManagerReyal : MonoBehaviour
     }
 
     private void LoadChallengeToConsole()
+    {
+        _editorText.text = _challengeText;
+        _descriptionText.text = _challengeDescription;
+    }
+
+    public void ResetChallengeText()
     {
         _editorText.text = _challengeText;
     }
@@ -112,10 +136,16 @@ public class ChallengeManagerReyal : MonoBehaviour
             string filePath = Path.Combine(Application.streamingAssetsPath, Path.Combine(_currentChallengeData[3], _currentChallengeData[0] + ".txt"));
             _challengeText = ReadChallengeTxt(filePath);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            Debug.LogError(ex.Message);
             return;
         }
+    }
+
+    public void GetChallengeDescription()
+    {
+        _challengeDescription = _currentChallengeData[1];
     }
 
     public string ReadChallengeTxt(string filePath)
@@ -132,11 +162,45 @@ public class ChallengeManagerReyal : MonoBehaviour
             }
         }
 
+        Debug.LogWarning("ChallengeManagerReyal: curret challenge test" + _challengeText);
+
         return challengeTxt;
     }
 
     public string[] GetCurrentChallenge()
     {
         return _currentChallengeData;
+    }
+
+    public void ChallengeSolved()
+    {
+        _hudManager.CloseCodeEditor();
+        _databaseManager.UpdateChallengeStatus(_challengeName, "Done");
+        _challenge.ResetChallengeValues();
+        StartCoroutine(OnChallengeComplete());
+    }
+
+    private IEnumerator OnChallengeComplete()
+    {
+        HUDManager._instance.OpenChallengeComplete();
+        yield return new WaitForSeconds(3);
+        HUDManager._instance.CloseChallengeComplele();
+    }
+
+    private void OnDisable()
+    {
+        ResetLocalVariables();
+    }
+
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
+
+        CodeRunner.OnPlayerSuccess -= ChallengeSolved;
+        Challenge.OnChallengeGive -= LoadChallenge;
+        QuestTriggerRange.OnPlayerExit -= ResetLocalVariables;
     }
 }

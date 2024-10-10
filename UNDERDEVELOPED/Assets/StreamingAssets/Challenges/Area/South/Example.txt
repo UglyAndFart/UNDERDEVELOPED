@@ -1,0 +1,5 @@
+public void Example()
+{
+	string name = "";
+	Console.WriteLine(name);
+}
