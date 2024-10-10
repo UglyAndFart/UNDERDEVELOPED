@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,7 +13,7 @@ public class PlayerManager : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private float _moveSpeed, _dashDistance, _dashDuration, _dashCooldown,
     _dashCost, _staminaRegenRate, _staminaRecoveryBufferTime = 0;
-    private bool _canDash = true, _dashing = false;
+    private bool _canDash = true, _isDashing = false, _isAlive = true;
     private string _previousMap;
 
     private void Awake()
@@ -74,7 +73,7 @@ public class PlayerManager : MonoBehaviour
     //updates the PlayerPostion in player every time the player is moving
     public void PlayerMovePosition(Vector2 direction)
     {
-        if (!_dashing)
+        if (!_isDashing)
         {
             _rigidBody2D.MovePosition(_rigidBody2D.position + direction * _moveSpeed * Time.deltaTime);
             _player.SetPlayerPosition(TopDownMovementController._instance.GetPosition());
@@ -96,8 +95,9 @@ public class PlayerManager : MonoBehaviour
         _animator.SetTrigger("Hurt");
         _player.DeductHealth(damage);
 
-        if ((_player.GetHealth() - damage) <= 0)
+        if ((_player.GetHealth() - damage) <= 0 && _isAlive)
         {
+            _isAlive = false;
             _animator.SetBool("Alive", false);
             OnDeath();
             return;
@@ -139,7 +139,7 @@ public class PlayerManager : MonoBehaviour
     public IEnumerator PerformDash(Vector2 facingDirection)
     {
         _canDash = false;
-        _dashing = true;
+        _isDashing = true;
 
         _player.DeductStamina(_dashCost);
 
@@ -155,7 +155,7 @@ public class PlayerManager : MonoBehaviour
             yield return null;
         }
 
-        _dashing = false;
+        _isDashing = false;
 
         yield return new WaitForSeconds(_dashCooldown);
         _canDash = true;
@@ -181,7 +181,7 @@ public class PlayerManager : MonoBehaviour
 
     public bool GetDashing()
     {
-        return _dashing;
+        return _isDashing;
     }
 
     public bool GetCanDash()
@@ -226,6 +226,7 @@ public class PlayerManager : MonoBehaviour
         _player.Die();
         _player.GetComponent<TopDownMovementController>().enabled = true;
         _animator.SetBool("Alive", true);
+        _isAlive = true;
         StopCoroutine(RespawnTimer());
     }
 

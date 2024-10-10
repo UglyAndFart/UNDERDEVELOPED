@@ -33,6 +33,8 @@ public class HUDManager : MonoBehaviour
     private GameObject _bossHealthbar;
     [SerializeField]
     private GameObject _questComplete;
+    
+    public int activeUI = 0;
 
     private void Awake()
     {
@@ -48,14 +50,14 @@ public class HUDManager : MonoBehaviour
     public void OpenCodeEditor()
     {
         _codeEditor.SetActive(true);
-
+        activeUI = 1;
         OnUIOpen?.Invoke();
     }
 
     public void CloseCodeEditor()
     {
         _codeEditor.SetActive(false);
-
+        activeUI = 0;
         OnUIClose?.Invoke();
     }
 
@@ -75,6 +77,7 @@ public class HUDManager : MonoBehaviour
     {
         _inventory.SetActive(true);
         _options.SetActive(false);
+        activeUI = 2;
         OnUIOpen?.Invoke();
     }
 
@@ -82,6 +85,7 @@ public class HUDManager : MonoBehaviour
     {
         _inventory.SetActive(false);
         _options.SetActive(true);
+        activeUI = 0;
         OnUIClose?.Invoke();
     }
 
@@ -100,6 +104,7 @@ public class HUDManager : MonoBehaviour
         _tutorialMenu.SetActive(true);
         _options.SetActive(false);
         _playerStatus.SetActive(false);
+        activeUI = 3;
         OnUIOpen?.Invoke();
     }
 
@@ -108,6 +113,7 @@ public class HUDManager : MonoBehaviour
         _tutorialMenu.SetActive(false);
         _options.SetActive(true);
         _playerStatus.SetActive(true);
+        activeUI = 0;
         OnUIClose?.Invoke();
     }
 
@@ -167,12 +173,16 @@ public class HUDManager : MonoBehaviour
     {
         _ingameMenu.SetActive(true);
         _options.SetActive(false);
+        _bossHealthbar.SetActive(false);
+        activeUI = 4;
     }
 
     public void CloseIngameMenu()
     {
         _ingameMenu.SetActive(false);
         _options.SetActive(true);
+        _bossHealthbar.SetActive(true);
+        activeUI = 0;
     }
 
     private void OnDestroy()

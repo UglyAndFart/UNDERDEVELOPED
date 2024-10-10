@@ -12,7 +12,7 @@ public class CodeRunner : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _consoleText, _instructionText;
     [SerializeField]
-    private GameObject _statusPanel, _instructionPanel, _codeEditorPanel;
+    private GameObject _statusPanel, _instructionPanel;
     
     [Header("Buttons")]
     [SerializeField]
@@ -311,6 +311,7 @@ public class CodeRunner : MonoBehaviour
 
     private void Btn_Close()
     {
-        _codeEditorPanel.SetActive(false);
+        HUDManager._instance.CloseCodeEditor();
+        HUDManager._instance.activeUI = 0;
     }
 }
