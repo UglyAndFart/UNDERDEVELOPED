@@ -2,27 +2,50 @@ using UnityEngine;
 using TMPro;
 using System.IO;
 using System;
+using UnityEngine.UI;
 
 public class CodeRunner : MonoBehaviour
 {
+    [Header("Panels")]
+    [SerializeField]
+    private TMP_InputField _editorText;
+    [SerializeField]
+    private TextMeshProUGUI _consoleText, _instructionText;
+    [SerializeField]
+    private GameObject _statusPanel, _instructionPanel, _codeEditorPanel;
+    
+    [Header("Buttons")]
+    [SerializeField]
+    private Button _btnEditor;
+    [SerializeField]
+    private Button _btnConsole, _btnSubmit, _btnRun, _btnClose;
+
     public delegate void CodeRunnerHandler();
     public static event CodeRunnerHandler OnPlayerSuccess;
-
-    public GameObject _editor, _console, _status;
     private ChallengeManagerReyal _challengeManager;
     //add reference to another gameObject for test status 
-
-    private string _storagePath, _codeRunnerPath;
+    
+    private string _exeStoragePath, _codeRunnerPath;
     private string _txt;
-    private bool _noError;
+    private bool _haveError;
 
-    void Start()
+    private void Awake()
     {
-        _storagePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games\\Underdeveloped\\ExeFile");
-        MonoCommands.createDir(_storagePath);
-        btnEditor_Click();
+        SetupListenerToButtons();
+    }
 
-        _codeRunnerPath = Path.Combine(Application.streamingAssetsPath, "Scripts\\PlayerCodeRunner.txt");
+    private void Start()
+    {
+        _exeStoragePath = Path.Combine(DirectoryManager.GetGameFolderPath(), "ExeFile");
+        
+        if (!Directory.Exists(_exeStoragePath))
+        {
+            MonoCommands.createDir(_exeStoragePath);
+        }
+
+        BtnEditor_Click();
+
+        //_codeRunnerPath = Path.Combine(Application.streamingAssetsPath, "Scripts\\PlayerCodeRunner.txt");
         _challengeManager = ChallengeManagerReyal._instance;
     }
 
@@ -75,11 +98,11 @@ public class CodeRunner : MonoBehaviour
 
     private string RunCode(string code, string fileName)
     {
-        _noError = true;
+        _haveError = true;
 
         if (string.IsNullOrEmpty(code) || string.IsNullOrEmpty(code))
         {
-            _noError = false;
+            _haveError = false;
             return "";
         }
 
@@ -92,12 +115,12 @@ public class CodeRunner : MonoBehaviour
         //     txt = editor.GetComponent<TMP_InputField>().text;
         // }
 
-        MonoCommands.createCS(_storagePath, fileName, code);
-        MonoCommands.compileCS($"mcs {fileName}.cs", _storagePath);
+        MonoCommands.createCS(_exeStoragePath, fileName, code);
+        MonoCommands.compileCS($"mcs {fileName}.cs", _exeStoragePath);
 
         if(MonoCommands.haveCompilationError())
         {
-            _noError = false;
+            _haveError = false;
             string errorMsg = "";
 
             foreach (string str in MonoCommands.consoleCompileError)
@@ -107,11 +130,11 @@ public class CodeRunner : MonoBehaviour
             return errorMsg;
         }
 
-        string output = MonoCommands.runExeFile($"mono {fileName}.exe", _storagePath);
+        string output = MonoCommands.runExeFile($"mono {fileName}.exe", _exeStoragePath);
 
         if (MonoCommands.haveRuntimeError())
         {
-            _noError = false;
+            _haveError = false;
             string errorMsg = "";
 
             foreach (string str in MonoCommands.consoleRuntimeError)
@@ -121,49 +144,41 @@ public class CodeRunner : MonoBehaviour
             return errorMsg;
         }
 
-        Debug.Log("Reached the ass");
+        Debug.Log("CodeRunner: PlayerCode Executed!");
+
+        BtnConsole_Click();
         return output;
     }
 
-    public void btnEditor_Click()
-    {
-        _editor.SetActive(true);
-        _console.SetActive(false);
-    }
+    //Insert player code inside a Main method
+    // public void addEntryPoint()
+    // {
+    //     _txt = "using System;\n\n" + 
+    //     "public class ClassA\n" +
+    //     "{\n" +
+    //     "public static void Main(string[] args)\n" +
+    //     "{\n" +
+    //     $"{_editorPanel.GetComponent<TMP_InputField>().text}\n" +
+    //     "}\n}";
+    // }
 
-    public void btnConsole_Click()
-    {
-        _editor.SetActive(false);
-        _console.SetActive(true);
-    }
-
-    public void addEntryPoint()
-    {
-        _txt = "using System;\n\n" + 
-        "public class ClassA\n" +
-        "{\n" +
-        "public static void Main(string[] args)\n" +
-        "{\n" +
-        $"{_editor.GetComponent<TMP_InputField>().text}\n" +
-        "}\n}";
-    }
-
+    // Compare playercode string if main method exists 
     public bool checkEntryPoint()
     {
-        if (_editor.GetComponent<TMP_InputField>().text.Contains("public static void Main(string[] args)") ||
-        _editor.GetComponent<TMP_InputField>().text.Contains("public static void Main(string[] args){") ||
-        _editor.GetComponent<TMP_InputField>().text.Contains("static void Main(string[] args){") ||
-        _editor.GetComponent<TMP_InputField>().text.Contains("static void Main(string[] args)"))
+        if (_editorText.text.Contains("public static void Main(string[] args)") ||
+        _editorText.text.Contains("public static void Main(string[] args){") ||
+        _editorText.text.Contains("static void Main(string[] args){") ||
+        _editorText.text.Contains("static void Main(string[] args)"))
         {
             return true;
         }
         return false;
     }
 
-    public void setEditorCode(string code)
-    {
-        _editor.GetComponent<TMP_InputField>().text = code; 
-    }
+    // public void setEditorCode(string code)
+    // {
+    //     _editorPanel.GetComponent<TMP_InputField>().text = code; 
+    // }
 
     /// <summary>
     /// Run the player code.
@@ -187,7 +202,7 @@ public class CodeRunner : MonoBehaviour
         "\t\tPlayerCode playerCode = new PlayerCode();\n" +
         $"\t\tplayerCode.{functionName}();\n" +
         "\t}\n\n" +
-        $"\t{_editor.GetComponent<TMP_InputField>().text}" +
+        $"\t{_editorText.text}" +
         "}\n";
         string output = "";
         // using (StreamReader reader = new StreamReader(codeRunnerPath))
@@ -202,7 +217,7 @@ public class CodeRunner : MonoBehaviour
         // }
           
         output = RunCode(code, fileName);
-        _console.GetComponent<TextMeshProUGUI>().text = output;
+        _consoleText.text = output;
     }
 
     /// <summary> 
@@ -231,7 +246,7 @@ public class CodeRunner : MonoBehaviour
 
                 if (line.Contains("//player function"))
                 {
-                    code += _editor.GetComponent<TMP_InputField>().text;
+                    code += _editorText.text;
                     continue;
                 }
                 code += line + "\n";
@@ -239,9 +254,9 @@ public class CodeRunner : MonoBehaviour
         }
         
         output = RunCode(code, fileName);
-        _status.GetComponent<TextMeshProUGUI>().text = output;
+        _statusPanel.GetComponent<TextMeshProUGUI>().text = output;
 
-        if (!_noError)
+        if (!_haveError)
         {
             Debug.Log("CodeRunner: Player code is wrong");
             return;
@@ -250,5 +265,41 @@ public class CodeRunner : MonoBehaviour
         Debug.Log("CodeRunner: Player Answered correctly");
         OnPlayerSuccess?.Invoke();
         //questManager.PlayerSolveChallenge();
+    }
+
+    private void SetupListenerToButtons()
+    {
+        _btnEditor.onClick.AddListener(BtnEditor_Click);
+        _btnConsole.onClick.AddListener(BtnConsole_Click);
+        _btnSubmit.onClick.AddListener(BtnSubmit_Click);
+        _btnRun.onClick.AddListener(BtnRun_Click);
+        _btnClose.onClick.AddListener(Btn_Close);
+    }
+
+    private void BtnEditor_Click()
+    {
+        _editorText.gameObject.SetActive(true);
+        _consoleText.gameObject.SetActive(false);
+    }
+
+    private void BtnConsole_Click()
+    {
+        _editorText.gameObject.SetActive(false);
+        _consoleText.gameObject.SetActive(true);
+    }
+
+    private void BtnSubmit_Click()
+    {
+        RunPlayerCodeTest();
+    }
+
+    private void BtnRun_Click()
+    {
+        RunPlayerCode();
+    }
+
+    private void Btn_Close()
+    {
+        _codeEditorPanel.SetActive(false);
     }
 }

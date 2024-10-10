@@ -18,7 +18,7 @@ public class ChallengeManagerReyal : MonoBehaviour
     private string[] _currentChallengeData;
     private string _challengeName, _challengeArea, _challengeLevel, _challengeText;
     // private int _playerAttemptCount;
-    private bool _playerInRange = false;
+    private bool _isPlayerInRange = false;
 
     private void Awake()
     {
@@ -48,11 +48,11 @@ public class ChallengeManagerReyal : MonoBehaviour
     //might be the promblem
     private void Update()
     {
-        if (_playerInRange && Input.GetButtonDown("Interact"))
+        if (_isPlayerInRange && Input.GetButtonDown("Interact"))
         {
             Debug.Log("ChallengeManagerReyal: Player Inrange");
             _hudManager.OpenCodeEditor();
-            _playerInRange = false;
+            _isPlayerInRange = false;
         }
 
         Debug.Log("ChallengeManagerReyal: Player Not Inrange");
@@ -61,7 +61,7 @@ public class ChallengeManagerReyal : MonoBehaviour
     private void LoadChallenge()
     {   
         Debug.Log("ChallengeManagerReyal: LoadChallenge");
-        _playerInRange = true;
+        _isPlayerInRange = true;
 
         FetchCurrentChallenge();
         SetCurrentChallenge();
@@ -90,7 +90,7 @@ public class ChallengeManagerReyal : MonoBehaviour
         _challengeArea = null;
         _challengeLevel = null;
         _challengeText = null;
-        _playerInRange = false;
+        _isPlayerInRange = false;
     }
 
     private void SetCurrentChallenge()

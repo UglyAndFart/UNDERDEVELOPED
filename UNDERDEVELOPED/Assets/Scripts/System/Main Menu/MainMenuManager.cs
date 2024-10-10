@@ -57,6 +57,7 @@ public class MainMenuManager : MonoBehaviour
             _overwriteWindow.SetActive(true);
             return;
         }
+        
         SceneLoader.LoadScene("Computer Laboratory");
     }
 

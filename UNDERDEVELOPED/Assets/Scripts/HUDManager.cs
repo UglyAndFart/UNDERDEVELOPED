@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class HUDManager : MonoBehaviour
@@ -13,21 +14,25 @@ public class HUDManager : MonoBehaviour
     [SerializeField]
     private GameObject _codeEditor;
     [SerializeField]
+    private GameObject _inventory;
+    [SerializeField]
+    private GameObject _tutorialMenu;
+    [SerializeField]
+    private GameObject _options;
+    [SerializeField]
+    private GameObject _ingameMenu;
+    [SerializeField]
     private GameObject _playerStatus;
     [SerializeField]
     private GameObject _deathScreen;
     [SerializeField]
-    private GameObject _inventory;
-    [SerializeField]
-    private GameObject _options;
-    [SerializeField]
-    private GameObject _tutorialButton;
-    [SerializeField]
-    private GameObject _tutorialMenu;
-    [SerializeField]
     private GameObject _challengeComplete;
     [SerializeField]
+    private GameObject _saveIndicator;
+    [SerializeField]
     private GameObject _bossHealthbar;
+    [SerializeField]
+    private GameObject _questComplete;
 
     private void Awake()
     {
@@ -111,11 +116,6 @@ public class HUDManager : MonoBehaviour
     {
         _deathScreen.SetActive(false);
     }
-    
-    public void OpenTutorialButton()
-    {
-        _tutorialButton.SetActive(true);
-    }
 
     public void OpenChallengeComplete()
     {
@@ -135,6 +135,36 @@ public class HUDManager : MonoBehaviour
     public void CloseBossHealthbar()
     {
         _bossHealthbar.SetActive(false);
+    }
+
+    public void OpenSaveIndicator()
+    {
+        _saveIndicator.SetActive(true);
+    }
+
+    public void CloseSaveIndicator()
+    {
+        _saveIndicator.SetActive(false);
+    }
+
+    public void OpenQuestComplete()
+    {
+        _questComplete.SetActive(true);
+    }
+
+    public void CloseQuestComplete()
+    {
+        _questComplete.SetActive(false);
+    }
+
+    public void OpenIngameMenu()
+    {
+        _ingameMenu.SetActive(true);
+    }
+
+    public void CloseIngameMenu()
+    {
+        _ingameMenu.SetActive(false);
     }
 
     private void OnDestroy()

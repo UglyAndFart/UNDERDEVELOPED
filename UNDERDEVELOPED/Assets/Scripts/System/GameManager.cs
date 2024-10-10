@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager _instance;
     private Player _player;
-    [SerializeField]
-    private GameObject _savingIndicator;
     private GameEnvironment _environment;
     [SerializeField]
     private int _saveInterval = 10;
@@ -68,9 +66,9 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator SavingIndicator()
     {
-        _savingIndicator.SetActive(true);
+        HUDManager._instance.OpenSaveIndicator();
         yield return new WaitForSeconds(1);
-        _savingIndicator.SetActive(false);
+        HUDManager._instance.CloseSaveIndicator();
         StopCoroutine(SavingIndicator());
     }
 

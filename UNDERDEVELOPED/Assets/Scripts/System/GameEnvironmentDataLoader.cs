@@ -28,7 +28,7 @@ public class GameEnvironmentDataLoader : MonoBehaviour
         OnSceneLoad();
         EnableCutscene();
         EnableBoss();
-        HUDManager._instance.OpenTutorialButton();
+        //HUDManager._instance.OpenTutorialButton();
         HUDManager._instance.OpenOptions();
         HUDManager._instance.CloseBossHealthbar();
     }
