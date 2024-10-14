@@ -19,6 +19,11 @@ public class TimelineEndChecker : MonoBehaviour
     private void OnTimelineStop(PlayableDirector director)
     {
         _timelineOver = true;
+        
+        if (director.name == "ForestIntro")
+        {
+            Destroy(director.transform.parent.gameObject);
+        }
     }
 
     public bool GetTimelineOver()
