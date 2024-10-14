@@ -129,7 +129,15 @@ public class ChallengeManagerReyal : MonoBehaviour
     }
 
     public void ResetChallengeText()
-    {
+    {   
+        if (string.IsNullOrEmpty(_challengeText) || string.IsNullOrWhiteSpace(_challengeText))
+        {
+            _editorText.text = $"public void Code()\n"
+                + "{\n\n"
+                + "}";
+            return;
+        }
+
         _editorText.text = _challengeText;
     }
 

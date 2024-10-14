@@ -37,11 +37,14 @@ public class CodeRunner : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log("CodeRunner: Started");
+
         if (_challengeManager.GetCurrentChallenge()[0] == null)
         {
             _btnSubmit.gameObject.SetActive(false);
             _btnRun.gameObject.SetActive(true);
             _instructionPanel.SetActive(false);
+            SetDefaultEditorText();
             Debug.Log("CodeRunner: No challenge available");
         }
         else
@@ -50,7 +53,6 @@ public class CodeRunner : MonoBehaviour
             _btnRun.gameObject.SetActive(false);
             _instructionPanel.SetActive(true);
         }
-
     }
 
     private void Start()
@@ -287,6 +289,13 @@ public class CodeRunner : MonoBehaviour
         Debug.Log("CodeRunner: Player Answered correctly");
         OnPlayerSuccess?.Invoke();
         //questManager.PlayerSolveChallenge();
+    }
+    
+    private void SetDefaultEditorText()
+    {
+        _editorText.text = "public void Code()\n"
+            + "{\n\n"
+            + "}";
     }
 
     private void SetupListenerToButtons()
