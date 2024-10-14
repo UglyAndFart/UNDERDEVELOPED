@@ -5,19 +5,19 @@ using UnityEngine;
 public class Challenge : MonoBehaviour
 {
     public delegate void ChallengeEventHandler();
-    public static ChallengeEventHandler OnChallengeGive;
-    public static Challenge _instance;
+    public static ChallengeEventHandler onChallengeGive;
+    public static Challenge instance;
     private string _challengeName, _challengeArea, _challengeLevel;
 
     private void Awake()
     {
-        if (_instance != null && _instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(this);
             return;
         }
 
-        _instance = this;
+        instance = this;
     }
 
     public void SetChallengeName(string name)
@@ -63,14 +63,14 @@ public class Challenge : MonoBehaviour
         _challengeArea = area;
         _challengeLevel = level;
 
-        OnChallengeGive?.Invoke();
+        onChallengeGive?.Invoke();
     }
 
     private void OnDestroy()
     {
-        if (_instance == this)
+        if (instance == this)
         {
-            _instance = null;
+            instance = null;
         }
     }
 }

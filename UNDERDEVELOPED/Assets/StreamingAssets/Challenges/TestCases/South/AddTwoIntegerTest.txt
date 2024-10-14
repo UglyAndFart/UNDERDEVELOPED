@@ -3,27 +3,41 @@ using System;
 public class PlayerCodeTest
 {
 	int numOfFailedTest = 0;
+	
 	//player function
+	
 	public static void Main(string[] args)
 	{
-		PlayerCodeTest playerCodeTest = new PlayerCodeTest();
-		playerCodeTest.AddTwoInteger();
-		playerCodeTest.PlayerCodeTest_AddTwoInteger_SumShouldReturn3();
+	  PlayerCodeTestChecker();
 	}
 
-	public void PlayerCodeTest_AddTwoInteger_ShouldReturn3()
-	{
-		PlayerCodeTest playerCodeTest = new PlayerCodeTest();
-		
-		int num1 = 2, num2 = 1;
-		int sum = num1 + num2;
-		int result = playerCodeTest.AddTwoInteger(2,1);
+  public static void PlayerCodeTestChecker()
+  {
+    PlayerCodeTest playerCodeTest = new PlayerCodeTest();
+    
+    int[,] inputs =
+    {
+      {12, 2},
+      {1, 2},
+      {1, 1},
+      {6, 9}
+    };
+    
+    int[] outputs = { 14, 3, 2, 15};
+    
+    for(int i = 0; i < inputs.GetLength(0); i++)
+    {
+        int result = playerCodeTest.AddTwoInteger(inputs[i, 0], inputs[i, 1]);
+        
+        if (result == outputs[i])
+        {
+            Console.WriteLine("Testcase Passed!");
+        }
 
-		if (result != sum)
-		{
-			numOfFailedTest ++;
-			Console.WriteLine($"num1 = 2\nnum2 = 1\nexpected = 3\nresult =  {result}");//printout
-			Environment.Exit(0);
-		}
-	}
+        else
+        {
+            Console.WriteLine("Incorrect Testcase at no." + (i + 1));
+        }
+    }
+  }
 }

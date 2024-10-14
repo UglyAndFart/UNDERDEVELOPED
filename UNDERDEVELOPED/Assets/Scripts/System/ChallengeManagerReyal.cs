@@ -8,7 +8,7 @@ using UnityEngine;
 //Retrive from DB and set to console
 public class ChallengeManagerReyal : MonoBehaviour
 {
-    public static ChallengeManagerReyal _instance;
+    public static ChallengeManagerReyal instance;
     private DatabaseManager _databaseManager;
     private HUDManager _hudManager;
     private Challenge _challenge;
@@ -25,22 +25,22 @@ public class ChallengeManagerReyal : MonoBehaviour
 
     private void Awake()
     {
-        if (_instance != null && _instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(this);
             return;
         }
 
-        _instance = this;
+        instance = this;
 
-        Challenge.OnChallengeGive += LoadChallenge;
-        QuestTriggerRange.OnPlayerExit += ResetLocalVariables;
+        Challenge.onChallengeGive += LoadChallenge;
+        QuestTriggerRange.onPlayerExit += ResetLocalVariables;
     }
 
     private void Start()
     {
         _hudManager = HUDManager._instance;
-        _challenge = Challenge._instance;
+        _challenge = Challenge.instance;
         _databaseManager = DatabaseManager._instance;
         _currentChallengeData = new string[7];
 
@@ -94,6 +94,8 @@ public class ChallengeManagerReyal : MonoBehaviour
         _challengeArea = null;
         _challengeLevel = null;
         _challengeText = null;
+        _currentChallengeData = _currentChallengeData = new string[7];
+        _editorText.text = "";
         _isPlayerInRange = false;
     }
 
@@ -115,6 +117,8 @@ public class ChallengeManagerReyal : MonoBehaviour
             _challengeArea = null;
             _challengeLevel = null;
             _challengeText = null;
+            _editorText.text = "";
+            _currentChallengeData = new string[7];
         }
     }
 
@@ -194,13 +198,13 @@ public class ChallengeManagerReyal : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_instance == this)
+        if (instance == this)
         {
-            _instance = null;
+            instance = null;
         }
 
         CodeRunner.OnPlayerSuccess -= ChallengeSolved;
-        Challenge.OnChallengeGive -= LoadChallenge;
-        QuestTriggerRange.OnPlayerExit -= ResetLocalVariables;
+        Challenge.onChallengeGive -= LoadChallenge;
+        QuestTriggerRange.onPlayerExit -= ResetLocalVariables;
     }
 }

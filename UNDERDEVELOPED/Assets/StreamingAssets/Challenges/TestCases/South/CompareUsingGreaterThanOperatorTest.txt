@@ -2,16 +2,20 @@ using System;
 using System.Security.Cryptography.X509Certificates;
 
 
-namespace Mynamespace
-{
-    public class PlayerCodeTestcase
+
+    public class PlayerCodeTest
     {
         static void Main(string[] args)
         {
             PlayerCodeTestChecker();
         }
+
+        //player function
+        
         public static void PlayerCodeTestChecker()
         {
+            PlayerCodeTest playeCodeTest = new PlayerCodeTest();
+            
             int[,] inputs =
             {
                 { 5, 10 },
@@ -23,7 +27,7 @@ namespace Mynamespace
                 { 4, 10 },
                 { 7, 6 },
                 { 11, 21 },
-                { 12, 14 },
+                { 12, 14 }
             };
 
             bool[] outputs =
@@ -33,7 +37,7 @@ namespace Mynamespace
 
             for(int i = 0; i < inputs.GetLength(0); i++)
             {
-                bool result = PlayerCodeTest(inputs[i, 0], inputs[i, 1]);
+                bool result = playeCodeTest.CompareUsingGreaterThanOperator(inputs[i, 0], inputs[i, 1]);
                 
                 if (result == outputs[i])
                 {
@@ -47,4 +51,3 @@ namespace Mynamespace
             }
         }
     }
-}

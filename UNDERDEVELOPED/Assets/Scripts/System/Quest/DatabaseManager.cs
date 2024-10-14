@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Data;
 using Mono.Data.Sqlite;
 using System.IO;
+using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class DatabaseManager : MonoBehaviour
 {
@@ -169,20 +171,48 @@ public class DatabaseManager : MonoBehaviour
     public string[] GetChallengeViaAreaAndLevel(string challengeArea, string challengeLevel)
     {
         string[] selectedData = new string[7];
+        int numOfChallenge = 0,
+        index = 0,
+        targetIndex = 0;
 
         using (SqliteConnection connection = new SqliteConnection(_dbPath))
-        {
+        {   
             connection.Open();
+            
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "SELECT COUNT(*) FROM Challenges WHERE Area = @area AND Level = @level;";
+                command.Parameters.AddWithValue("@area", challengeArea);
+                command.Parameters.AddWithValue("@level", challengeLevel);
+
+                numOfChallenge = Convert.ToInt32(command.ExecuteScalar());
+            }
+
             using (var command = connection.CreateCommand())
             {
                 command.CommandText = "SELECT * FROM Challenges WHERE Area = @area AND Level = @level;";
                 command.Parameters.AddWithValue("@area", challengeArea);
                 command.Parameters.AddWithValue("@level", challengeLevel);
+                
+                if (numOfChallenge == 0)
+                {
+                    return null;
+                }
+                else if (numOfChallenge > 0)
+                {
+                    System.Random random = new System.Random();
+                    targetIndex = random.Next(0, numOfChallenge);
+                }
 
                 using (IDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
+                        if (index++ != targetIndex)
+                        {
+                            continue;
+                        }
+
                         string name = reader["Name"].ToString();
                         string description = reader["Description"].ToString();
                         string status = reader["Status"].ToString();                
@@ -198,6 +228,7 @@ public class DatabaseManager : MonoBehaviour
                         selectedData[4] = area;
                         selectedData[5] = level;
                         selectedData[6] = testDir;
+                        break;
                     }
                 }
             }

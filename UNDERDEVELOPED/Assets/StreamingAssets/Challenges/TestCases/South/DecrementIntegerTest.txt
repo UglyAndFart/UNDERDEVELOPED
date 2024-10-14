@@ -3,26 +3,25 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Mynamespace
 {
-    public class PlayerCodeTestcase
+    public class PlayerCodeTest
     {
         static void Main(string[] args)
         {
             PlayerCodeTestChecker();
         }
         
-        public static int PlayerCodeTest(int num1)
-        {
-            return num1;
-        }
+        //player function
 
         public static void PlayerCodeTestChecker()
         {
+            PlayerCodeTest playerCodeTest = new PlayerCodeTest();
+          
             int[] inputs = { 1, 4, 90, 45, 201, 320, 916, 20, 23, 12 };
             int[] outputs = { 0, 3, 89, 44, 200, 319, 915, 19, 22, 11 };
 
             for (int i = 0; i < inputs.Length; i++)
             {
-                int result = PlayerCodeTest(inputs[i]);
+                int result = playerCodeTest.DecrementIntegerValue(inputs[i]);
     
                 if (result == outputs[i])
                 {

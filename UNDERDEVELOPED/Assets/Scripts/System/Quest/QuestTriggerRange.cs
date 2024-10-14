@@ -5,14 +5,14 @@ using UnityEngine;
 public class QuestTriggerRange : MonoBehaviour
 {
     public delegate void QuestTriggerEventHandler(); 
-    public static event QuestTriggerEventHandler OnPlayerEnter;
-    public static event QuestTriggerEventHandler OnPlayerExit;
+    public static event QuestTriggerEventHandler onPlayerEnter;
+    public static event QuestTriggerEventHandler onPlayerExit;
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Player") || collider.CompareTag("Default Player"))
         {
-            OnPlayerEnter?.Invoke();
+            onPlayerEnter?.Invoke();
             Debug.Log("QuestTriggerRange: Player in range");
         }
 
@@ -23,7 +23,7 @@ public class QuestTriggerRange : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            OnPlayerExit?.Invoke();
+            onPlayerExit?.Invoke();
             Debug.LogWarning("QuestTriggerRange: Player left");
         }
     }

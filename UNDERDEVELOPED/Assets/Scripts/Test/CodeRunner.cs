@@ -32,11 +32,25 @@ public class CodeRunner : MonoBehaviour
     private void Awake()
     {
         SetupListenerToButtons();
+        _challengeManager = ChallengeManagerReyal.instance;
     }
 
     private void OnEnable()
     {
-        
+        if (_challengeManager.GetCurrentChallenge()[0] == null)
+        {
+            _btnSubmit.gameObject.SetActive(false);
+            _btnRun.gameObject.SetActive(true);
+            _instructionPanel.SetActive(false);
+            Debug.Log("CodeRunner: No challenge available");
+        }
+        else
+        {
+            _btnSubmit.gameObject.SetActive(true);
+            _btnRun.gameObject.SetActive(false);
+            _instructionPanel.SetActive(true);
+        }
+
     }
 
     private void Start()
@@ -51,7 +65,7 @@ public class CodeRunner : MonoBehaviour
         BtnEditor_Click();
 
         //_codeRunnerPath = Path.Combine(Application.streamingAssetsPath, "Scripts\\PlayerCodeRunner.txt");
-        _challengeManager = ChallengeManagerReyal._instance;
+        // _challengeManager = ChallengeManagerReyal.instance;
     }
 
     // public void runCode()
@@ -197,7 +211,8 @@ public class CodeRunner : MonoBehaviour
         //add function call inside Main()
         //add PlayerFunction
         
-        string functionName = _challengeManager.GetCurrentChallenge()[0];
+        // string functionName = _challengeManager.GetCurrentChallenge()[0];
+        string functionName = "Code";
         string fileName = "PlayerCode";
         string code = "using System;\n\n" +
         "public class PlayerCode\n" +
@@ -231,6 +246,8 @@ public class CodeRunner : MonoBehaviour
     /// </summary>
     public void RunPlayerCodeTest()
     {
+        Debug.Log("CodeRunner: Running test cases");
+
         string fileName = "PlayerCodeTest";
         string testTxtPath = Path.Combine(Application.streamingAssetsPath, _challengeManager.GetCurrentChallenge()[6]);
         string functionName = _challengeManager.GetCurrentChallenge()[0];
@@ -302,6 +319,7 @@ public class CodeRunner : MonoBehaviour
     private void BtnRun_Click()
     {
         RunPlayerCode();
+        BtnConsole_Click();
     }
 
     private void BtnReset_Click()

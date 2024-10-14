@@ -11,14 +11,14 @@ public class ChallengeGiver : MonoBehaviour
     
     private void Awake()
     {
-        _challenge = Challenge._instance;
+        _challenge = Challenge.instance;
 
         if (_challenge == null)
         {
             Debug.LogWarning("ChallengeGiver: Challenge Not Found");
         }
 
-        QuestTriggerRange.OnPlayerEnter += GiveChallenge;
+        QuestTriggerRange.onPlayerEnter += GiveChallenge;
     }
 
     public void GiveChallenge()
@@ -29,6 +29,6 @@ public class ChallengeGiver : MonoBehaviour
 
     private void OnDestroy()
     {
-        QuestTriggerRange.OnPlayerEnter -= GiveChallenge;
+        QuestTriggerRange.onPlayerEnter -= GiveChallenge;
     }
 }

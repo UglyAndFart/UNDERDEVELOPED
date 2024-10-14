@@ -1,4 +1,4 @@
-public bool PlayerCodeTest(int num1, int num2)
+public bool CompareUsingInequalityOperator(int num1, int num2)
 {
 	
 }

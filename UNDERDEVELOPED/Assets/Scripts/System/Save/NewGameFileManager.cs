@@ -99,7 +99,7 @@ public class NewGameFileManager : MonoBehaviour
         DatabaseManager._instance.enabled = true;
         HotkeysReader._instance.enabled = true;
         // IngameOptions._instance.enabled = true;
-        ChallengeManagerReyal._instance.enabled = true;
+        ChallengeManagerReyal.instance.enabled = true;
     }
 
     //Create the save file and folder before the next scene loads

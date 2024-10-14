@@ -181,7 +181,6 @@ public class HUDManager : MonoBehaviour
     {
         _ingameMenu.SetActive(false);
         _options.SetActive(true);
-        _bossHealthbar.SetActive(true);
         activeUI = 0;
     }
 

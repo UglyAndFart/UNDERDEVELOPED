@@ -21,7 +21,7 @@ public class LoadGameSetup : MonoBehaviour
         // ChallengeManager._instance.enabled = true;
         DatabaseManager._instance.enabled = true;
         HotkeysReader._instance.enabled = true;
-        ChallengeManagerReyal._instance.enabled = true;
+        ChallengeManagerReyal.instance.enabled = true;
     }
 
     private void Start()

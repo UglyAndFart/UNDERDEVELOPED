@@ -4,15 +4,19 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Mynamespace
 {
-    public class PlayerCodeTestcase
+    public class PlayerCodeTest
     {
         static void Main(string[] args)
         {
             PlayerCodeTestChecker();
         }
-
+        
+        //player function
+        
         public static void PlayerCodeTestChecker()
         {
+            PlayerCodeTest playerCodeTest = new PlayerCodeTest();
+          
             int[,] inputs =
             {
                 { 5, 3 },
@@ -29,13 +33,13 @@ namespace Mynamespace
 
             bool[] expectedresults =
             {
-                true, false, true, true, true, true, true, false, true, true
+                true, false, false, true, true, true, true, false, true, true
             };
 
             for (int i = 0; i < inputs.GetLength(0); i++)
             {
 
-                bool result = PlayerCodeTest(inputs[i,0], inputs[i, 1]);
+                bool result = playerCodeTest.CompareUsingInequalityOperator(inputs[i,0], inputs[i, 1]);
 
                 if (result == expectedresults[i])
                 {

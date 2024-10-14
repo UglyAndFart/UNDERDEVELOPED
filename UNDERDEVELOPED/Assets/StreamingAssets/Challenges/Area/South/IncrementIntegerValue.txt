@@ -1,4 +1,4 @@
-public int PlayerCodeTest(int num1)
+public int IncrementIntegerValue(int num1)
 {
 
 }
